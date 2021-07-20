@@ -9,6 +9,15 @@ elemSelector("#navbar").innerHTML = `
         <button onclick="hideElem(elemSelector('#banner'))">close</button>
     </div>`;
 
+elemSelector("#textShiftDescription").innerHTML = `
+    textShift is a development side project i'm currently working on during free time; any updates to the website will be added to the Github repository.<br>a video demonstration of using the website is also available <a target='_blank' href='https://fbacarisas.xyz/video/#datetime_timer'>(here)</a>
+	<br><hr><br>the current features of textShift are<br>
+	<span class="feature"></span>
+	<span class="feature">responsive styling for mobile devices</span>
+	<br><br>
+	my other programming projects can also be viewed here: (<a target="_blank" href="https://fbacarisas.xyz/video/#programming_playlist">fbacarisas.xyz/video/#programming_playlist</a>)
+	<br><br>`;
+
 elemSelector("#content").innerHTML = `
     <p>content</p>
     `;

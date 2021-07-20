@@ -11,6 +11,11 @@ var navi = function(path) {
 	location.href = path;
 };
 
+// hide an element (e.g. closing a banner)
+var hideElem = function(elem) {
+	elem.style.display = 'none';
+};
+
 // close banner if open
 var toggleBanner = function() {
 	if (elemSelector('#banner').style.display == 'inline-block') {
