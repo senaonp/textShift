@@ -1,5 +1,5 @@
 elemSelector("#navbar").innerHTML = `
-    <img src="assets/logo.png" />
+    <img id="logo" src="assets/logo.png" />
     <ul>
         <li onclick="navi('https://github.com/senaonp/textShift')"><a href="https://github.com/senaonp/textShift">Github Repo</a></li>
         <li onclick="toggleBanner()">About</li>
@@ -18,9 +18,7 @@ elemSelector("#textShiftDescription").innerHTML = `
 	my other programming projects can also be viewed here: (<a target="_blank" href="https://fbacarisas.xyz/video/#programming_playlist">fbacarisas.xyz/video/#programming_playlist</a>)
 	<br><br>`;
 
-elemSelector("#content").innerHTML = `
-    <p>content</p>
-    `;
+// elemSelector("#content").innerHTML = ``;
 
 elemSelector("#footer").innerHTML = `
     <span>developed by senaonp</span>

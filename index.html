@@ -2,15 +2,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="textShift.css" />
     </head>
 
     <body>
         <div id="navbar"></div>
         <div id="content">
-            <div id="text"></div>
-            <div id="cipherText"></div>
-            <div id="options"></div>
+            <div id="text">
+                <p class="textareaName">text</p>
+                <textarea id="textInput"></textarea>
+            </div>
+            <div id="cipherText">
+                <p class="textareaName">cipher text</p>
+                <textarea id="cipherTextInput"></textarea>
+            </div>
+            <div id="options">
+                <div class="option">
+                    <label>shift text by number: </label><input type="number"></input>
+                </div>
+            </div>
         </div>
         <div id="footer"></div>
 
