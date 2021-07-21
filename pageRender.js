@@ -10,10 +10,12 @@ elemSelector("#navbar").innerHTML = `
     </div>`;
 
 elemSelector("#textShiftDescription").innerHTML = `
-    textShift is a development side project i'm currently working on during free time; any updates to the website will be added to the Github repository.<br>a video demonstration of using the website is also available <a target='_blank' href='https://fbacarisas.xyz/video/#datetime_timer'>(here)</a>
+    <span id="version">textShift ver.1.0.9</span><br /><br />
+    textShift is a development side project i'm currently working on during free time;<br>any updates to the website will be added to the Github repository (<a target="_blank" href="https://github.com/senaonp/textShift">https://github.com/senaonp/textShift</a>).
 	<br><hr><br>the current features of textShift are<br>
-	<span class="feature"></span>
-	<span class="feature">responsive styling for mobile devices</span>
+	<span class="feature">encrypt and decrypt text by shifting each character's Unicode value by a set integer</span>
+	<span class="feature">responsive output when entering either text input or cipherText input</span>
+    <span class="feature">responsive styling for mobile devices</span>
 	<br><br>
 	my other programming projects can also be viewed here: (<a target="_blank" href="https://fbacarisas.xyz/video/#programming_playlist">fbacarisas.xyz/video/#programming_playlist</a>)
 	<br><br>`;
