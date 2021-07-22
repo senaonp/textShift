@@ -10,7 +10,7 @@ elemSelector("#navbar").innerHTML = `
     </div>`;
 
 elemSelector("#textShiftDescription").innerHTML = `
-    <span id="version">textShift ver.1.0.10</span><br /><br />
+    <span id="version">textShift ver.1.0.11</span><br /><br />
     textShift is a development side project i'm currently working on during free time;<br>any updates to the website will be added to the Github repository (<a target="_blank" href="https://github.com/senaonp/textShift">https://github.com/senaonp/textShift</a>).
 	<br><hr><br>the current features of textShift are<br>
 	<span class="feature">encrypt and decrypt text by shifting each character's Unicode value by a set integer</span>
