@@ -1,4 +1,4 @@
-# [textShift.net](https://textshift.net/) | a basic online cipher tool
+﻿# [textShift.net](https://textshift.net/) | a basic online cipher tool
 
 -------------
 
@@ -27,11 +27,10 @@ this is done by entering the cipher text into the cipher text field and decoding
 taking the decoded text and decoding it through the second cipher (shift every 3rd character by 10), and then put the resulting decoded text 
 and decoding it through the first cipher (shift all the text characters by 15).
 
-here's an example of some text that was encoded using the example; it can be decoded for practice:
-
-}x|tO9v~/~qN/nAIV〦∯8x
-
 ```
+
+here's an example of some text that was encoded using the example; it can be decoded for practice:<br /><br />
+<span>}x|tO9v~/~qN/nAIV〦∯8x</span>
 
 ## feature wishlist
 - cipher types:
