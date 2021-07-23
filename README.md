@@ -1,4 +1,4 @@
-﻿# [textShift.net](https://textshift.net/) | a basic online cipher tool
+# [textShift.net](https://textshift.net/) | a basic online cipher tool
 
 -------------
 
@@ -20,17 +20,14 @@ reverse order in which they were applied.
 
 ```
 
-example: if i were to shift all the text characters by 15, take the cipher text output and encode it by shifting every 3rd character by 10, 
-take the resulting output and and then encoding it by shifting every 5th character by 20, i can decode the cipher text by working backwards:
+example: if i were to shift all the text characters by 5, take the cipher text output and encode it by shifting every 3rd character by 9, 
+take the resulting output and and then encoding it by shifting every 5th character by 16, i can decode the cipher text by working backwards:
 
-this is done by entering the cipher text into the cipher text field and decoding it using the third cipher (shift every 5th character by 20), 
-taking the decoded text and decoding it through the second cipher (shift every 3rd character by 10), and then put the resulting decoded text 
-and decoding it through the first cipher (shift all the text characters by 15).
+this is done by entering the cipher text into the cipher text field and decoding it using the third cipher (shift every 5th character by 16), 
+taking the decoded text and decoding it through the second cipher (shift every 3rd character by 9), and then put the resulting decoded text 
+and decoding it through the first cipher (shift all the text characters by 5).
 
 ```
-
-here's an example of some text that was encoded using the example; it can be decoded for practice:<br /><br />
-<span>}x|tO9v~/~qN/nAIV〦∯8x</span>
 
 ## feature wishlist
 - cipher types:
