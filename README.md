@@ -28,7 +28,8 @@ taking the decoded text and decoding it through the second cipher (shift every 3
 and decoding it through the first cipher (shift all the text characters by 15).
 
 here's an example of some text that was encoded using the example; it can be decoded for practice:
-`}x|tO9v~/~qN/nAIV〦∯8x`
+
+}x|tO9v~/~qN/nAIV〦∯8x
 
 ```
 
