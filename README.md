@@ -7,8 +7,8 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 
 ## features
 - cipher options for encrypting / decrypting
- - shifting each character's Unicode value by a set integer
- - shifting every nth character's Unicode value by a set integer
+  - shifting each character's Unicode value by a set integer
+  - shifting every nth character's Unicode value by a set integer
 - responsive output when entering either text input or cipherText input
 - responsive styling for mobile devices
 
@@ -31,16 +31,16 @@ and decoding it through the first cipher (shift all the text characters by 5).
 
 ## feature wishlist
 - cipher types:
- - reverse text
- - shift char by multiple
- - swap two char ranges
- - insert char range at index
- - nth partitions sequencer
- - combinational ciphers
-  - swap at every nth char
-  - character substitution swap
-  - reverse chars within partitions
-  - shift chars by list of indices
+  - reverse text
+  - shift char by multiple
+  - swap two char ranges
+  - insert char range at index
+  - nth partitions sequencer
+  - combinational ciphers
+    - swap at every nth char
+    - character substitution swap
+    - reverse chars within partitions
+    - shift chars by list of indices
 
 ## textShift preview:
 <img src="./assets/textshift-preview.png" width="100%" height="auto">
