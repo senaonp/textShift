@@ -9,6 +9,24 @@ elemSelector("#navbar").innerHTML = `
         <button onclick="hideElem(elemSelector('#banner'))">close</button>
     </div>`;
 
+elemSelector("#content").innerHTML = `
+    <div id="optionsElem">
+        <small id="optionsTitle">cipher option(s)</small>
+        <div id="options"></div>
+        <div class="option">
+            <small class="optionNote">this website is a work-in-progress; additional cipher options will be added in future updates</small>
+        </div>
+    </div>
+    <div id="text">
+        <p class="textareaName">text</p>
+        <textarea id="textInput" oninput="evalText(this)"></textarea>
+    </div>
+    <div id="cipherText">
+        <p class="textareaName">cipher text</p>
+        <textarea id="cipherTextInput" oninput="evalCipher(this)"></textarea>
+    </div>
+`;
+
 elemSelector("#textShiftDescription").innerHTML = `
     <span id="version">textShift ver.1.0.11</span><br /><br />
     textShift is a development side project i'm currently working on during free time;<br>any updates to the website will be added to the Github repository (<a target="_blank" href="https://github.com/senaonp/textShift">https://github.com/senaonp/textShift</a>).
@@ -19,8 +37,6 @@ elemSelector("#textShiftDescription").innerHTML = `
 	<br><br>
 	my other programming projects can also be viewed here: (<a target="_blank" href="https://fbacarisas.xyz/video/#programming_playlist">fbacarisas.xyz/video/#programming_playlist</a>)
 	<br><br>`;
-
-// elemSelector("#content").innerHTML = ``;
 
 elemSelector("#footer").innerHTML = `
     <span>developed by senaonp</span>

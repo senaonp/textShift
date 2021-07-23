@@ -1,33 +1,36 @@
-var shift = 0;
 var textArray = [];
 var cipherArray = [];
-
+var options = "";
 var textElem = document.getElementById("textInput");
 var cipherElem = document.getElementById("cipherTextInput");
-var shiftElem = document.getElementById("textShift");
 
-window.onload = function() {
-    textElem.value = '';
-    cipherElem.value = '';
-    shiftElem.value = 0;
-}
+var setOptions = [[charShiftElem, charShiftEncode, charShiftDecode]];
 
 var evalText = function(elem) {
-    cipherArray = [];
-    for (var i = 0; i < elem.value.length; i += 1) {
-        cipherArray.push(String.fromCharCode(elem.value.charCodeAt(i) + shift));
-    }
+    cipherArray = Array(elem.length);
+    for (var a = 0; a < setOptions.length; a+=1) { setOptions[a][1](elem); }
     cipherElem.value = cipherArray.join("");
 }
 
 var evalCipher = function(elem) {
-    textArray = [];
-    for (var i = 0; i < elem.value.length; i += 1) {
-        textArray.push(String.fromCharCode(elem.value.charCodeAt(i) - shift));
-    }
+    textArray = Array(elem.length);
+    for (var b = 0; b < setOptions.length; b+=1) { setOptions[b][2](elem); }
     textElem.value = textArray.join("");
 }
 
-var setShift = function(elem) {
-    shift = parseInt(elem.value);
+var renderOptions = function() {
+    options = "";
+    for (var e = 0; e < setOptions.length; e+=1) { 
+        options += "<div class='option'>" + setOptions[e][0] + "</div>";
+    }
+    elemSelector("#options").innerHTML = options;
 }
+
+var clearInputs = function() {
+    document.getElementById("option1").value = 0;
+    textElem.value = '';
+    cipherElem.value = '';
+}
+
+renderOptions();
+clearInputs();

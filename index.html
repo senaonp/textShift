@@ -11,29 +11,12 @@
 
     <body>
         <div id="navbar"></div>
-        <div id="content">
-            <div id="options">
-                <small id="optionsTitle">cipher option(s)</small>
-                <div class="option">
-                    <label>shift text by number: </label><input id="textShift" type="number" oninput="setShift(this)"></input>
-                </div>
-                <div class="option">
-                    <label class="optionNote">this website is a work-in-progress; additional cipher options will be added in future updates</input>
-                </div>
-            </div>
-            <div id="text">
-                <p class="textareaName">text</p>
-                <textarea id="textInput" oninput="evalText(this)"></textarea>
-            </div>
-            <div id="cipherText">
-                <p class="textareaName">cipher text</p>
-                <textarea id="cipherTextInput" oninput="evalCipher(this)"></textarea>
-            </div>
-        </div>
+        <div id="content"></div>
         <div id="footer"></div>
 
         <script src="elemHelpers.js"></script>
-        <script src="textShift.js"></script>
         <script src="pageRender.js"></script>
+        <script src="optionsCipher.js"></script>
+        <script src="textShift.js"></script>
     </body>
 </html>
