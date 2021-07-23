@@ -1,33 +1,37 @@
 var textArray = [];
 var cipherArray = [];
 var options = "";
+var selectElem = "";
 var textElem = document.getElementById("textInput");
 var cipherElem = document.getElementById("cipherTextInput");
 
-var setOptions = [[charShiftElem, charShiftEncode, charShiftDecode]];
+var setElem = charShiftElem;
+var setEncode = charShiftEncode;
+var setDecode = charShiftDecode;
 
 var evalText = function(elem) {
     cipherArray = Array(elem.length);
-    for (var a = 0; a < setOptions.length; a+=1) { setOptions[a][1](elem); }
+    setEncode(elem);
     cipherElem.value = cipherArray.join("");
 }
 
 var evalCipher = function(elem) {
     textArray = Array(elem.length);
-    for (var b = 0; b < setOptions.length; b+=1) { setOptions[b][2](elem); }
+    setDecode(elem);
     textElem.value = textArray.join("");
 }
 
 var renderOptions = function() {
-    options = "";
-    for (var e = 0; e < setOptions.length; e+=1) { 
-        options += "<div class='option'>" + setOptions[e][0] + "</div>";
+    selectElem = "<select id='selectCipher' onchange='setCipher(this)'>";
+    for (var c = 0; c < Object.keys(ciphers).length; c+=1) {
+        selectElem += "<option>" + Object.keys(ciphers)[c] + "</option>";
     }
-    elemSelector("#options").innerHTML = options;
+    selectElem += "</select>";
+    elemSelector("#optionsSelect").innerHTML = '<span class="optionsItem">cipher options</span>' + selectElem;
+    elemSelector("#options").innerHTML = "<div id='optionsCipher'>" + setElem + "</div>";
 }
 
 var clearInputs = function() {
-    document.getElementById("option1").value = 0;
     textElem.value = '';
     cipherElem.value = '';
 }
