@@ -27,7 +27,7 @@ var renderOptions = function() {
         selectElem += "<option>" + Object.keys(ciphers)[c] + "</option>";
     }
     selectElem += "</select>";
-    elemSelector("#optionsSelect").innerHTML = '<span class="optionsItem">cipher options</span>' + selectElem;
+    elemSelector("#optionsSelect").innerHTML = '<span class="optionsItem">cipher options</span> &nbsp' + selectElem;
     elemSelector("#options").innerHTML = "<div id='optionsCipher'>" + setElem + "</div>";
 }
 

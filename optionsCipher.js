@@ -17,8 +17,8 @@ var charShiftDecode = function(elem) {
 // charShift every nth char
 
 var charShiftNthElem = `
-    <label class="optionsItem">shift text by number </label><input id="option2_1" type="number" value="0"></input> 
-    <label class="optionsItem">for every nth character where n is </label><input id="option2_2" type="number" value="1" min="1"></input>`;
+    <label class="optionsItem">shift text by number </label><input id="option2_1" type="number" value="0"></input><br />
+    <label class="optionsItem extraParam">for every nth character where n is </label><input id="option2_2" type="number" value="1" min="1"></input>`;
 
 var charShiftNthEncode = function(elem) {
     for (var i = 0; i < elem.value.length; i += 1) {
