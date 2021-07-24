@@ -13,7 +13,6 @@ elemSelector("#content").innerHTML = `
     <div id="optionsElem">
         <div id="optionsSelect"></div>
         <div id="options"></div>
-        <small class="optionNote">this website is a work-in-progress; additional cipher options will be added in future updates</small>
     </div>
     <div id="text">
         <p class="textareaName">text</p>
@@ -26,13 +25,14 @@ elemSelector("#content").innerHTML = `
 `;
 
 elemSelector("#textShiftDescription").innerHTML = `
-    <span id="version">textShift ver.1.1.0</span><br /><br />
+    <span id="version">textShift ver.1.1.5</span><br /><br />
     textShift is a development side project i'm currently working on during free time;<br>any updates to the website will be added to the Github repository (<a target="_blank" href="https://github.com/senaonp/textShift">https://github.com/senaonp/textShift</a>).
 	<br><hr><br>the current features of textShift are:<br>
     <div id="features">
 	<span class="feature">cipher options for encrypting / decrypting</span>
     <span class="feature_detail">shifting each character's Unicode value by a set integer</span>
     <span class="feature_detail">shifting every nth character's Unicode value by a set integer</span>
+	<span class="feature_detail">shifting each character's Unicode value by a set multiple</span>
 	<span class="feature">responsive output when entering either text input or cipherText input</span>
     <span class="feature">responsive styling for mobile devices</span>
     </div>
