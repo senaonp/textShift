@@ -24,3 +24,14 @@ var toggleBanner = function() {
 		elemSelector('#banner').style.display='inline-block'
 	}
 };
+
+// toggleInfo
+var toggleInfo = function(type, elementId) {
+	console.log(elementId);
+	var infoElem = elemSelector(elementId);
+	if (infoElem.innerHTML === '') {
+		infoElem.innerHTML = infoMapping[type];
+	} else {
+		infoElem.innerHTML = '';
+	}
+};
