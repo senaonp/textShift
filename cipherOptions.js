@@ -165,6 +165,51 @@ var charShiftOffsetNthDecode = function(elem) {
     }
 }
 
+// --------------------------------
+// charShift every offset nth char by multiple
+
+var charShiftOffsetNthMultipleElem = `
+    <label class="optionsItem">shift text by multiple </label>
+    <input id="option7_1" type="number" value="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('multiple', '#option7_1_info')">info</span><br />
+    <div id="option7_1_info"></div>
+    
+    <label class="optionsItem">for every nth character where n is </label>
+    <input id="option7_2" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('nthChar', '#option7_2_info')">info</span><br />
+	<div id="option7_2_info"></div>
+    
+    <label class="optionsItem">with an offset of </label>
+    <input id="option7_3" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('offset', '#option7_3_info')">info</span><br />
+	<div id="option7_3_info"></div>`;
+var charShiftOffsetNthMultipleEncode = function(elem) {
+    var offset = parseInt(elemSelector("#option7_3").value);
+    var nth = elemSelector("#option7_2").value;
+    var shift = parseInt(elemSelector("#option7_1").value);
+    for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+    for (var y = 0; y < cipherArray.length; y += 1) {
+        if ((cipherArray[y+offset] != undefined) && ((y+1) % nth) == 0) { 
+            cipherArray[y+offset] = String.fromCharCode(elem.value.charCodeAt(y+offset) * shift);
+        }
+    }
+}
+var charShiftOffsetNthMultipleDecode = function(elem) {
+    var offset = parseInt(elemSelector("#option7_3").value);
+    var nth = elemSelector("#option7_2").value;
+    var shift = parseInt(elemSelector("#option7_1").value);
+    for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+    for (var y = 0; y < textArray.length; y += 1) {
+        if ((textArray[y+offset] != undefined) && ((y+1) % nth) == 0) { 
+            textArray[y+offset] = String.fromCharCode(elem.value.charCodeAt(y+offset) / shift);
+        }
+    }
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -183,6 +228,7 @@ var ciphers = {
     "shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
 	"shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
     "shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
+    "shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
 };
 var setCipher = function(elem) { 
     elemSelector("#optionsCipher").innerHTML = ciphers[elem.value][0];
