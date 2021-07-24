@@ -252,6 +252,55 @@ var charSwapNthOffsetElem = `
         }
     }
 
+// --------------------------------
+// swap every nth offset character by an offset
+
+var charSwapNthOffsetOffsetElem = `
+    <label class="optionsItem">for every nth character where n is </label>
+    <input id="option9_1" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('nthChar', '#option9_1_info')">info</span><br />
+	<div id="option9_1_info"></div>
+
+    <label class="optionsItem">with an offset of </label>
+    <input id="option9_2" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('offset', '#option9_2_info')">info</span><br />
+	<div id="option9_2_info"></div>
+
+    <label class="optionsItem">swap at a relative offset of </label>
+    <input id="option9_3" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('swapOffsetOffset', '#option9_3_info')">info</span><br />
+	<div id="option9_3_info"></div>`;
+    var charSwapNthOffsetOffsetEncode = function(elem) {
+        var offsetOfN = parseInt(elemSelector("#option9_2").value);
+        var offset = parseInt(elemSelector("#option9_3").value);
+        var nth = elemSelector("#option9_1").value;
+        for (var x = 0; x < elem.value.length; x += 1) {
+            cipherArray[x] = elem.value[x];
+        }
+        for (var y = 0; y < cipherArray.length; y += 1) {
+            if ((cipherArray[y+offsetOfN] != undefined) && (cipherArray[y+offsetOfN+offset] != undefined) && ((y+1) % nth) == 0) {
+                var tempO = String.fromCharCode(elem.value.charCodeAt(y+offset+offsetOfN)); 
+                cipherArray[y+offsetOfN+offset] = String.fromCharCode(elem.value.charCodeAt(y+offsetOfN));
+                cipherArray[y+offsetOfN] = tempO;
+            }
+        }
+    }
+    var charSwapNthOffsetOffsetDecode = function(elem) {
+        var offsetOfN = parseInt(elemSelector("#option9_2").value);
+        var offset = parseInt(elemSelector("#option9_3").value);
+        var nth = elemSelector("#option9_1").value;
+        for (var x = 0; x < elem.value.length; x += 1) {
+            textArray[x] = elem.value[x];
+        }
+        for (var y = 0; y < textArray.length; y += 1) {
+            if ((textArray[y+offsetOfN] != undefined) && (textArray[y+offsetOfN+offset] != undefined) && ((y+1) % nth) == 0) {
+                var tempO = String.fromCharCode(elem.value.charCodeAt(y+offset+offsetOfN)); 
+                textArray[y+offsetOfN+offset] = String.fromCharCode(elem.value.charCodeAt(y+offsetOfN));
+                textArray[y+offsetOfN] = tempO;
+            }
+        }
+    }
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -262,7 +311,8 @@ var infoMapping = {
     "reverse": "<small class='note'>reverses the ordering of the characters; reversing is applied as text is entered into the text or cipher fields (this also includes re-copying and re-pasting text back to the fields in case the fields have already been populated)<br /><br />",
 	"nthChar": "<small class='note'>encodes / decodes the nth characters of text<br />for encoding and decoding, n should be an integer greater than or equal to 1</small><br /><br />",
     "offset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character</small><br /><br />",
-    "swapOffset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character;<br />for accurate encoding and decoding the absolute value of the offset should be less than n</small><br /><br />"
+    "swapOffset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character;<br />for accurate encoding and decoding, the absolute value of the offset should be less than n</small><br /><br />",
+    "swapOffsetOffset": "<small class='note'>a number offset relative to the nth offset; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character;<br />for accurate encoding and decoding, the absolute value of the offset should be less than n</small><br /><br />"
 }; // template "<small class='note'></small><br /><br />"
 var ciphers = {
     "shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
@@ -273,6 +323,7 @@ var ciphers = {
 	"shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
     "shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
     "shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
+    "swap nth offset character with offset": [charSwapNthOffsetOffsetElem, charSwapNthOffsetOffsetEncode, charSwapNthOffsetOffsetDecode],
 };
 var setCipher = function(elem) { 
     elemSelector("#optionsCipher").innerHTML = ciphers[elem.value][0];
