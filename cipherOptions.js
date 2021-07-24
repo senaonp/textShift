@@ -263,7 +263,7 @@ var charSwapNthOffsetOffsetElem = `
 
     <label class="optionsItem">with an offset of </label>
     <input id="option9_2" type="number" value="0"></input>
-    <span class="infoIcon" onclick="toggleInfo('offset', '#option9_2_info')">info</span><br />
+    <span class="infoIcon" onclick="toggleInfo('nthOffset', '#option9_2_info')">info</span><br />
 	<div id="option9_2_info"></div>
 
     <label class="optionsItem">swap at a relative offset of </label>
@@ -312,7 +312,8 @@ var infoMapping = {
 	"nthChar": "<small class='note'>encodes / decodes the nth characters of text<br />for encoding and decoding, n should be an integer greater than or equal to 1</small><br /><br />",
     "offset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character</small><br /><br />",
     "swapOffset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character;<br />for accurate encoding and decoding, the absolute value of the offset should be less than n</small><br /><br />",
-    "swapOffsetOffset": "<small class='note'>a number offset relative to the nth offset; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character;<br />for accurate encoding and decoding, the absolute value of the offset should be less than n</small><br /><br />"
+    "nthOffset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character</small><br /><br />",
+	"swapOffsetOffset": "<small class='note'>a number offset relative to the nth offset; negative integers apply to characters offset to the left of each nth offset character, positive integers apply to characters offset to the right of each nth offset character;<br />for accurate encoding and decoding, the absolute value of this offset should be less than n</small><br /><br />"
 }; // template "<small class='note'></small><br /><br />"
 var ciphers = {
     "shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
