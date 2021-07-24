@@ -1,4 +1,5 @@
-// ----- charShift -----
+// --------------------------------
+// charShift
 
 var charShiftElem = `
     <label class="optionsItem">shift text by number </label>
@@ -16,6 +17,7 @@ var charShiftDecode = function(elem) {
     }
 }
 
+// --------------------------------
 // charShift by multiple
 
 var charShiftMultipleElem = `
@@ -34,6 +36,7 @@ var charShiftMultipleDecode = function(elem) {
     }
 }
 
+// --------------------------------
 // reverse text
 
 var reverseElem = `
@@ -53,6 +56,7 @@ var reverseDecode = function(elem) {
     }
 }
 
+// --------------------------------
 // charShift every nth char
 
 var charShiftNthElem = `
@@ -84,6 +88,7 @@ var charShiftNthDecode = function(elem) {
     }
 }
 
+// --------------------------------
 // charShift every nth char by multiple
 
 var charShiftNthMultipleElem = `
@@ -115,20 +120,69 @@ var charShiftNthMultipleDecode = function(elem) {
     }
 }
 
-// cipher elements
+// --------------------------------
+// charShift every offset nth char
+
+var charShiftOffsetNthElem = `
+    <label class="optionsItem">shift text by number </label>
+    <input id="option6_1" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('shift', '#option6_1_info')">info</span><br />
+	<div id="option6_1_info"></div>
+    
+    <label class="optionsItem">for every nth character where n is </label>
+    <input id="option6_2" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('nthChar', '#option6_2_info')">info</span><br />
+	<div id="option6_2_info"></div>
+    
+    <label class="optionsItem">with an offset of </label>
+    <input id="option6_3" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('offset', '#option6_3_info')">info</span><br />
+	<div id="option6_3_info"></div>`;
+var charShiftOffsetNthEncode = function(elem) {
+    var offset = parseInt(elemSelector("#option6_3").value);
+    var nth = elemSelector("#option6_2").value;
+    var shift = parseInt(elemSelector("#option6_1").value);
+    for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+    for (var y = 0; y < cipherArray.length; y += 1) {
+        if ((cipherArray[y+offset] != undefined) && ((y+1) % nth) == 0) { 
+            cipherArray[y+offset] = String.fromCharCode(elem.value.charCodeAt(y+offset) + shift);
+        }
+    }
+}
+var charShiftOffsetNthDecode = function(elem) {
+    var offset = parseInt(elemSelector("#option6_3").value);
+    var nth = elemSelector("#option6_2").value;
+    var shift = parseInt(elemSelector("#option6_1").value);
+    for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+    for (var y = 0; y < textArray.length; y += 1) {
+        if ((textArray[y+offset] != undefined) && ((y+1) % nth) == 0) { 
+            textArray[y+offset] = String.fromCharCode(elem.value.charCodeAt(y+offset) - shift);
+        }
+    }
+}
+
+// -------------------------
+// ----- ciphers setup -----
+// -------------------------
 
 var infoMapping = {
 	"shift": "<small class='note'>shifts the character's Unicode value by a set integer</small><br /><br />",
     "multiple": "<small class='note'>multiplies the character Unicode by a multiple<br />for encoding and decoding, the multiple should be non-zero; for accurate decoding, cipher text Unicode value(s) should be divisible by a factor since this cipher encodes by a multiple</small><br /><br />",
     "reverse": "<small class='note'>reverses the ordering of the characters; reversing is applied as text is entered into the text or cipher fields (this also includes re-copying and re-pasting text back to the fields in case the fields have already been populated)<br /><br />",
 	"nthChar": "<small class='note'>encodes / decodes the nth characters of text<br />for encoding and decoding, n should be an integer greater than or equal to 1</small><br /><br />",
+    "offset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character</small><br /><br />",
 }; // template "<small class='note'></small><br /><br />"
 var ciphers = {
     "shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
 	"shift each character by multiple": [charShiftMultipleElem, charShiftMultipleEncode, charShiftMultipleDecode],
     "reverse the text": [reverseElem, reverseEncode, reverseDecode],
-    "shift every nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
-	"shift every nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
+    "shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
+	"shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
+    "shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
 };
 var setCipher = function(elem) { 
     elemSelector("#optionsCipher").innerHTML = ciphers[elem.value][0];
