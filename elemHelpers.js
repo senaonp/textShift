@@ -95,3 +95,17 @@ var textToArray = function(s) {
 	}
 	return r;
 }
+
+// add number to each array item (mutating)
+var shiftArray = function(ls, n) {
+	for (var i=0; i < ls.length; i+=1) {
+		ls[i] = parseInt(ls[i]) + n;
+	}
+}
+
+// shift Unicode number in char array (mutating)
+var shiftArrayUnicode = function(ls, n) {
+	for (var i=0; i < ls.length; i+=1) {
+		ls[i] = String.fromCharCode(ls[i].charCodeAt(0) + n);
+	}
+}

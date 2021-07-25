@@ -25,7 +25,7 @@ elemSelector("#content").innerHTML = `
 `;
 
 elemSelector("#textShiftDescription").innerHTML = `
-    <span id="version">textShift ver.1.1.8</span><br /><br />
+    <span id="version">textShift ver.1.1.15</span><br /><br />
     textShift is a development side project i'm currently working on during free time;<br>any updates to the website will be added to the Github repository (<a target="_blank" href="https://github.com/senaonp/textShift">https://github.com/senaonp/textShift</a>).
 	<br><hr><br>the current features of textShift are:<br>
     <div id="features">
@@ -34,7 +34,8 @@ elemSelector("#textShiftDescription").innerHTML = `
     <span class="feature_detail">shifting every nth character's Unicode value by a set integer</span>
 	<span class="feature_detail">shifting each character's Unicode value by a set multiple</span>
     <span class="feature_detail">reversing text cipher</span>
-    <span class="feature_detail">option to specify offset for each nth character</span>
+    <span class="feature_detail">options to specify offset for each nth character</span>
+	<span class="feature_detail">options to specify by partition(s)</span>
 	<span class="feature">responsive output when entering either text input or cipherText input</span>
     <span class="feature">usage information on input fields</span>
     <span class="feature">responsive styling for mobile devices</span>
