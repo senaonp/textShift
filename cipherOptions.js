@@ -40,7 +40,7 @@ var charShiftMultipleDecode = function(elem) {
 // reverse text
 
 var reverseElem = `
-    <label class="optionsItem">reverse text  </label>
+    <label class="optionsItem">reverse text </label>
     <span class="infoIcon" onclick="toggleInfo('reverse', '#option3_info')">info</span><br />
     <div id="option3_info"></div>`;
 var reverseEncode = function(elem) {
@@ -301,6 +301,44 @@ var charSwapNthOffsetOffsetElem = `
         }
     }
 
+// --------------------------------
+// reverse each partition
+
+var reversePartitionItemsElem = `
+    <label class="optionsItem">partitions </label>
+    <input id="option10_1" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('partition', '#option10_1_info')">info</span><br />
+    <div id="option10_1_info"></div>
+
+    <label class="optionsItem">reverse text </label>
+    <span class="infoIcon" onclick="toggleInfo('reverse', '#option10_2_info')">info</span><br />
+    <div id="option10_2_info"></div>
+    `;
+var reversePartitionItemsEncode = function(elem) {
+    var partitions = parseInt(elemSelector("#option10_1").value);
+    var r = [];
+    for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+    var partitionedList = partitionList(cipherArray, partitions);
+    for (var y = 0; y < partitionedList.length; y += 1) {
+        r.push(reverseList(partitionedList[y]));
+    }
+    cipherArray = innerMergeList(r);
+}
+var reversePartitionItemsDecode = function(elem) {
+    var partitions = parseInt(elemSelector("#option10_1").value);
+    var r = [];
+    for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+    var partitionedList = partitionList(textArray, partitions);
+    for (var y = 0; y < partitionedList.length; y += 1) {
+        r.push(reverseList(partitionedList[y]));
+    }
+    textArray = innerMergeList(r);
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -313,7 +351,8 @@ var infoMapping = {
     "offset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character</small><br /><br />",
     "swapOffset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character;<br />for accurate encoding and decoding, the absolute value of the offset should be less than n</small><br /><br />",
     "nthOffset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character</small><br /><br />",
-	"swapOffsetOffset": "<small class='note'>a number offset relative to the nth offset; negative integers apply to characters offset to the left of each nth offset character, positive integers apply to characters offset to the right of each nth offset character;<br />for accurate encoding and decoding, the absolute value of this offset should be less than n</small><br /><br />"
+	"swapOffsetOffset": "<small class='note'>a number offset relative to the nth offset; negative integers apply to characters offset to the left of each nth offset character, positive integers apply to characters offset to the right of each nth offset character;<br />for accurate encoding and decoding, the absolute value of this offset should be less than n</small><br /><br />",
+    "partition": "<small class='note'>the number of partitions; if a text input cannot be partitioned evenly, the remaining text input will be distributed within the partitions<br />for encoding and decoding, this number should be greater than zero and less than the number of input characters</small><br /><br />",
 }; // template "<small class='note'></small><br /><br />"
 var ciphers = {
     "shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
@@ -325,6 +364,7 @@ var ciphers = {
     "shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
     "shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
     "swap offset nth character with offset": [charSwapNthOffsetOffsetElem, charSwapNthOffsetOffsetEncode, charSwapNthOffsetOffsetDecode],
+    "reverse text within each partition": [reversePartitionItemsElem, reversePartitionItemsEncode, reversePartitionItemsDecode],
 };
 var setCipher = function(elem) { 
     elemSelector("#optionsCipher").innerHTML = ciphers[elem.value][0];
