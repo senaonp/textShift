@@ -53,3 +53,25 @@ var partitionList = function(ls, s) {
 	}
 	return r;
 }
+
+// merge inner list (single-merge)
+var innerMergeList = function(ls) {
+	var r = [];
+	for (var x = 0; x < ls.length; x += 1) {
+		for (var y = 0; y < ls[x].length; y += 1) {
+			r.push(ls[x][y]);
+		}
+	}
+	return r;
+}
+
+// reverse a list (non-mutating)
+var reverseList = function(ls) {
+	var r = Array(ls.length);
+	var temp = null;
+	for(var x = 0; x < Math.ceil(ls.length/2); x += 1) {
+		r[x] = ls[ls.length-1 - x];
+		r[ls.length-1 - x] = ls[x];
+	}
+	return r;
+}
