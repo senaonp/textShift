@@ -75,3 +75,23 @@ var reverseList = function(ls) {
 	}
 	return r;
 }
+
+// swap array items by index (mutating, index starts at 1)
+var swapItems = function(ls, p1, p2) {
+	if (ls[p1-1] == undefined || ls[p1-1] == undefined) {
+		return ls;
+	}
+	var temp = ls[p1-1];
+	ls[p1-1] = ls[p2-1];
+	ls[p2-1] = temp;
+	return ls;
+}
+
+// parse comma separated integers string into array of integers
+var textToArray = function(s) {
+	var r = s.split(",");
+	for (var i=0; i < r.length; i+=1) {
+		r[i] = parseInt(r[i].trim());
+	}
+	return r;
+}

@@ -46,6 +46,6 @@ elemSelector("#textShiftDescription").innerHTML = `
 elemSelector("#footer").innerHTML = `
     <span>developed by senaonp</span>
     <br><br>
-    <span>textShift source code is available on <a target="_blank" href="https://github.com/senaonp/textShift">GitHub</a> (･‿･✿)</span>
+    <span>textShift code is available on <a target="_blank" href="https://github.com/senaonp/textShift">GitHub</a><br />(･‿･✿)</span>
     <br><br>
     <span>email: <a href="mailto:senaonp.dev@gmail.com">(senaonp.dev@gmail.com)</a></span>`;

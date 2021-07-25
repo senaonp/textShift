@@ -3,7 +3,7 @@
 
 var charShiftElem = `
     <label class="optionsItem">shift text by number </label>
-    <input id="option1" type="number" value="0"></input>
+    <input size="8" id="option1" type="number" value="0"></input>
     <span class="infoIcon" onclick="toggleInfo('shift', '#option1_info')">info</span><br />
 	<div id="option1_info"></div>`;
 var charShiftEncode = function(elem) {
@@ -22,7 +22,7 @@ var charShiftDecode = function(elem) {
 
 var charShiftMultipleElem = `
     <label class="optionsItem">shift text by multiple  </label>
-    <input id="option2" type="number" value="1"></input>
+    <input size="8" id="option2" type="number" value="1"></input>
     <span class="infoIcon" onclick="toggleInfo('multiple', '#option2_info')">info</span><br />
 	<div id="option2_info"></div>`;
 var charShiftMultipleEncode = function(elem) {
@@ -61,12 +61,12 @@ var reverseDecode = function(elem) {
 
 var charShiftNthElem = `
     <label class="optionsItem">shift text by number </label>
-    <input id="option4_1" type="number" value="0"></input>
+    <input size="8" id="option4_1" type="number" value="0"></input>
     <span class="infoIcon" onclick="toggleInfo('shift', '#option4_1_info')">info</span><br />
 	<div id="option4_1_info"></div>
     
     <label class="optionsItem">for every nth character where n is </label>
-    <input id="option4_2" type="number" value="1" min="1"></input>
+    <input size="8" id="option4_2" type="number" value="1" min="1"></input>
     <span class="infoIcon" onclick="toggleInfo('nthChar', '#option4_2_info')">info</span><br />
 	<div id="option4_2_info"></div>`;
 var charShiftNthEncode = function(elem) {
@@ -93,12 +93,12 @@ var charShiftNthDecode = function(elem) {
 
 var charShiftNthMultipleElem = `
     <label class="optionsItem">shift text by multiple </label>
-	<input id="option5_1" type="number" value="1"></input>
+	<input size="8" id="option5_1" type="number" value="1"></input>
 	<span class="infoIcon" onclick="toggleInfo('multiple', '#option5_1_info')">info</span><br />
 	<div id="option5_1_info"></div>
 	
     <label class="optionsItem">for every nth character where n is </label>
-    <input id="option5_2" type="number" value="1" min="1"></input>
+    <input size="8" id="option5_2" type="number" value="1" min="1"></input>
     <span class="infoIcon" onclick="toggleInfo('nthChar', '#option5_2_info')">info</span><br />
 	<div id="option5_2_info"></div>`;
 var charShiftNthMultipleEncode = function(elem) {
@@ -125,17 +125,17 @@ var charShiftNthMultipleDecode = function(elem) {
 
 var charShiftOffsetNthElem = `
     <label class="optionsItem">shift text by number </label>
-    <input id="option6_1" type="number" value="0"></input>
+    <input size="8" id="option6_1" type="number" value="0"></input>
     <span class="infoIcon" onclick="toggleInfo('shift', '#option6_1_info')">info</span><br />
 	<div id="option6_1_info"></div>
     
     <label class="optionsItem">for every nth character where n is </label>
-    <input id="option6_2" type="number" value="1" min="1"></input>
+    <input size="8" id="option6_2" type="number" value="1" min="1"></input>
     <span class="infoIcon" onclick="toggleInfo('nthChar', '#option6_2_info')">info</span><br />
 	<div id="option6_2_info"></div>
     
     <label class="optionsItem">with an offset of </label>
-    <input id="option6_3" type="number" value="0"></input>
+    <input size="8" id="option6_3" type="number" value="0"></input>
     <span class="infoIcon" onclick="toggleInfo('offset', '#option6_3_info')">info</span><br />
 	<div id="option6_3_info"></div>`;
 var charShiftOffsetNthEncode = function(elem) {
@@ -170,17 +170,17 @@ var charShiftOffsetNthDecode = function(elem) {
 
 var charShiftOffsetNthMultipleElem = `
     <label class="optionsItem">shift text by multiple </label>
-    <input id="option7_1" type="number" value="1"></input>
+    <input size="8" id="option7_1" type="number" value="1"></input>
     <span class="infoIcon" onclick="toggleInfo('multiple', '#option7_1_info')">info</span><br />
     <div id="option7_1_info"></div>
     
     <label class="optionsItem">for every nth character where n is </label>
-    <input id="option7_2" type="number" value="1" min="1"></input>
+    <input size="8" id="option7_2" type="number" value="1" min="1"></input>
     <span class="infoIcon" onclick="toggleInfo('nthChar', '#option7_2_info')">info</span><br />
 	<div id="option7_2_info"></div>
     
     <label class="optionsItem">with an offset of </label>
-    <input id="option7_3" type="number" value="0"></input>
+    <input size="8" id="option7_3" type="number" value="0"></input>
     <span class="infoIcon" onclick="toggleInfo('offset', '#option7_3_info')">info</span><br />
 	<div id="option7_3_info"></div>`;
 var charShiftOffsetNthMultipleEncode = function(elem) {
@@ -215,12 +215,12 @@ var charShiftOffsetNthMultipleDecode = function(elem) {
 
 var charSwapNthOffsetElem = `
     <label class="optionsItem">for every nth character where n is </label>
-    <input id="option8_1" type="number" value="1" min="1"></input>
+    <input size="8" id="option8_1" type="number" value="1" min="1"></input>
     <span class="infoIcon" onclick="toggleInfo('nthChar', '#option8_1_info')">info</span><br />
 	<div id="option8_1_info"></div>
 
     <label class="optionsItem">swap at an offset of </label>
-    <input id="option8_2" type="number" value="0"></input>
+    <input size="8" id="option8_2" type="number" value="0"></input>
     <span class="infoIcon" onclick="toggleInfo('swapOffset', '#option8_2_info')">info</span><br />
 	<div id="option8_2_info"></div>`;
     var charSwapNthOffsetEncode = function(elem) {
@@ -257,17 +257,17 @@ var charSwapNthOffsetElem = `
 
 var charSwapNthOffsetOffsetElem = `
     <label class="optionsItem">for every nth character where n is </label>
-    <input id="option9_1" type="number" value="1" min="1"></input>
+    <input size="8" id="option9_1" type="number" value="1" min="1"></input>
     <span class="infoIcon" onclick="toggleInfo('nthChar', '#option9_1_info')">info</span><br />
 	<div id="option9_1_info"></div>
 
     <label class="optionsItem">with an offset of </label>
-    <input id="option9_2" type="number" value="0"></input>
+    <input size="8" id="option9_2" type="number" value="0"></input>
     <span class="infoIcon" onclick="toggleInfo('nthOffset', '#option9_2_info')">info</span><br />
 	<div id="option9_2_info"></div>
 
     <label class="optionsItem">swap at a relative offset of </label>
-    <input id="option9_3" type="number" value="0"></input>
+    <input size="8" id="option9_3" type="number" value="0"></input>
     <span class="infoIcon" onclick="toggleInfo('swapOffsetOffset', '#option9_3_info')">info</span><br />
 	<div id="option9_3_info"></div>`;
     var charSwapNthOffsetOffsetEncode = function(elem) {
@@ -306,7 +306,7 @@ var charSwapNthOffsetOffsetElem = `
 
 var reversePartitionItemsElem = `
     <label class="optionsItem">partitions </label>
-    <input id="option10_1" type="number" value="1" min="1"></input>
+    <input size="8" id="option10_1" type="number" value="1" min="1"></input>
     <span class="infoIcon" onclick="toggleInfo('partition', '#option10_1_info')">info</span><br />
     <div id="option10_1_info"></div>
 
