@@ -35,3 +35,21 @@ var toggleInfo = function(type, elementId) {
 		infoElem.innerHTML = '';
 	}
 };
+
+// partition a list
+var partitionList = function(ls, s) {
+	var r = [];
+	var i = 0;
+	var n = Math.floor(ls.length / s);
+	var z = ls.length % s;
+	for (var a = 0; a < s; a += 1) {
+		r.push(ls.slice(i, i+n))
+		i += n;
+		if (z != 0) {
+			r[a].push(ls[i])
+			z -= 1;
+			i += 1;
+		}
+	}
+	return r;
+}
