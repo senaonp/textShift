@@ -385,34 +385,67 @@ var charShiftPartitionsDecode = function(elem) {
     textArray = innerMergeList(partitionedList);
 }
 
+// ----------------------------
+// insert text at index
+
+var insertTextAtIndexElem = `
+    <label class="optionsItem">insert the text </label>
+    <input size="20" id="option12_1" type="text" value=""></input>
+    <span class="infoIcon" onclick="toggleInfo('text', '#option12_1_info')">info</span><br />
+	<div id="option12_1_info"></div>
+	
+    <label class="optionsItem">at the index of </label>
+	<input size="8" id="option12_2" type="number" value="0" min="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('index', '#option12_2_info')">info</span><br />
+    <div id="option12_2_info"></div>`;
+var insertTextAtIndexEncode = function(elem) {
+	var text = elemSelector("#option12_1").value;
+	var index = parseInt(elemSelector("#option12_2").value);
+    for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+    updateAtIndex(cipherArray, index, text, "encode");
+}
+var insertTextAtIndexDecode = function(elem) {
+    var text = elemSelector("#option12_1").value;
+	var index = parseInt(elemSelector("#option12_2").value);
+	for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+    updateAtIndex(textArray, index, text, "decode");
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
 
 var infoMapping = {
-	"shift": "<small class='note'>shifts the character's Unicode value by a set integer</small><br /><br />",
+    "shift": "<small class='note'>shifts the character's Unicode value by a set integer</small><br /><br />",
     "multiple": "<small class='note'>multiplies the character Unicode by a multiple<br />for encoding and decoding, the multiple should be greater than zero;<br />note: as Unicode values are up to 65535, this cipher can be used with low-value Unicode characters and multiples</small><br /><br />",
     "reverse": "<small class='note'>reverses the ordering of the characters; reversing is applied as text is entered into the text or cipher fields (this also includes re-copying and re-pasting text back to the fields in case the fields have already been populated)<br /><br />",
-	"nthChar": "<small class='note'>encodes / decodes the nth characters of text<br />for encoding and decoding, n should be an integer greater than or equal to 1</small><br /><br />",
+    "nthChar": "<small class='note'>encodes / decodes the nth characters of text<br />for encoding and decoding, n should be an integer greater than or equal to 1</small><br /><br />",
     "offset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character</small><br /><br />",
     "swapOffset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character;<br />for accurate encoding and decoding, the absolute value of the offset should be less than n</small><br /><br />",
     "nthOffset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character</small><br /><br />",
-	"swapOffsetOffset": "<small class='note'>a number offset relative to the nth offset; negative integers apply to characters offset to the left of each nth offset character, positive integers apply to characters offset to the right of each nth offset character;<br />for accurate encoding and decoding, the absolute value of this offset should be less than n</small><br /><br />",
+    "swapOffsetOffset": "<small class='note'>a number offset relative to the nth offset; negative integers apply to characters offset to the left of each nth offset character, positive integers apply to characters offset to the right of each nth offset character;<br />for accurate encoding and decoding, the absolute value of this offset should be less than n</small><br /><br />",
     "partition": "<small class='note'>the number of partitions; if a text input cannot be partitioned evenly, the remaining text input will be distributed within the partitions<br />for encoding and decoding, this number should be greater than zero and less than the number of input characters</small><br /><br />",
-	"partitionsList": "<small class='note'>a comma separated list of partition indices; specifies the partitions to encode / decode (indices start at 1); <br />for accurate encoding / decoding, the numbers should be greater than zero and less than or equal to the number of partitions.<br />example: in an input with 5 partitions, the first, second, and fifth partitions can be selected with an input value of: 1,2,5</small><br /><br />",
+    "partitionsList": "<small class='note'>a comma separated list of partition indices; specifies the partitions to encode / decode (indices start at 1); <br />for accurate encoding / decoding, the numbers should be greater than zero and less than or equal to the number of partitions.<br />example: in an input with 5 partitions, the first, second, and fifth partitions can be selected with an input value of: 1,2,5</small><br /><br />",
+    "text": "<small class='note'>text, a sequence of characters</small><br /><br />",
+    "index": "<small class='note'>a non-negative integer that is less than or equal to the text length</small><br /><br />"
 }; // template "<small class='note'></small><br /><br />"
 var ciphers = {
     "shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
     "reverse the text": [reverseElem, reverseEncode, reverseDecode],
     "swap nth character with offset": [charSwapNthOffsetElem, charSwapNthOffsetEncode, charSwapNthOffsetDecode],
     "shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
+    "insert text at index": [insertTextAtIndexElem, insertTextAtIndexEncode, insertTextAtIndexDecode],
     "shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
-	"reverse text within each partition": [reversePartitionItemsElem, reversePartitionItemsEncode, reversePartitionItemsDecode],
-	"shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],
+    "reverse text within each partition": [reversePartitionItemsElem, reversePartitionItemsEncode, reversePartitionItemsDecode],
+    "shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],
     "swap offset nth character with offset": [charSwapNthOffsetOffsetElem, charSwapNthOffsetOffsetEncode, charSwapNthOffsetOffsetDecode],
-	"shift each character by multiple": [charShiftMultipleElem, charShiftMultipleEncode, charShiftMultipleDecode],
-	"shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
-	"shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
+    "shift each character by multiple": [charShiftMultipleElem, charShiftMultipleEncode, charShiftMultipleDecode],
+    "shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
+    "shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
 };
 var setCipher = function(elem) { 
     elemSelector("#optionsCipher").innerHTML = ciphers[elem.value][0];
