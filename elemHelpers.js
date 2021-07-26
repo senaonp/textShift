@@ -109,3 +109,16 @@ var shiftArrayUnicode = function(ls, n) {
 		ls[i] = String.fromCharCode(ls[i].charCodeAt(0) + n);
 	}
 }
+
+// insert or delete text at index (mutating)
+var updateAtIndex = function(list, listIndex, text, type) {
+	var index = listIndex;
+	if (type === "encode") {
+		for (var i=0; i < text.length; i+=1) {
+			list.splice(index, 0, text[i]);
+			index += 1;
+		}
+	} else {
+		list.splice(index, text.length);
+	}
+}
