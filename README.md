@@ -6,14 +6,32 @@
 applet can be run in a web browser by checking out the repo and opening `index.html` in a web browser
 
 ## features
-- cipher options for encrypting / decrypting
-  - shifting each character's Unicode value by a set integer
-  - shifting every nth character's Unicode value by a set integer
-  - shifting by Unicode value by multiple
-  - ability to select characters from an offset of each nth character
-  - reverse cipher
-- responsive output when entering either text input or cipherText input
+- various cipher options for encrypting / decrypting
+- dynamic output when entering either text input or cipherText input
 - responsive styling for mobile devices
+
+## cipher options
+- shift each character by number
+- reverse the text
+- swap nth character with offset
+- shift nth character by number
+- shift offset nth character by number
+- reverse text within each partition
+- shift characters by partition indices
+- swap offset nth character with offset
+- shift each character by multiple
+- shift nth character by multiple
+- shift offset nth character by multiple
+
+## feature wishlist
+- cipher types:
+  - insert specified text at index
+  - insert randomized text at index
+  - swap two char ranges
+  - insert char range at index
+  - nth partitions sequencer
+  - shift chars by list of indices
+- notes section (cache text field to localStorage object)
 
 ## tips
 a complex cipher can be made by combining different ciphers together. this can be done by taking the
@@ -34,17 +52,6 @@ and take the decoded text and decoding it using the second cipher (shift every 3
 and take the decoded text and decoding it using the first cipher (shift all the text characters by 5).
 
 ```
-
-## feature wishlist
-- cipher types:
-  - swap two char ranges
-  - insert char range at index
-  - nth partitions sequencer
-  - combinational ciphers
-    - swap at every nth char
-    - character substitution swap
-    - reverse chars within partitions
-    - shift chars by list of indices
 
 ## textShift preview:
 <img src="./assets/textshift-preview.png" width="100%" height="auto">
