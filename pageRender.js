@@ -15,11 +15,17 @@ elemSelector("#content").innerHTML = `
         <div id="options"></div>
     </div>
     <div id="text">
-        <p class="textareaName">text</p>
+		<div id="textMeta">
+			<p class="textareaName" id="textT">text</p>
+			<small id="textL">text length: 0</small>
+		</div>
         <textarea id="textInput" oninput="evalText(this)"></textarea>
     </div>
     <div id="cipherText">
-        <p class="textareaName">cipher text</p>
+        <div id="cipherTextMeta">
+			<p class="textareaName" id="cipherT">cipher text</p>
+			<small id="cipherL">cipher text length: 0</small>
+		</div>
         <textarea id="cipherTextInput" oninput="evalCipher(this)"></textarea>
     </div>
 `;

@@ -13,12 +13,19 @@ var evalText = function(elem) {
     cipherArray = Array(elem.length);
     setEncode(elem);
     cipherElem.value = cipherArray.join("");
+	afterCipher();
 }
 
 var evalCipher = function(elem) {
     textArray = Array(elem.length);
     setDecode(elem);
     textElem.value = textArray.join("");
+	afterCipher();
+}
+
+var afterCipher = function() {
+	elemSelector("#textL").innerText = "text length: " + textElem.value.length;
+	elemSelector("#cipherL").innerText = "cipher text length: " + cipherElem.value.length;
 }
 
 var renderOptions = function() {
