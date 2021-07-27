@@ -28,12 +28,12 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 
 ## feature wishlist
 - cipher types:
-  - insert specified text at index
-  - insert randomized text at index
   - swap two char ranges
-  - insert char range at index
   - nth partitions sequencer
   - shift chars by list of indices
+  - substitution swap characters within text
+  - swap at offset of every instance of specified char
+  - swap at offset by list of indices
 
 ## tips
 a complex cipher can be made by combining different ciphers together. this can be done by taking the
