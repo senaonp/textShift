@@ -2,8 +2,8 @@ var textArray = [];
 var cipherArray = [];
 var options = "";
 var selectElem = "";
-var textElem = document.getElementById("textInput");
-var cipherElem = document.getElementById("cipherTextInput");
+var textElem = elemSelector("#textInput");
+var cipherElem = elemSelector("#cipherTextInput");
 
 var setElem = charShiftElem;
 var setEncode = charShiftEncode;

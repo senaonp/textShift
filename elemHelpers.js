@@ -1,3 +1,5 @@
+// --------------- elements helpers ---------------
+
 // shorthand selector by class or id
 var elemSelector = function(elemString) {
 	return {
@@ -36,6 +38,14 @@ var toggleInfo = function(type, elementId) {
 	}
 };
 
+// updates notes
+var updateNotes = function(elem) {
+	var noteStorage = window.localStorage;
+	noteStorage.setItem('notes', elem.value);
+}
+
+// --------------- cipher helpers ---------------
+
 // partition a list
 var partitionList = function(ls, s) {
 	var r = [];
@@ -54,6 +64,20 @@ var partitionList = function(ls, s) {
 	return r;
 }
 
+// partition a list and get it's partition lengths
+var getPartitionSizes = function(ls, s) {
+	var r = {};
+	var n = Math.floor(ls.length / s);
+	var z = ls.length % s;
+	for (var x = 0; x < s; x += 1) {
+		r[x] = n;
+	}
+	for (var y = 0; y < z; y += 1) {
+		r[y] += 1;
+	}
+	return r;
+}
+
 // merge inner list (single-merge)
 var innerMergeList = function(ls) {
 	var r = [];
@@ -68,7 +92,6 @@ var innerMergeList = function(ls) {
 // reverse a list (non-mutating)
 var reverseList = function(ls) {
 	var r = Array(ls.length);
-	var temp = null;
 	for(var x = 0; x < Math.ceil(ls.length/2); x += 1) {
 		r[x] = ls[ls.length-1 - x];
 		r[ls.length-1 - x] = ls[x];
@@ -128,8 +151,19 @@ var getRandomChar = function() {
 	return String.fromCharCode(Math.floor(Math.random()*(65000-20+1)+20));
 }
 
-// updates notes
-var updateNotes = function(elem) {
-	var noteStorage = window.localStorage;
-	noteStorage.setItem('notes', elem.value);
+// sorting list algorithm (mutating)
+var sortList = function(ls) {
+	var c = 1;
+	while (c > 0) {
+		c = 0;
+		for (var i = 0; i < ls.length-1; i += 1) {
+			if (ls[i] > ls[i+1]) {
+				var temp = ls[i];
+				ls[i] = ls[i+1];
+				ls[i+1] = temp;
+				c = 1;
+			}
+		}
+	}
+	return ls;
 }
