@@ -43,5 +43,10 @@ var clearInputs = function() {
     cipherElem.value = '';
 }
 
+var getNotes = function() {
+	elemSelector("#notesText").value = window.localStorage.getItem('notes');
+}
+
 renderOptions();
 clearInputs();
+getNotes();

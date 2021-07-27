@@ -127,3 +127,9 @@ var updateAtIndex = function(list, listIndex, text, type) {
 var getRandomChar = function() {
 	return String.fromCharCode(Math.floor(Math.random()*(65000-20+1)+20));
 }
+
+// updates notes
+var updateNotes = function(elem) {
+	var noteStorage = window.localStorage;
+	noteStorage.setItem('notes', elem.value);
+}

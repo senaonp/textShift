@@ -30,8 +30,16 @@ elemSelector("#content").innerHTML = `
     </div>
 `;
 
+elemSelector("#notes").innerHTML = `
+	<div id="notesElem">
+		<p class="textareaName">notes</p>
+		<small>you can add any notes here; this field uses the browser's localStorage, so information is saved between browser sessions</small>
+		<textarea id="notesText" oninput="updateNotes(this)"></textarea>
+	</div>
+`;
+
 elemSelector("#textShiftDescription").innerHTML = `
-    <span id="version">textShift ver.1.1.15</span><br /><br />
+    <span id="version">textShift ver.1.1.23</span><br /><br />
     textShift is a development side project i'm currently working on during free time;<br>any updates to the website will be added to the Github repository (<a target="_blank" href="https://github.com/senaonp/textShift">https://github.com/senaonp/textShift</a>).
 	<br><hr><br>the current features of textShift are:<br>
     <div id="features">

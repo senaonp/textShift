@@ -189,6 +189,24 @@ body {
 	margin-bottom: 5px;
 }
 
+/* ------------ notes -------------- */
+
+#notes {
+	background-color: rgb(232,232,232);
+	margin: 30px 20% 0 10%;
+	width: 80%;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 5px;
+}
+#notesElem {
+	padding: 15px 5%;
+}
+#notesText {
+	margin-top: 10px;
+	width: 100%;
+	height: 150px;
+}
+
 /* ------------ footer ------------- */
 
 #footer {
