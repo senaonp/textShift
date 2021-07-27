@@ -415,6 +415,44 @@ var insertTextAtIndexDecode = function(elem) {
     updateAtIndex(textArray, index, text, "decode");
 }
 
+// ----------------------------
+// insert text at index
+
+var insertRandomGenTextAtIndexElem = `
+    <label class="optionsItem">insert randomly generated text with a character length of </label>
+    <input size="8" id="option13_1" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('randomTextLength', '#option13_1_info')">info</span><br />
+	<div id="option13_1_info"></div>
+	
+    <label class="optionsItem">at the index of </label>
+	<input size="8" id="option13_2" type="number" value="0" min="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('index', '#option13_2_info')">info</span><br />
+    <div id="option13_2_info"></div>`;
+var insertRandomGenTextAtIndexEncode = function(elem) {
+	var text = "";
+    var textLength = parseInt(elemSelector("#option13_1").value);
+    var index = parseInt(elemSelector("#option13_2").value);
+    for (var x = 0; x < textLength; x+=1) {
+	    text += getRandomChar();
+    }
+    for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+    updateAtIndex(cipherArray, index, text, "encode");
+}
+var insertRandomGenTextAtIndexDecode = function(elem) {
+    var text = "";
+    var textLength = parseInt(elemSelector("#option13_1").value);
+    var index = parseInt(elemSelector("#option13_2").value);
+    for (var x = 0; x < textLength; x+=1) {
+	    text += getRandomChar();
+    }
+	for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+    updateAtIndex(textArray, index, text, "decode");
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -431,7 +469,8 @@ var infoMapping = {
     "partition": "<small class='note'>the number of partitions; if a text input cannot be partitioned evenly, the remaining text input will be distributed within the partitions<br />for encoding and decoding, this number should be greater than zero and less than the number of input characters</small><br /><br />",
     "partitionsList": "<small class='note'>a comma separated list of partition indices; specifies the partitions to encode / decode (indices start at 1); <br />for accurate encoding / decoding, the numbers should be greater than zero and less than or equal to the number of partitions.<br />example: in an input with 5 partitions, the first, second, and fifth partitions can be selected with an input value of: 1,2,5</small><br /><br />",
     "text": "<small class='note'>text, a sequence of characters</small><br /><br />",
-    "index": "<small class='note'>a non-negative integer that is less than or equal to the text length</small><br /><br />"
+    "index": "<small class='note'>a non-negative integer that is less than or equal to the text length</small><br /><br />",
+    "randomTextLength": "<small class='note'>the length of text to randomly generate; the number should be greater than zero</small><br /><br />",
 }; // template "<small class='note'></small><br /><br />"
 var ciphers = {
     "shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
@@ -439,6 +478,7 @@ var ciphers = {
     "swap nth character with offset": [charSwapNthOffsetElem, charSwapNthOffsetEncode, charSwapNthOffsetDecode],
     "shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
     "insert text at index": [insertTextAtIndexElem, insertTextAtIndexEncode, insertTextAtIndexDecode],
+    "insert randomly generated text at index": [insertRandomGenTextAtIndexElem, insertRandomGenTextAtIndexEncode, insertRandomGenTextAtIndexDecode],
     "shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
     "reverse text within each partition": [reversePartitionItemsElem, reversePartitionItemsEncode, reversePartitionItemsDecode],
     "shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],

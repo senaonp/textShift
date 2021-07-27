@@ -122,3 +122,8 @@ var updateAtIndex = function(list, listIndex, text, type) {
 		list.splice(index, text.length);
 	}
 }
+
+// get random character within set Unicode range of 20 to 65000
+var getRandomChar = function() {
+	return String.fromCharCode(Math.floor(Math.random()*(65000-20+1)+20));
+}
