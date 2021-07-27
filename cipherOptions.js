@@ -420,7 +420,7 @@ var insertTextAtIndexDecode = function(elem) {
 
 var insertRandomGenTextAtIndexElem = `
     <label class="optionsItem">insert randomly generated text with a character length of </label>
-    <input size="8" id="option13_1" type="number" value="0"></input>
+    <input size="8" id="option13_1" type="number" value="1"></input>
     <span class="infoIcon" onclick="toggleInfo('randomTextLength', '#option13_1_info')">info</span><br />
 	<div id="option13_1_info"></div>
 	

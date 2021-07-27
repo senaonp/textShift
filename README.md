@@ -9,12 +9,15 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 - various cipher options for encrypting / decrypting
 - dynamic output when entering either text input or cipherText input
 - responsive styling for mobile devices
+- notes section which uses localStorage
 
 ## cipher options
 - shift each character by number
 - reverse the text
 - swap nth character with offset
 - shift nth character by number
+- insert text at index
+- insert randomly generated text at index
 - shift offset nth character by number
 - reverse text within each partition
 - shift characters by partition indices
@@ -31,7 +34,6 @@ applet can be run in a web browser by checking out the repo and opening `index.h
   - insert char range at index
   - nth partitions sequencer
   - shift chars by list of indices
-- notes section (cache text field to localStorage object)
 
 ## tips
 a complex cipher can be made by combining different ciphers together. this can be done by taking the
