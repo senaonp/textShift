@@ -18,6 +18,7 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 - shift nth character by number
 - insert text at index
 - insert randomly generated text at index
+- order by partitional sequence
 - shift offset nth character by number
 - reverse text within each partition
 - shift characters by partition indices
@@ -34,6 +35,8 @@ applet can be run in a web browser by checking out the repo and opening `index.h
   - substitution swap characters within text
   - swap at offset of every instance of specified char
   - swap at offset by list of indices
+- buttons to generate randomized inputs (e.g. index lists)
+- documentation page to visualize encrypting using example text
 
 ## tips
 a complex cipher can be made by combining different ciphers together. this can be done by taking the

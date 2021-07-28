@@ -355,7 +355,7 @@ var charShiftPartitionsElem = `
 
     <label class="optionsItem">shift the partitional indices of </label>
 	<input size="15" id="option11_3" type="text"></input>
-    <span class="infoIcon" onclick="toggleInfo('partitionsList', '#option11_3_info')">info</span><br />
+    <span class="infoIcon" onclick="toggleInfo('partitionList', '#option11_3_info')">info</span><br />
     <div id="option11_3_info"></div>`;
 var charShiftPartitionsEncode = function(elem) {
     var shift = parseInt(elemSelector("#option11_1").value);
@@ -453,6 +453,36 @@ var insertRandomGenTextAtIndexDecode = function(elem) {
     updateAtIndex(textArray, index, text, "decode");
 }
 
+// ----------------------------
+// sequence text partitions
+
+var partitionalSequencerElem = `
+    <label class="optionsItem">while considering the number of partitions </label>
+    <input size="8" id="option14_1" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('partition', '#option14_2_info')">info</span><br />
+    <div id="option14_1_info"></div>
+	
+	<label class="optionsItem">order text using a partitional index sequence of </label>
+    <input size="15" id="option14_2" type="text"></input>
+    <span class="infoIcon" onclick="toggleInfo('partitionSequence', '#option14_2_info')">info</span><br />
+    <div id="option14_2_info"></div>`;
+var partitionalSequencerEncode = function(elem) {
+	var partitions = parseInt(elemSelector("#option14_1").value);
+	var sequence = textToArray(elemSelector("#option14_2").value);
+	for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+	cipherArray = innerMergeList(reorderPartitions(cipherArray, partitions, sequence, "encode"));
+}
+var partitionalSequencerDecode = function(elem) {
+    var partitions = parseInt(elemSelector("#option14_1").value);
+	var sequence = textToArray(elemSelector("#option14_2").value);
+	for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+	textArray = innerMergeList(reorderPartitions(textArray, partitions, sequence, "decode"));
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -467,7 +497,8 @@ var infoMapping = {
     "nthOffset": "<small class='note'>a number offset from n; negative integers apply to characters offset to the left of each nth character, positive integers apply to characters offset to the right of each nth character</small><br /><br />",
     "swapOffsetOffset": "<small class='note'>a number offset relative to the nth offset; negative integers apply to characters offset to the left of each nth offset character, positive integers apply to characters offset to the right of each nth offset character;<br />for accurate encoding and decoding, the absolute value of this offset should be less than n</small><br /><br />",
     "partition": "<small class='note'>the number of partitions; if a text input cannot be partitioned evenly, the remaining text input will be distributed within the partitions<br />for encoding and decoding, this number should be greater than zero and less than the number of input characters</small><br /><br />",
-    "partitionsList": "<small class='note'>a comma separated list of partition indices; specifies the partitions to encode / decode (indices start at 1); <br />for accurate encoding / decoding, the numbers should be greater than zero and less than or equal to the number of partitions.<br />example: in an input with 5 partitions, the first, second, and fifth partitions can be selected with an input value of: 1,2,5</small><br /><br />",
+    "partitionList": "<small class='note'>a comma separated list of partition indices; specifies the partitions to encode / decode (indices start at 1); <br />for accurate encoding / decoding, the numbers should be greater than zero and less than or equal to the number of partitions.<br />example: in an input with 5 partitions, the first, second, and fifth partitions can be selected with an input value of: 1,2,5</small><br /><br />",
+    "partitionSequence": "<small class='note'>a comma separated list of partition indices; specifies the sequence to order the partitions (indices start at 1); <br />for accurate encoding / decoding, the numbers should be greater than zero and less than or equal to the number of partitions; additionally all possible, unique indices should be included<br />example: in an input with 5 partitions, one possible sequence can be an input value of: 2,1,4,5,3</small><br /><br />",
     "text": "<small class='note'>text, a sequence of characters</small><br /><br />",
     "index": "<small class='note'>a non-negative integer that is less than or equal to the text length</small><br /><br />",
     "randomTextLength": "<small class='note'>the length of text to randomly generate; the number should be greater than zero</small><br /><br />",
@@ -479,6 +510,7 @@ var ciphers = {
     "shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
     "insert text at index": [insertTextAtIndexElem, insertTextAtIndexEncode, insertTextAtIndexDecode],
     "insert randomly generated text at index": [insertRandomGenTextAtIndexElem, insertRandomGenTextAtIndexEncode, insertRandomGenTextAtIndexDecode],
+    "order by partitional sequence": [partitionalSequencerElem, partitionalSequencerEncode, partitionalSequencerDecode],
     "shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
     "reverse text within each partition": [reversePartitionItemsElem, reversePartitionItemsEncode, reversePartitionItemsDecode],
     "shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],
