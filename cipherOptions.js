@@ -459,7 +459,7 @@ var insertRandomGenTextAtIndexDecode = function(elem) {
 var partitionalSequencerElem = `
     <label class="optionsItem">while considering the number of partitions </label>
     <input size="8" id="option14_1" type="number" value="1" min="1"></input>
-    <span class="infoIcon" onclick="toggleInfo('partition', '#option14_2_info')">info</span><br />
+    <span class="infoIcon" onclick="toggleInfo('partition', '#option14_1_info')">info</span><br />
     <div id="option14_1_info"></div>
 	
 	<label class="optionsItem">order text using a partitional index sequence of </label>

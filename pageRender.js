@@ -40,7 +40,7 @@ elemSelector("#notes").innerHTML = `
 
 elemSelector("#textShiftDescription").innerHTML = `
     <span id="version">textShift ver.1.1.23</span><br /><br />
-    textShift is a development side project i'm currently working on during free time;<br>any updates to the website will be added to the Github repository (<a target="_blank" href="https://github.com/senaonp/textShift">https://github.com/senaonp/textShift</a>).
+    <br>any updates to the website will be added to the Github repository (<a target="_blank" href="https://github.com/senaonp/textShift">https://github.com/senaonp/textShift</a>).
 	<br><br>encrypting is applied when text is entered into the "text" field; decrypting is applied when text is entered into the "cipher text" field<br><hr><br>the current features of textShift are:<br>
     <div id="features">
 	<span class="feature">cipher options for encrypting / decrypting</span>
@@ -54,7 +54,7 @@ elemSelector("#textShiftDescription").innerHTML = `
     <span class="feature">usage information on input fields</span>
     <span class="feature">responsive styling for mobile devices</span>
     </div>
-	<br><br>
+	<br>
 	my other programming projects can also be viewed here: (<a target="_blank" href="https://fbacarisas.xyz/video/#programming_playlist">fbacarisas.xyz/video/#programming_playlist</a>)
 	<br><br>`;
 
