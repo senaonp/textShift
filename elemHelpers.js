@@ -29,7 +29,6 @@ var toggleBanner = function() {
 
 // toggleInfo
 var toggleInfo = function(type, elementId) {
-	console.log(elementId);
 	var infoElem = elemSelector(elementId);
 	if (infoElem.innerHTML === '') {
 		infoElem.innerHTML = infoMapping[type];
@@ -76,6 +75,30 @@ var getPartitionSizes = function(ls, s) {
 		r[y] += 1;
 	}
 	return r;
+}
+
+// reorder partitions
+var reorderPartitions = function(charList, partitions, sequence, type) {
+	var r = Array(partitions.length);
+	var charPartitions = partitionList(charList, partitions);
+	if (type === "encode") {
+		for (var x = 0; x < partitions; x += 1) {
+			r[x] = charPartitions[sequence[x]-1];
+		}
+		return r;
+	} else {
+		var i = 0;
+		var pSizes = getPartitionSizes(charList, partitions);
+		var encodedPartitions = {};
+		for (var x = 0; x < partitions; x += 1) {
+			encodedPartitions[sequence[x]] = charList.slice(i, pSizes[sequence[x]-1]+i);
+			i += pSizes[sequence[x]-1];
+		}
+		for (var y = 0; y < partitions; y += 1) {
+			r[y] = encodedPartitions[y+1];
+		}
+		return r;
+	}
 }
 
 // merge inner list (single-merge)
