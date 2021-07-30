@@ -190,3 +190,17 @@ var sortList = function(ls) {
 	}
 	return ls;
 }
+
+// ----------------- debug helpers -----------------
+var getUnicode = function() {
+	var textUnicodeList = [];
+	var cipherTextUnicodeList = [];
+	for (var x = 0; x < elemSelector("#textInput").value.length; x+=1) {
+		textUnicodeList.push(elemSelector("#textInput").value.charCodeAt(x));
+	}
+	for (var y = 0; y < elemSelector("#cipherTextInput").value.length; y+=1) {
+		cipherTextUnicodeList.push(elemSelector("#cipherTextInput").value.charCodeAt(y));
+	}
+	console.log(textUnicodeList);
+	console.log(cipherTextUnicodeList);
+}
