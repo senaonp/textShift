@@ -63,4 +63,4 @@ elemSelector("#footer").innerHTML = `
     <br><br>
     <span>textShift code is available on <a target="_blank" href="https://github.com/senaonp/textShift">GitHub</a><br />(･‿･✿)</span>
     <br><br>
-    <span>email: <a href="mailto:senaonp.dev@gmail.com">(senaonp.dev@gmail.com)</a></span>`;
+    <span>email: <a href="mailto:dev@greentea.moe">(dev@greentea.moe)</a></span>`;
