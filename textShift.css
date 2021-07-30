@@ -188,6 +188,12 @@ body {
 #textMeta, #cipherTextMeta {
 	margin-bottom: 5px;
 }
+#encodingWarning {
+	color: red;
+}
+#encodingWarning a {
+	color: rgb(80,80,80);
+}
 
 /* ------------ notes -------------- */
 

@@ -19,6 +19,7 @@ elemSelector("#content").innerHTML = `
 			<p class="textareaName" id="textT">text</p>
 			<small id="textL">text length: 0</small>
 		</div>
+        <small id="encodingWarning"></small>
         <textarea id="textInput" oninput="evalText(this)"></textarea>
     </div>
     <div id="cipherText">

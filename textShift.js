@@ -26,6 +26,7 @@ var evalCipher = function(elem) {
 var afterCipher = function() {
 	elemSelector("#textL").innerText = "text length: " + textElem.value.length;
 	elemSelector("#cipherL").innerText = "cipher text length: " + cipherElem.value.length;
+    validateEncoding();
 }
 
 var renderOptions = function() {
@@ -45,6 +46,28 @@ var clearInputs = function() {
 
 var getNotes = function() {
 	elemSelector("#notesText").value = window.localStorage.getItem('notes');
+}
+
+var validateEncoding = function() {
+    var unicodeList = [];
+    var errors = {};
+	var inputField = elemSelector("#cipherTextInput");
+    for (var x = 0; x < inputField.value.length; x+=1) {
+		unicodeList.push(inputField.value.charCodeAt(x));
+	}
+    aggregateErrorTypes(unicodeList, errors);
+    if (Object.keys(errors).length > 0) {
+        elemSelector("#encodingWarning").innerHTML = Object.values(errors);
+    } else {
+        elemSelector("#encodingWarning").innerHTML = "";
+    }
+}
+
+var aggregateErrorTypes = function(unicodeList, errors) {
+    if (unicodeList.includes(160)) {
+        errors["160"] = "warning: a non-breaking space (unicode character 160) is in the cipher text output and may not decode properly; \
+            please use a different parameter or cipher option to avoid unexpected decoding.<br />for more details, refer to (<a target='_blank' href='https://github.com/senaonp/textShift/issues/1'>https://github.com/senaonp/textShift/issues/1</a>)"; 
+    }
 }
 
 renderOptions();
