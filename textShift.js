@@ -57,7 +57,7 @@ var validateEncoding = function() {
 	}
     aggregateErrorTypes(unicodeList, errors);
     if (Object.keys(errors).length > 0) {
-        elemSelector("#encodingWarning").innerHTML = Object.values(errors);
+        elemSelector("#encodingWarning").innerHTML = Object.values(errors).join("<br /><hr />");
     } else {
         elemSelector("#encodingWarning").innerHTML = "";
     }
@@ -65,8 +65,12 @@ var validateEncoding = function() {
 
 var aggregateErrorTypes = function(unicodeList, errors) {
     if (unicodeList.includes(160)) {
-        errors["160"] = "warning: a non-breaking space (unicode character 160) is in the cipher text output and may not decode properly; \
+        errors["160"] = "- warning: a non-breaking space (unicode character 160) is in the cipher text output and may not decode properly; \
             please use a different parameter or cipher option to avoid unexpected decoding.<br />for more details, refer to (<a target='_blank' href='https://github.com/senaonp/textShift/issues/1'>https://github.com/senaonp/textShift/issues/1</a>)"; 
+    }
+	if (unicodeList.includes(0)) {
+        errors["0"] = "- warning: a null character (unicode character 0) is in the cipher text output and may not decode properly; \
+            please use a different parameter or cipher option to avoid unexpected decoding.<br />for more details, refer to (<a target='_blank' href='https://github.com/senaonp/textShift/issues/2'>https://github.com/senaonp/textShift/issues/2</a>)"; 
     }
 }
 
