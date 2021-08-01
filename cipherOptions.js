@@ -483,6 +483,43 @@ var partitionalSequencerDecode = function(elem) {
 	textArray = innerMergeList(reorderPartitions(textArray, partitions, sequence, "decode"));
 }
 
+// ----------------------------
+// move text subset to index
+
+var moveTextToIndexElem = `
+    <label class="optionsItem">while considering the starting index </label>
+    <input size="8" id="option15_1" type="number" value="0" min="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('index', '#option15_1_info')">info</span><br />
+    <div id="option15_1_info"></div>
+	
+    <label class="optionsItem">and the number of characters to get </label>
+    <input size="8" id="option15_2" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('charSize', '#option15_2_info')">info</span><br />
+    <div id="option15_2_info"></div>
+
+	<label class="optionsItem">move the selected text to index </label>
+    <input size="8" id="option15_3" type="number" value="0" min="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('indexLimit', '#option15_3_info')">info</span><br />
+    <div id="option15_3_info"></div>`;
+var moveTextToIndexEncode = function(elem) {
+	var index = parseInt(elemSelector("#option15_1").value);
+    var targetIndex = parseInt(elemSelector("#option15_3").value);
+	var size = textToArray(elemSelector("#option15_2").value);
+	for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+	moveTextToIndex(cipherArray, index, targetIndex, size, "encode");
+}
+var moveTextToIndexDecode = function(elem) {
+    var index = parseInt(elemSelector("#option15_1").value);
+    var targetIndex = parseInt(elemSelector("#option15_3").value);
+	var size = textToArray(elemSelector("#option15_2").value);
+	for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+	moveTextToIndex(textArray, index, targetIndex, size, "decode");
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -501,13 +538,16 @@ var infoMapping = {
     "partitionSequence": "<small class='note'>a comma separated list of partition indices; specifies the sequence to order the partitions (indices start at 1); <br />for accurate encoding / decoding, the numbers should be greater than zero and less than or equal to the number of partitions; additionally all possible, unique indices should be included<br />example: in an input with 5 partitions, one possible sequence can be an input value of: 2,1,4,5,3</small><br /><br />",
     "text": "<small class='note'>text, a sequence of characters</small><br /><br />",
     "index": "<small class='note'>a non-negative integer that is less than or equal to the text length</small><br /><br />",
+    "indexLimit": "<small class='note'>a non-negative integer that is less than or equal to (the text length minus the number of characters to get)</small><br /><br />",
     "randomTextLength": "<small class='note'>the length of text to randomly generate; the number should be greater than zero</small><br /><br />",
+    "charSize": "<small class='note'>the number of characters to get from the starting index; the number should be greater than zero</small><br /><br />",
 }; // template "<small class='note'></small><br /><br />"
 var ciphers = {
     "shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
     "reverse the text": [reverseElem, reverseEncode, reverseDecode],
     "swap nth character with offset": [charSwapNthOffsetElem, charSwapNthOffsetEncode, charSwapNthOffsetDecode],
     "shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
+    "move text subset to index": [moveTextToIndexElem, moveTextToIndexEncode, moveTextToIndexDecode],
     "insert text at index": [insertTextAtIndexElem, insertTextAtIndexEncode, insertTextAtIndexDecode],
     "insert randomly generated text at index": [insertRandomGenTextAtIndexElem, insertRandomGenTextAtIndexEncode, insertRandomGenTextAtIndexDecode],
     "order by partitional sequence": [partitionalSequencerElem, partitionalSequencerEncode, partitionalSequencerDecode],

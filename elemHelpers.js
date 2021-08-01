@@ -191,6 +191,23 @@ var sortList = function(ls) {
 	return ls;
 }
 
+// move list items to index (mutating)
+var moveTextToIndex = function(ls, index, targetIndex, size, type) {
+	if (type === "encode") {
+		var listSubset = ls.slice(index, index+size);
+		ls.splice(index, size);
+		for (var x = 0; x < size; x += 1) {
+			ls.splice(targetIndex + x, 0, listSubset[x]);
+		}
+	} else {
+		var listSubset = ls.slice(targetIndex, targetIndex+size);
+		ls.splice(targetIndex, size);
+		for (var x = 0; x < size; x += 1) {
+			ls.splice(index + x, 0, listSubset[x]);
+		}
+	}
+}
+
 // ----------------- debug helpers -----------------
 var getUnicode = function() {
 	var textUnicodeList = [];
