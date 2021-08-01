@@ -504,7 +504,7 @@ var moveTextToIndexElem = `
 var moveTextToIndexEncode = function(elem) {
 	var index = parseInt(elemSelector("#option15_1").value);
     var targetIndex = parseInt(elemSelector("#option15_3").value);
-	var size = textToArray(elemSelector("#option15_2").value);
+	var size = parseInt(elemSelector("#option15_2").value);
 	for (var x = 0; x < elem.value.length; x += 1) {
         cipherArray[x] = elem.value[x];
     }
@@ -513,7 +513,7 @@ var moveTextToIndexEncode = function(elem) {
 var moveTextToIndexDecode = function(elem) {
     var index = parseInt(elemSelector("#option15_1").value);
     var targetIndex = parseInt(elemSelector("#option15_3").value);
-	var size = textToArray(elemSelector("#option15_2").value);
+	var size = parseInt(elemSelector("#option15_2").value);
 	for (var x = 0; x < elem.value.length; x += 1) {
         textArray[x] = elem.value[x];
     }
