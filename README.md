@@ -1,4 +1,4 @@
-# [textShift.net](https://textshift.net/) | a basic online cipher tool
+# [textshift.net](https://textshift.net/) | a basic online cipher tool
 
 -------------
 
@@ -7,15 +7,19 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 
 ## features
 - various cipher options for encrypting / decrypting
+  - cipher text functions such as shift, swap, insert, move, reverse, multiply, sequence
+  - cipher text selection such as by partition, nth chars, index range, offset
 - dynamic output when entering either text input or cipherText input
 - responsive styling for mobile devices
 - notes section which uses localStorage
+- error handling for specific unicode characters
 
 ## cipher options
 - shift each character by number
 - reverse the text
 - swap nth character with offset
 - shift nth character by number
+- move text subset to index
 - insert text at index
 - insert randomly generated text at index
 - order by partitional sequence
@@ -29,8 +33,6 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 
 ## feature wishlist
 - cipher types:
-  - swap two char ranges
-  - nth partitions sequencer
   - shift chars by list of indices
   - substitution swap characters within text
   - swap at offset of every instance of specified char
