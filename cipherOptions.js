@@ -489,7 +489,7 @@ var partitionalSequencerDecode = function(elem) {
 var moveTextToIndexElem = `
     <label class="optionsItem">while considering the starting index </label>
     <input size="8" id="option15_1" type="number" value="0" min="0"></input>
-    <span class="infoIcon" onclick="toggleInfo('index', '#option15_1_info')">info</span><br />
+    <span class="infoIcon" onclick="toggleInfo('indexLimit', '#option15_1_info')">info</span><br />
     <div id="option15_1_info"></div>
 	
     <label class="optionsItem">and the number of characters to get </label>
@@ -520,6 +520,92 @@ var moveTextToIndexDecode = function(elem) {
 	moveTextToIndex(textArray, index, targetIndex, size, "decode");
 }
 
+// ----------------------------
+// shift text subset at starting index
+
+var shiftSubsetTextElem = `
+    <label class="optionsItem">while considering the starting index </label>
+    <input size="8" id="option16_1" type="number" value="0" min="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('indexLimit', '#option16_1_info')">info</span><br />
+    <div id="option16_1_info"></div>
+	
+    <label class="optionsItem">and the number of characters to get </label>
+    <input size="8" id="option16_2" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('charSize', '#option16_2_info')">info</span><br />
+    <div id="option16_2_info"></div>
+
+	<label class="optionsItem">shift the text using a value of </label>
+    <input size="8" id="option16_3" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('shift', '#option16_3_info')">info</span><br />
+	<div id="option16_3_info"></div>`;
+var shiftSubsetTextEncode = function(elem) {
+	var index = parseInt(elemSelector("#option16_1").value);
+    var size = parseInt(elemSelector("#option16_2").value);
+    var shift = parseInt(elemSelector("#option16_3").value);
+	for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+        if (size > 0 && x >= index) {
+            cipherArray[x] = String.fromCharCode(elem.value.charCodeAt(x) + shift);
+            size -= 1;
+        }
+    }
+}
+var shiftSubsetTextDecode = function(elem) {
+    var index = parseInt(elemSelector("#option16_1").value);
+    var size = parseInt(elemSelector("#option16_2").value);
+    var shift = parseInt(elemSelector("#option16_3").value);
+	for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+        if (size > 0 && x >= index) {
+            textArray[x] = String.fromCharCode(elem.value.charCodeAt(x) - shift);
+            size -= 1;
+        }
+    }
+}
+
+// ----------------------------
+// multiply text subset at starting index
+
+var multiplySubsetTextElem = `
+    <label class="optionsItem">while considering the starting index </label>
+    <input size="8" id="option17_1" type="number" value="0" min="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('indexLimit', '#option17_1_info')">info</span><br />
+    <div id="option17_1_info"></div>
+	
+    <label class="optionsItem">and the number of characters to get </label>
+    <input size="8" id="option17_2" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('charSize', '#option17_2_info')">info</span><br />
+    <div id="option17_2_info"></div>
+
+    <label class="optionsItem">shift text by multiple </label>
+    <input size="8" id="option17_3" type="number" value="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('multiple', '#option17_3_info')">info</span><br />
+	<div id="option17_3_info"></div>`;
+var multiplySubsetTextEncode = function(elem) {
+	var index = parseInt(elemSelector("#option17_1").value);
+    var size = parseInt(elemSelector("#option17_2").value);
+    var multiple = parseInt(elemSelector("#option17_3").value);
+	for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+        if (size > 0 && x >= index) {
+            cipherArray[x] = String.fromCharCode(elem.value.charCodeAt(x) * multiple);
+            size -= 1;
+        }
+    }
+}
+var multiplySubsetTextDecode = function(elem) {
+    var index = parseInt(elemSelector("#option17_1").value);
+    var size = parseInt(elemSelector("#option17_2").value);
+    var multiple = parseInt(elemSelector("#option17_3").value);
+	for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+        if (size > 0 && x >= index) {
+            textArray[x] = String.fromCharCode(elem.value.charCodeAt(x) / multiple);
+            size -= 1;
+        }
+    }
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -541,7 +627,7 @@ var infoMapping = {
     "indexLimit": "<small class='note'>a non-negative integer that is less than or equal to (the text length minus the number of characters to get)</small><br /><br />",
     "randomTextLength": "<small class='note'>the length of text to randomly generate; the number should be greater than zero</small><br /><br />",
     "charSize": "<small class='note'>the number of characters to get from the starting index; the number should be greater than zero</small><br /><br />",
-}; // template "<small class='note'></small><br /><br />"
+};
 var ciphers = {
     "shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
     "reverse the text": [reverseElem, reverseEncode, reverseDecode],
@@ -551,11 +637,13 @@ var ciphers = {
     "insert text at index": [insertTextAtIndexElem, insertTextAtIndexEncode, insertTextAtIndexDecode],
     "insert randomly generated text at index": [insertRandomGenTextAtIndexElem, insertRandomGenTextAtIndexEncode, insertRandomGenTextAtIndexDecode],
     "order by partitional sequence": [partitionalSequencerElem, partitionalSequencerEncode, partitionalSequencerDecode],
+    "shift text subset": [shiftSubsetTextElem, shiftSubsetTextEncode, shiftSubsetTextDecode],
     "shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
     "reverse text within each partition": [reversePartitionItemsElem, reversePartitionItemsEncode, reversePartitionItemsDecode],
     "shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],
     "swap offset nth character with offset": [charSwapNthOffsetOffsetElem, charSwapNthOffsetOffsetEncode, charSwapNthOffsetOffsetDecode],
     "shift each character by multiple": [charShiftMultipleElem, charShiftMultipleEncode, charShiftMultipleDecode],
+    "shift subset of text by multiple": [multiplySubsetTextElem, multiplySubsetTextEncode, multiplySubsetTextDecode],
     "shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
     "shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
 };

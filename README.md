@@ -29,14 +29,15 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 - swap offset nth character with offset
 - shift each character by multiple
 - shift nth character by multiple
-- shift offset nth character by multiple
+- shift offset nth character by multiple 
 
 ## feature wishlist
 - cipher types:
-  - shift chars by list of indices
-  - substitution swap characters within text
+  - for every set of characters s, shift the specified character indices in each set
+  - for every set of characters s, multiply the specified character indices in each set
+  - sequence by every set of s characters
+  - substitution swap 2 characters within text
   - swap at offset of every instance of specified char
-  - swap at offset by list of indices
 - buttons to generate randomized inputs (e.g. index lists)
 - documentation page to visualize encrypting using example text
 
