@@ -101,6 +101,46 @@ var reorderPartitions = function(charList, partitions, sequence, type) {
 	}
 }
 
+// set of s characters - partitioned form
+var setOfChars = function(ls, s) {
+	var r = [];
+	var i = 0;
+	while (i+s < ls.length) {
+		r.push(ls.slice(i, i+s));
+		i += s;
+	}
+	if (i < ls.length) {
+		r.push(ls.slice(i, ls.length));
+	}
+	return r;
+}
+
+// sequence and reverse-sequence a list
+var sequenceList = function(ls, seq, type) {
+	var r = Array(ls.length);
+	// check if ls is less than seq (e.g. for partial sets)
+	if (ls.length < seq.length) {
+		var limitSeq = [];
+		for (var z = 0; z<seq.length; z+=1) {
+			if (seq[z]-1 < ls.length) {
+				limitSeq.push(seq[z]);
+			}
+		}
+		seq = limitSeq;
+	}
+	// sequence and reverse-sequence
+	if (type === "encode") {
+		for (var x=0; x<seq.length; x+=1) {
+			r[seq[x]-1] = ls[x];
+		}
+	} else {
+		for (var x=0; x<seq.length; x+=1) {
+			r[x] = ls[seq[x]-1];
+		}
+	}
+	return r;
+}
+
 // merge inner list (single-merge)
 var innerMergeList = function(ls) {
 	var r = [];
