@@ -361,8 +361,7 @@ var charShiftPartitionsEncode = function(elem) {
     var shift = parseInt(elemSelector("#option11_1").value);
 	var partitions = parseInt(elemSelector("#option11_2").value);
 	var selectedPartitions = textToArray(elemSelector("#option11_3").value);
-	console.log(selectedPartitions);
-    for (var x = 0; x < elem.value.length; x += 1) {
+	for (var x = 0; x < elem.value.length; x += 1) {
         cipherArray[x] = elem.value[x];
     }
     var partitionedList = partitionList(cipherArray, partitions);
@@ -606,6 +605,59 @@ var multiplySubsetTextDecode = function(elem) {
     }
 }
 
+// ----------------------------
+// shift text subsets at indices
+
+var shiftSubsetsTextElem = `
+    <label class="optionsItem">while considering the indices </label>
+    <input size="8" id="option18_1" type="text"></input>
+    <span class="infoIcon" onclick="toggleInfo('indexSequence', '#option18_1_info')">info</span><br />
+    <div id="option18_1_info"></div>
+	
+    <label class="optionsItem">and the number of characters to get </label>
+    <input size="8" id="option18_2" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('charSize', '#option18_2_info')">info</span><br />
+    <div id="option18_2_info"></div>
+
+	<label class="optionsItem">shift the text using a value of </label>
+    <input size="8" id="option18_3" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('shift', '#option18_3_info')">info</span><br />
+	<div id="option18_3_info"></div>`;
+var shiftSubsetsTextEncode = function(elem) {
+	var indices = textToArray(elemSelector("#option18_1").value);
+    var shift = parseInt(elemSelector("#option18_3").value);
+	for (var z = 0; z < elem.value.length; z += 1) {
+        cipherArray[z] = elem.value[z];
+    }
+    for (var x = 0; x < indices.length; x += 1) {
+        var index = indices[x];
+        var size = parseInt(elemSelector("#option18_2").value);
+        for (var y = 0; y < cipherArray.length; y += 1) {
+            if (size > 0 && y >= index) {
+                cipherArray[y] = String.fromCharCode(cipherArray[y].charCodeAt(0) + shift);
+                size -= 1;
+            }
+        }
+    }
+}
+var shiftSubsetsTextDecode = function(elem) {
+	var indices = textToArray(elemSelector("#option18_1").value);
+    var shift = parseInt(elemSelector("#option18_3").value);
+	for (var z = 0; z < elem.value.length; z += 1) {
+        textArray[z] = elem.value[z];
+    }
+    for (var x = 0; x < indices.length; x += 1) {
+        var index = indices[x];
+        var size = parseInt(elemSelector("#option18_2").value);
+        for (var y = 0; y < textArray.length; y += 1) {
+            if (size > 0 && y >= index) {
+                textArray[y] = String.fromCharCode(textArray[y].charCodeAt(0) - shift);
+                size -= 1;
+            }
+        }
+    }
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -625,8 +677,9 @@ var infoMapping = {
     "text": "<small class='note'>text, a sequence of characters</small><br /><br />",
     "index": "<small class='note'>a non-negative integer that is less than or equal to the text length</small><br /><br />",
     "indexLimit": "<small class='note'>a non-negative integer that is less than or equal to (the text length minus the number of characters to get)</small><br /><br />",
+    "indexSequence": "<small class='note'>a comma separated list of indices; an index should be a non-negative integer that is less than or equal to (the text length minus the number of characters to get)<br />intersecting text subsets are valid</small><br /><br />",
     "randomTextLength": "<small class='note'>the length of text to randomly generate; the number should be greater than zero</small><br /><br />",
-    "charSize": "<small class='note'>the number of characters to get from the starting index; the number should be greater than zero</small><br /><br />",
+    "charSize": "<small class='note'>the number of characters to get starting from the index; the number should be greater than zero</small><br /><br />",
 };
 var ciphers = {
     "shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
@@ -638,6 +691,7 @@ var ciphers = {
     "insert randomly generated text at index": [insertRandomGenTextAtIndexElem, insertRandomGenTextAtIndexEncode, insertRandomGenTextAtIndexDecode],
     "order by partitional sequence": [partitionalSequencerElem, partitionalSequencerEncode, partitionalSequencerDecode],
     "shift text subset": [shiftSubsetTextElem, shiftSubsetTextEncode, shiftSubsetTextDecode],
+    "shift multiple text subsets": [shiftSubsetsTextElem, shiftSubsetsTextEncode, shiftSubsetsTextDecode],
     "shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
     "reverse text within each partition": [reversePartitionItemsElem, reversePartitionItemsEncode, reversePartitionItemsDecode],
     "shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],
