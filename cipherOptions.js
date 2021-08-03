@@ -658,6 +658,59 @@ var shiftSubsetsTextDecode = function(elem) {
     }
 }
 
+// ----------------------------
+// shift text subsets at indices by multiple
+
+var shiftSubsetsMultipleTextElem = `
+    <label class="optionsItem">while considering the indices </label>
+    <input size="8" id="option18_1" type="text"></input>
+    <span class="infoIcon" onclick="toggleInfo('indexSequence', '#option18_1_info')">info</span><br />
+    <div id="option18_1_info"></div>
+	
+    <label class="optionsItem">and the number of characters to get </label>
+    <input size="8" id="option18_2" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('charSize', '#option18_2_info')">info</span><br />
+    <div id="option18_2_info"></div>
+
+	<label class="optionsItem">shift the text using a value of </label>
+    <input size="8" id="option18_3" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('shift', '#option18_3_info')">info</span><br />
+	<div id="option18_3_info"></div>`;
+var shiftSubsetsMultipleTextEncode = function(elem) {
+	var indices = textToArray(elemSelector("#option18_1").value);
+    var shift = parseInt(elemSelector("#option18_3").value);
+	for (var z = 0; z < elem.value.length; z += 1) {
+        cipherArray[z] = elem.value[z];
+    }
+    for (var x = 0; x < indices.length; x += 1) {
+        var index = indices[x];
+        var size = parseInt(elemSelector("#option18_2").value);
+        for (var y = 0; y < cipherArray.length; y += 1) {
+            if (size > 0 && y >= index) {
+                cipherArray[y] = String.fromCharCode(cipherArray[y].charCodeAt(0) * shift);
+                size -= 1;
+            }
+        }
+    }
+}
+var shiftSubsetsMultipleTextDecode = function(elem) {
+	var indices = textToArray(elemSelector("#option18_1").value);
+    var shift = parseInt(elemSelector("#option18_3").value);
+	for (var z = 0; z < elem.value.length; z += 1) {
+        textArray[z] = elem.value[z];
+    }
+    for (var x = 0; x < indices.length; x += 1) {
+        var index = indices[x];
+        var size = parseInt(elemSelector("#option18_2").value);
+        for (var y = 0; y < textArray.length; y += 1) {
+            if (size > 0 && y >= index) {
+                textArray[y] = String.fromCharCode(textArray[y].charCodeAt(0) / shift);
+                size -= 1;
+            }
+        }
+    }
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -698,6 +751,7 @@ var ciphers = {
     "swap offset nth character with offset": [charSwapNthOffsetOffsetElem, charSwapNthOffsetOffsetEncode, charSwapNthOffsetOffsetDecode],
     "shift each character by multiple": [charShiftMultipleElem, charShiftMultipleEncode, charShiftMultipleDecode],
     "shift subset of text by multiple": [multiplySubsetTextElem, multiplySubsetTextEncode, multiplySubsetTextDecode],
+    "shift multiple subsets of text by multiple": [shiftSubsetsMultipleTextElem, shiftSubsetsMultipleTextEncode, shiftSubsetsMultipleTextDecode],
     "shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
     "shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
 };
