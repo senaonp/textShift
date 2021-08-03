@@ -632,6 +632,7 @@ var shiftSubsetsTextEncode = function(elem) {
     for (var x = 0; x < indices.length; x += 1) {
         var index = indices[x];
         var size = parseInt(elemSelector("#option18_2").value);
+        if (cipherArray[0] == undefined) { break; }
         for (var y = 0; y < cipherArray.length; y += 1) {
             if (size > 0 && y >= index) {
                 cipherArray[y] = String.fromCharCode(cipherArray[y].charCodeAt(0) + shift);
@@ -649,6 +650,7 @@ var shiftSubsetsTextDecode = function(elem) {
     for (var x = 0; x < indices.length; x += 1) {
         var index = indices[x];
         var size = parseInt(elemSelector("#option18_2").value);
+        if (textArray[0] == undefined) { break; }
         for (var y = 0; y < textArray.length; y += 1) {
             if (size > 0 && y >= index) {
                 textArray[y] = String.fromCharCode(textArray[y].charCodeAt(0) - shift);
@@ -685,6 +687,7 @@ var shiftSubsetsMultipleTextEncode = function(elem) {
     for (var x = 0; x < indices.length; x += 1) {
         var index = indices[x];
         var size = parseInt(elemSelector("#option19_2").value);
+        if (cipherArray[0] == undefined) { break; }
         for (var y = 0; y < cipherArray.length; y += 1) {
             if (size > 0 && y >= index) {
                 cipherArray[y] = String.fromCharCode(cipherArray[y].charCodeAt(0) * shift);
@@ -702,6 +705,7 @@ var shiftSubsetsMultipleTextDecode = function(elem) {
     for (var x = 0; x < indices.length; x += 1) {
         var index = indices[x];
         var size = parseInt(elemSelector("#option19_2").value);
+        if (textArray[0] == undefined) { break; }
         for (var y = 0; y < textArray.length; y += 1) {
             if (size > 0 && y >= index) {
                 textArray[y] = String.fromCharCode(textArray[y].charCodeAt(0) / shift);
