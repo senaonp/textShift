@@ -663,28 +663,28 @@ var shiftSubsetsTextDecode = function(elem) {
 
 var shiftSubsetsMultipleTextElem = `
     <label class="optionsItem">while considering the indices </label>
-    <input size="8" id="option18_1" type="text"></input>
-    <span class="infoIcon" onclick="toggleInfo('indexSequence', '#option18_1_info')">info</span><br />
-    <div id="option18_1_info"></div>
+    <input size="8" id="option19_1" type="text"></input>
+    <span class="infoIcon" onclick="toggleInfo('indexSequence', '#option19_1_info')">info</span><br />
+    <div id="option19_1_info"></div>
 	
     <label class="optionsItem">and the number of characters to get </label>
-    <input size="8" id="option18_2" type="number" value="1" min="1"></input>
-    <span class="infoIcon" onclick="toggleInfo('charSize', '#option18_2_info')">info</span><br />
-    <div id="option18_2_info"></div>
+    <input size="8" id="option19_2" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('charSize', '#option19_2_info')">info</span><br />
+    <div id="option19_2_info"></div>
 
-	<label class="optionsItem">shift the text using a value of </label>
-    <input size="8" id="option18_3" type="number" value="0"></input>
-    <span class="infoIcon" onclick="toggleInfo('shift', '#option18_3_info')">info</span><br />
-	<div id="option18_3_info"></div>`;
+	<label class="optionsItem">shift the text by a multiple of </label>
+    <input size="8" id="option19_3" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('multiple', '#option19_3_info')">info</span><br />
+	<div id="option19_3_info"></div>`;
 var shiftSubsetsMultipleTextEncode = function(elem) {
-	var indices = textToArray(elemSelector("#option18_1").value);
-    var shift = parseInt(elemSelector("#option18_3").value);
+	var indices = textToArray(elemSelector("#option19_1").value);
+    var shift = parseInt(elemSelector("#option19_3").value);
 	for (var z = 0; z < elem.value.length; z += 1) {
         cipherArray[z] = elem.value[z];
     }
     for (var x = 0; x < indices.length; x += 1) {
         var index = indices[x];
-        var size = parseInt(elemSelector("#option18_2").value);
+        var size = parseInt(elemSelector("#option19_2").value);
         for (var y = 0; y < cipherArray.length; y += 1) {
             if (size > 0 && y >= index) {
                 cipherArray[y] = String.fromCharCode(cipherArray[y].charCodeAt(0) * shift);
@@ -694,14 +694,14 @@ var shiftSubsetsMultipleTextEncode = function(elem) {
     }
 }
 var shiftSubsetsMultipleTextDecode = function(elem) {
-	var indices = textToArray(elemSelector("#option18_1").value);
-    var shift = parseInt(elemSelector("#option18_3").value);
+	var indices = textToArray(elemSelector("#option19_1").value);
+    var shift = parseInt(elemSelector("#option19_3").value);
 	for (var z = 0; z < elem.value.length; z += 1) {
         textArray[z] = elem.value[z];
     }
     for (var x = 0; x < indices.length; x += 1) {
         var index = indices[x];
-        var size = parseInt(elemSelector("#option18_2").value);
+        var size = parseInt(elemSelector("#option19_2").value);
         for (var y = 0; y < textArray.length; y += 1) {
             if (size > 0 && y >= index) {
                 textArray[y] = String.fromCharCode(textArray[y].charCodeAt(0) / shift);
@@ -730,7 +730,7 @@ var infoMapping = {
     "text": "<small class='note'>text, a sequence of characters</small><br /><br />",
     "index": "<small class='note'>a non-negative integer that is less than or equal to the text length</small><br /><br />",
     "indexLimit": "<small class='note'>a non-negative integer that is less than or equal to (the text length minus the number of characters to get)</small><br /><br />",
-    "indexSequence": "<small class='note'>a comma separated list of indices; an index should be a non-negative integer that is less than or equal to (the text length minus the number of characters to get)<br />intersecting text subsets are valid</small><br /><br />",
+    "indexSequence": "<small class='note'>a comma separated list of indices; an index should be a non-negative integer that is less than or equal to (the text length minus the number of characters to get)<br />intersecting text subsets are valid; the shift behavior will be applied based on the number of occurances a character is included across all subsets</small><br /><br />",
     "randomTextLength": "<small class='note'>the length of text to randomly generate; the number should be greater than zero</small><br /><br />",
     "charSize": "<small class='note'>the number of characters to get starting from the index; the number should be greater than zero</small><br /><br />",
 };
