@@ -8,7 +8,7 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 ## features
 - various cipher options for encoding / decoding
   - cipher text functions such as shift, swap, insert, move, reverse, multiply, sequence
-  - cipher text selection such as by partition, nth chars, index range, offset
+  - cipher text selection such as by partition, nth chars, character set, index range, offset
 - dynamic output when entering either text input or cipherText input
 - responsive styling for mobile devices
 - notes section which uses localStorage
@@ -22,7 +22,8 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 - move text subset to index
 - insert text at index
 - insert randomly generated text at index
-- order by partitional sequence
+- sequence by partition
+- sequence by every set of x characters
 - shift text subset
 - shift multiple text subsets
 - shift offset nth character by number
@@ -33,14 +34,15 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 - shift subset of text by multiple
 - shift multiple subsets of text by multiple
 - shift nth character by multiple
-- shift offset nth character by multiple 
+- shift offset nth character by multiple
 
 ## feature wishlist
 - cipher types:
+  - for every stepped sequence s, shift the characters in the stepped sequence (repeat until step is out of list range)
+  - for every stepped sequence s, multiply the characters in the stepped sequence (repeat until step is out of list range)
+  - for every set of characters of size x, shift the specified character indices in each set
+  - for every set of characters of size x, multiply the specified character indices in each set
   - substitution swap 2 characters within text
-  - for every set of characters s, shift the specified character indices in each set
-  - for every set of characters s, multiply the specified character indices in each set
-  - sequence by every set of s characters
   - swap at offset of every instance of specified char
 - buttons to generate randomized inputs (e.g. index lists)
 - documentation page to visualize encoding using example text
