@@ -6,7 +6,7 @@
 applet can be run in a web browser by checking out the repo and opening `index.html` in a web browser
 
 ## features
-- various cipher options for encrypting / decrypting
+- various cipher options for encoding / decoding
   - cipher text functions such as shift, swap, insert, move, reverse, multiply, sequence
   - cipher text selection such as by partition, nth chars, index range, offset
 - dynamic output when entering either text input or cipherText input
@@ -23,23 +23,27 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 - insert text at index
 - insert randomly generated text at index
 - order by partitional sequence
+- shift text subset
+- shift multiple text subsets
 - shift offset nth character by number
 - reverse text within each partition
 - shift characters by partition indices
 - swap offset nth character with offset
 - shift each character by multiple
+- shift subset of text by multiple
+- shift multiple subsets of text by multiple
 - shift nth character by multiple
 - shift offset nth character by multiple 
 
 ## feature wishlist
 - cipher types:
+  - substitution swap 2 characters within text
   - for every set of characters s, shift the specified character indices in each set
   - for every set of characters s, multiply the specified character indices in each set
   - sequence by every set of s characters
-  - substitution swap 2 characters within text
   - swap at offset of every instance of specified char
 - buttons to generate randomized inputs (e.g. index lists)
-- documentation page to visualize encrypting using example text
+- documentation page to visualize encoding using example text
 
 ## tips
 a complex cipher can be made by combining different ciphers together. this can be done by taking the
