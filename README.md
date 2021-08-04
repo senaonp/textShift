@@ -18,7 +18,6 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 - shift each character by number
 - reverse the text
 - swap nth character with offset
-- shift nth character by number
 - move text subset to index
 - insert text at index
 - insert randomly generated text at index
@@ -26,13 +25,16 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 - sequence by every set of x characters
 - shift text subset
 - shift multiple text subsets
+- shift nth character by number
 - shift offset nth character by number
-- reverse text within each partition
 - shift characters by partition indices
+- shift step sequence characters
+- reverse text within each partition
 - swap offset nth character with offset
 - shift each character by multiple
 - shift subset of text by multiple
 - shift multiple subsets of text by multiple
+- shift step sequence characters by multiple
 - shift nth character by multiple
 - shift offset nth character by multiple
 

@@ -877,7 +877,7 @@ var infoMapping = {
     "randomTextLength": "<small class='note'>the length of text to randomly generate; the number should be greater than zero</small><br /><br />",
     "charSize": "<small class='note'>the number of characters to get starting from the index; the number should be greater than zero</small><br /><br />",
 	"charSizeSet": "<small class='note'>the number of characters for each set of text; the number should be greater than zero</small><br /><br />",
-    "stepSequence": "<small class='note'>a comma separated list of integers greater than 0 which describes the step sequence of each element to shift; <br />example: in a step sequnce of 1,1,4,8,5, the characters that will be shifted are the first character, then the following character, then the fourth following character, then the eighth following character, and then the fifth following character; the process repeats until outside of the text range</small><br /><br />",
+    "stepSequence": "<small class='note'>a comma separated list of integers greater than 0 which describes the step sequence of each element to shift; <br />example: in a step sequnce of 1,1,4,8,5 the characters that will be shifted are the first character, then the following character, then the fourth following character, then the eighth following character, and then the fifth following character; the process repeats until outside of the text range</small><br /><br />",
 };
 var ciphers = {
     "(1) shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
