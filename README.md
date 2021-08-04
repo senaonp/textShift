@@ -8,7 +8,7 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 ## features
 - various cipher options for encoding / decoding
   - cipher text functions such as shift, swap, insert, move, reverse, multiply, sequence
-  - cipher text selection such as by partition, nth chars, character set, index range, offset
+  - cipher text selection such as by partition, nth chars, index range, step sequence, character set, offset
 - dynamic output when entering either text input or cipherText input
 - responsive styling for mobile devices
 - notes section which uses localStorage
@@ -38,8 +38,6 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 
 ## feature wishlist
 - cipher types:
-  - for every stepped sequence s, shift the characters in the stepped sequence (repeat until step is out of list range)
-  - for every stepped sequence s, multiply the characters in the stepped sequence (repeat until step is out of list range)
   - for every set of characters of size x, shift the specified character indices in each set
   - for every set of characters of size x, multiply the specified character indices in each set
   - substitution swap 2 characters within text
