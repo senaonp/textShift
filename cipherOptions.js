@@ -753,6 +753,106 @@ var sequenceCharSetsDecode = function(elem) {
     textArray = innerMergeList(charSets);
 }
 
+// ----------------------------
+// shift by step sequence
+
+var shiftStepSequenceElem = `
+	<label class="optionsItem">while considering the step sequence </label>
+    <input size="8" id="option21_1" type="text"></input>
+    <span class="infoIcon" onclick="toggleInfo('stepSequence', '#option21_1_info')">info</span><br />
+    <div id="option21_1_info"></div>
+    
+    <label class="optionsItem">shift the step sequence characters by number </label>
+    <input size="8" id="option21_2" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('shift', '#option21_2_info')">info</span><br />
+	<div id="option21_2_info"></div>`;
+var shiftStepSequenceEncode = function(elem) {
+	var sequence = textToArray(elemSelector("#option21_1").value);
+    var shift = parseInt(elemSelector("#option21_2").value);
+    for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+    var i = -1;
+    var loopCount = 0;
+    var maxLoops = Math.ceil(cipherArray.length / sequence.length);
+    while (i < cipherArray.length && loopCount < maxLoops && sequence.length > 0  && cipherArray[0] != undefined) {
+        for (var x = 0; x < sequence.length; x += 1) {
+            i += sequence[x];
+            if (i > cipherArray.length-1 || sequence[x] <= 0) { return; }
+            cipherArray[i] = String.fromCharCode(elem.value.charCodeAt(i) + shift);
+        }
+        loopCount += 1;
+    }
+}
+var shiftStepSequenceDecode = function(elem) {
+	var sequence = textToArray(elemSelector("#option21_1").value);
+    var shift = parseInt(elemSelector("#option21_2").value);
+    for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+    var i = -1;
+    var loopCount = 0;
+    var maxLoops = Math.ceil(textArray.length / sequence.length);
+    while (i < textArray.length && loopCount < maxLoops && sequence.length > 0 && textArray[0] != undefined) {
+        for (var x = 0; x < sequence.length; x += 1) {
+            i += sequence[x];
+            if (i > textArray.length-1 || sequence[x] <= 0) { return; }
+            textArray[i] = String.fromCharCode(elem.value.charCodeAt(i) - shift);
+        }
+        loopCount += 1;
+    }
+}
+
+// ----------------------------
+// shift multiply by step sequence
+
+var shiftMultiplyStepSequenceElem = `
+	<label class="optionsItem">while considering the step sequence </label>
+    <input size="8" id="option22_1" type="text"></input>
+    <span class="infoIcon" onclick="toggleInfo('stepSequence', '#option22_1_info')">info</span><br />
+    <div id="option22_1_info"></div>
+    
+    <label class="optionsItem">shift the step sequence characters by multiple </label>
+    <input size="8" id="option22_2" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('multiple', '#option22_2_info')">info</span><br />
+	<div id="option22_2_info"></div>`;
+var shiftMultiplyStepSequenceEncode = function(elem) {
+	var sequence = textToArray(elemSelector("#option22_1").value);
+    var shift = parseInt(elemSelector("#option22_2").value);
+    for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+    var i = -1;
+    var loopCount = 0;
+    var maxLoops = Math.ceil(cipherArray.length / sequence.length);
+    while (i < cipherArray.length && loopCount < maxLoops && sequence.length > 0  && cipherArray[0] != undefined) {
+        for (var x = 0; x < sequence.length; x += 1) {
+            i += sequence[x];
+            if (i > cipherArray.length-1 || sequence[x] <= 0) { return; }
+            cipherArray[i] = String.fromCharCode(elem.value.charCodeAt(i) * shift);
+        }
+        loopCount += 1;
+    }
+}
+var shiftMultiplyStepSequenceDecode = function(elem) {
+	var sequence = textToArray(elemSelector("#option22_1").value);
+    var shift = parseInt(elemSelector("#option22_2").value);
+    for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+    var i = -1;
+    var loopCount = 0;
+    var maxLoops = Math.ceil(textArray.length / sequence.length);
+    while (i < textArray.length && loopCount < maxLoops && sequence.length > 0 && textArray[0] != undefined) {
+        for (var x = 0; x < sequence.length; x += 1) {
+            i += sequence[x];
+            if (i > textArray.length-1 || sequence[x] <= 0) { return; }
+            textArray[i] = String.fromCharCode(elem.value.charCodeAt(i) / shift);
+        }
+        loopCount += 1;
+    }
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -777,6 +877,7 @@ var infoMapping = {
     "randomTextLength": "<small class='note'>the length of text to randomly generate; the number should be greater than zero</small><br /><br />",
     "charSize": "<small class='note'>the number of characters to get starting from the index; the number should be greater than zero</small><br /><br />",
 	"charSizeSet": "<small class='note'>the number of characters for each set of text; the number should be greater than zero</small><br /><br />",
+    "stepSequence": "<small class='note'>a comma separated list of integers greater than 0 which describes the step sequence of each element to shift; <br />example: in a step sequnce of 1,1,4,8,5, the characters that will be shifted are the first character, then the following character, then the fourth following character, then the eighth following character, and then the fifth following character; the process repeats until outside of the text range</small><br /><br />",
 };
 var ciphers = {
     "(1) shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
@@ -792,13 +893,15 @@ var ciphers = {
     "(11) shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
     "(12) shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
     "(13) shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],
-    "(14) reverse text within each partition": [reversePartitionItemsElem, reversePartitionItemsEncode, reversePartitionItemsDecode],
-    "(15) swap offset nth character with offset": [charSwapNthOffsetOffsetElem, charSwapNthOffsetOffsetEncode, charSwapNthOffsetOffsetDecode],
-    "(16) shift each character by multiple": [charShiftMultipleElem, charShiftMultipleEncode, charShiftMultipleDecode],
-    "(17) shift subset of text by multiple": [multiplySubsetTextElem, multiplySubsetTextEncode, multiplySubsetTextDecode],
-    "(18) shift multiple subsets of text by multiple": [shiftSubsetsMultipleTextElem, shiftSubsetsMultipleTextEncode, shiftSubsetsMultipleTextDecode],
-    "(19) shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
-    "(20) shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
+    "(14) shift step sequence characters": [shiftStepSequenceElem, shiftStepSequenceEncode, shiftStepSequenceDecode],
+    "(15) reverse text within each partition": [reversePartitionItemsElem, reversePartitionItemsEncode, reversePartitionItemsDecode],
+    "(16) swap offset nth character with offset": [charSwapNthOffsetOffsetElem, charSwapNthOffsetOffsetEncode, charSwapNthOffsetOffsetDecode],
+    "(17) shift each character by multiple": [charShiftMultipleElem, charShiftMultipleEncode, charShiftMultipleDecode],
+    "(18) shift subset of text by multiple": [multiplySubsetTextElem, multiplySubsetTextEncode, multiplySubsetTextDecode],
+    "(19) shift multiple subsets of text by multiple": [shiftSubsetsMultipleTextElem, shiftSubsetsMultipleTextEncode, shiftSubsetsMultipleTextDecode],
+    "(20) shift step sequence characters by multiple": [shiftMultiplyStepSequenceElem, shiftMultiplyStepSequenceEncode, shiftMultiplyStepSequenceDecode],
+    "(21) shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
+    "(22) shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
 };
 var setCipher = function(elem) { 
     elemSelector("#optionsCipher").innerHTML = ciphers[elem.value][0];
