@@ -38,10 +38,10 @@ elemSelector("#notes").innerHTML = `
 	</div>`;
 
 elemSelector("#textShiftDescription").innerHTML = `
-    <span id="version">textShift ver.1.2.0</span><br /><br />
-    <br>any updates to the website will be added to the Github repository (<a target="_blank" href="https://github.com/senaonp/textShift">https://github.com/senaonp/textShift</a>).
-	<br><br>encoding is applied when text is entered into the "text" field; decoding is applied when text is entered into the "cipher text" field<br><hr><br>the current features of textShift are:<br>
+    <span id="version">textShift ver.1.2.0</span><br /><br />textShift is an online ciphertext tool with various cipher options for encoding and decoding text.<br />Encoding is applied when text is entered into the "text" field. Decoding is applied when text is entered into the "cipher text" field.<br /><br />The main cipher types are shifting and positioning ciphers. Shifting ciphers modify the Unicode values of selected characters. Positioning ciphers modify the ordering of the selected characters. 
+	<br /><br />
     <div id="features">
+	<span class="feature_title">the current features of textShift are:</span><br /><br />
 	<span class="feature">cipher options for encoding and decoding</span>
 	<span class="feature_detail">cipher text functions such as shift, swap, insert, move, reverse, multiply, sequence</span>
 	<span class="feature_detail">cipher text selection such as by partition, nth chars, index range, step sequence, character set, offset</span>
@@ -50,6 +50,7 @@ elemSelector("#textShiftDescription").innerHTML = `
 	<span class="feature">error handling for specific Unicode characters</span>
 	<span class="feature">a notes section</span>
     <span class="feature">responsive styling for mobile devices</span>
+    <span class="feature">a demo of using sequence ciphers for encoding and decoding is available here: <a target='_blank' href='https://fbacarisas.xyz/video/#textshift_sequencing_demo'>https://fbacarisas.xyz/video/#textshift_sequencing_demo</a></span>
 	
     </div>
 	<br>
