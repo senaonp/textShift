@@ -209,9 +209,11 @@ var updateAtIndex = function(list, listIndex, text, type) {
 	}
 }
 
-// get random character within set Unicode range of 20 to 65000
-var getRandomChar = function() {
-	return String.fromCharCode(Math.floor(Math.random()*(65000-20+1)+20));
+// get random character within set Unicode range
+var getRandomChar = function(min, max) {
+	if (isNaN(min)) { min = 20; }
+	if (isNaN(max)) { max = 65000; }
+	return String.fromCharCode(Math.floor(Math.random()*(max-min+1)+min));
 }
 
 // sorting list algorithm (mutating)

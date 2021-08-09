@@ -418,21 +418,29 @@ var insertTextAtIndexDecode = function(elem) {
 // insert text at index
 
 var insertRandomGenTextAtIndexElem = `
-    <label class="optionsItem">insert randomly generated text with a character length of </label>
-    <input size="8" id="option13_1" type="number" value="1"></input>
-    <span class="infoIcon" onclick="toggleInfo('randomTextLength', '#option13_1_info')">info</span><br />
+    <label class="optionsItem">while considering a Unicode range with a minimum of </label>
+    <input size="8" id="option13_1_1" type="number" value="20"></input><label> and a maximum value of </label>
+    <input size="8" id="option13_1_2" type="number" value="65000"></input>
+    <span class="infoIcon" onclick="toggleInfo('unicodeRange', '#option13_1_info')">info</span><br />
 	<div id="option13_1_info"></div>
 	
+	<label class="optionsItem">insert randomly generated text with a character length of </label>
+    <input size="8" id="option13_2" type="number" value="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('randomTextLength', '#option13_2_info')">info</span><br />
+	<div id="option13_2_info"></div>
+	
     <label class="optionsItem">at the index of </label>
-	<input size="8" id="option13_2" type="number" value="0" min="0"></input>
-    <span class="infoIcon" onclick="toggleInfo('index', '#option13_2_info')">info</span><br />
-    <div id="option13_2_info"></div>`;
+	<input size="8" id="option13_3" type="number" value="0" min="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('index', '#option13_3_info')">info</span><br />
+    <div id="option13_3_info"></div>`;
 var insertRandomGenTextAtIndexEncode = function(elem) {
 	var text = "";
-    var textLength = parseInt(elemSelector("#option13_1").value);
-    var index = parseInt(elemSelector("#option13_2").value);
+	var minUnicode = parseInt(elemSelector("#option13_1_1").value);
+	var maxUnicode = parseInt(elemSelector("#option13_1_2").value);
+    var textLength = parseInt(elemSelector("#option13_2").value);
+    var index = parseInt(elemSelector("#option13_3").value);
     for (var x = 0; x < textLength; x+=1) {
-	    text += getRandomChar();
+	    text += getRandomChar(minUnicode, maxUnicode);
     }
     for (var x = 0; x < elem.value.length; x += 1) {
         cipherArray[x] = elem.value[x];
@@ -441,10 +449,12 @@ var insertRandomGenTextAtIndexEncode = function(elem) {
 }
 var insertRandomGenTextAtIndexDecode = function(elem) {
     var text = "";
-    var textLength = parseInt(elemSelector("#option13_1").value);
-    var index = parseInt(elemSelector("#option13_2").value);
+	var minUnicode = parseInt(elemSelector("#option13_1_1").value);
+	var maxUnicode = parseInt(elemSelector("#option13_1_2").value);
+    var textLength = parseInt(elemSelector("#option13_2").value);
+    var index = parseInt(elemSelector("#option13_3").value);
     for (var x = 0; x < textLength; x+=1) {
-	    text += getRandomChar();
+	    text += getRandomChar(minUnicode, maxUnicode);
     }
 	for (var x = 0; x < elem.value.length; x += 1) {
         textArray[x] = elem.value[x];
@@ -878,6 +888,7 @@ var infoMapping = {
     "charSize": "<small class='note'>the number of characters to get starting from the index; the number should be greater than zero</small><br /><br />",
 	"charSizeSet": "<small class='note'>the number of characters for each set of text; the number should be greater than zero</small><br /><br />",
     "stepSequence": "<small class='note'>a comma separated list of integers greater than 0 which describes the step sequence of each element to shift; <br />example: in a step sequnce of 1,1,4,8,5 the characters that will be shifted are the first character, then the following character, then the fourth following character, then the eighth following character, and then the fifth following character; the process repeats until outside of the text range</small><br /><br />",
+	"unicodeRange": "<small class='note'>two numbers that represent the range of Unicode character values to generate from; default values are a minimum of 20 and a maximum of 65000.<br />if the minimum or maximum field values are blank or not a number, their default values are assumed<br /><br />",
 };
 var ciphers = {
     "(1) shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
