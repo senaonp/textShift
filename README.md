@@ -40,6 +40,8 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 
 ## feature wishlist
 - cipher types:
+  - insert random Unicode text using step sequence
+  - insert variable length Unicode text using step sequence
   - for every set of characters of size x, shift the specified character indices in each set
   - for every set of characters of size x, multiply the specified character indices in each set
   - swap at step sequence pair
