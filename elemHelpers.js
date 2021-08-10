@@ -200,8 +200,8 @@ var shiftArrayUnicode = function(ls, n) {
 var updateAtIndex = function(list, listIndex, text, type) {
 	var index = listIndex;
 	if (type === "encode") {
-		for (var i=0; i < text.length; i+=1) {
-			list.splice(index, 0, text[i]);
+		for (var x=0; x < text.length; x+=1) {
+			list.splice(index, 0, text[x]);
 			index += 1;
 		}
 	} else {
@@ -214,6 +214,24 @@ var getRandomChar = function(min, max) {
 	if (isNaN(min)) { min = 20; }
 	if (isNaN(max)) { max = 65000; }
 	return String.fromCharCode(Math.floor(Math.random()*(max-min+1)+min));
+}
+
+// get list sum
+var getListSum = function(ls) {
+	var sum = 0;
+	for (var x = 0; x < ls.length; x += 1) {
+		sum += parseInt(ls[x]);
+	}
+	return sum;
+}
+
+// generates random text of a specified size and Unicode range
+var generateRandomText = function(size, min, max) {
+	var r = "";
+	for (var x = 0; x < size; x += 1) {
+		r += String.fromCharCode(Math.floor(Math.random()*(max-min+1)+min));
+	}
+	return r;
 }
 
 // sorting list algorithm (mutating)
