@@ -38,7 +38,7 @@ elemSelector("#notes").innerHTML = `
 	</div>`;
 
 elemSelector("#textShiftDescription").innerHTML = `
-    <span id="version">textShift ver.1.2.0</span><br /><br />textShift is an online ciphertext tool with various cipher options for encoding and decoding text.<br />Encoding is applied when text is entered into the "text" field. Decoding is applied when text is entered into the "cipher text" field.<br /><br />The main cipher types are shifting and positioning ciphers. Shifting ciphers modify the Unicode values of selected characters. Positioning ciphers modify the ordering of the selected characters. 
+    <span id="version">textShift ver.1.2.0</span><br /><br />textShift is an online ciphertext tool with various cipher options for encoding and decoding text.<br />Encoding is applied when text is entered into the "text" field. Decoding is applied when text is entered into the "cipher text" field.<br /><br />The main cipher types are shift, position, and append ciphers. Shift ciphers modify the Unicode values of selected characters. Position ciphers modify the ordering of the selected characters. Append ciphers add characters to the text.
 	<br /><br />
     <div id="features">
 	<span class="feature_title">the current features of textShift are:</span><br /><br />
