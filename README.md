@@ -42,6 +42,8 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 
 ## feature wishlist
 - cipher types:
+  - shift text subset at every step sequence
+  - multiplicative shift text subset at every step sequence
   - for every set of characters of size x, shift the specified character indices in each set
   - for every set of characters of size x, multiply the specified character indices in each set
   - swap at step sequence pair

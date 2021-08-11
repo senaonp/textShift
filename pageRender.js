@@ -38,10 +38,11 @@ elemSelector("#notes").innerHTML = `
 	</div>`;
 
 elemSelector("#textShiftDescription").innerHTML = `
-    <span id="version">textShift ver.1.2.0</span><br /><br />textShift is an online ciphertext tool with various cipher options for encoding and decoding text.<br />Encoding is applied when text is entered into the "text" field. Decoding is applied when text is entered into the "cipher text" field.<br /><br />The main cipher types are shift, position, and append ciphers. Shift ciphers modify the Unicode values of selected characters. Position ciphers modify the ordering of the selected characters. Append ciphers add characters to the text.
+    <span id="version">textShift ver.1.2.0</span><br /><br />textShift is an online ciphertext tool with various options for encoding and decoding. encoding and decoding is applied during input in the "text" and "cipher text" fields respectively.<br /><br />the main cipher types are shift (modify Unicode value), position (modify ordering), and append (add text) ciphers.
 	<br /><br />
-    <div id="features">
-	<span class="feature_title">the current features of textShift are:</span><br /><br />
+	<div id="features">
+	<br />
+	<span class="feature_title">the current features of textShift are:</span><br />
 	<span class="feature">cipher options for encoding and decoding</span>
 	<span class="feature_detail">cipher text functions such as shift, swap, insert, move, reverse, multiply, sequence</span>
 	<span class="feature_detail">cipher text selection such as by partition, nth chars, index range, step sequence, character set, offset</span>
@@ -49,12 +50,15 @@ elemSelector("#textShiftDescription").innerHTML = `
     <span class="feature">usage information on input fields</span>
 	<span class="feature">error handling for specific Unicode characters</span>
 	<span class="feature">a notes section</span>
-    <span class="feature">responsive styling for mobile devices</span>
-    <span class="feature">a demo of using sequence ciphers for encoding and decoding is available here: <a target='_blank' href='https://fbacarisas.xyz/video/#textshift_sequencing_demo'>https://fbacarisas.xyz/video/#textshift_sequencing_demo</a></span>
-	
+    <span class="feature">responsive styling for mobile devices</span><br />
+	<span class="feature_title">cipher tips:</span><br />
+	<span class="feature">complex ciphers can be made by combining different ciphers together</span>
+	<span class="feature_detail">to apply a combination of ciphers take the ciphertext output from one cipher and apply it as text input to another cipher.<br /><br />repeat the process for as many ciphers as needed</span>
+	<span class="feature_detail">to decode text encoded by a combination of ciphers, apply decoding to the cipher text in the reverse order in which the ciphers were applied</span>
+	<span class="feature">a demo of using sequence ciphers for encoding and decoding<br /><a target='_blank' href='https://fbacarisas.xyz/video/#textshift_sequencing_demo'>is available here</a></span>
     </div>
 	<br>
-	my other programming projects can also be viewed here: (<a target="_blank" href="https://fbacarisas.xyz/video/#programming_playlist">fbacarisas.xyz/video/#programming_playlist</a>)
+	my other programming projects <a target="_blank" href="https://fbacarisas.xyz/video/#programming_playlist">can be viewed here</a>
 	<br><br>`;
 
 elemSelector("#footer").innerHTML = `
