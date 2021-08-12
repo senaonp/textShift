@@ -17,16 +17,17 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 ## cipher options
 - shift each character by number
 - reverse the text
+- reverse text within each partition
 - swap nth character with offset
 - swap offset nth character with offset
 - move text subset to index
+- sequence by partition
+- sequence by every set of x characters
 - insert text at index
 - insert randomly generated text at index
 - insert random Unicode text using step sequence
 - insert variable length Unicode text using step sequence
-- sequence by partition
-- reverse text within each partition
-- sequence by every set of x characters
+
 - shift text subset
 - shift multiple text subsets
 - shift nth character by number
@@ -42,11 +43,12 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 
 ## feature wishlist
 - cipher types:
+  - swap at step sequence pair
+  - move character subset to step sequence indices
   - shift text subset at every step sequence
   - multiplicative shift text subset at every step sequence
   - for every set of characters of size x, shift the specified character indices in each set
   - for every set of characters of size x, multiply the specified character indices in each set
-  - swap at step sequence pair
   - copy text subset to index
   - substitution swap 2 characters within text
   - swap at offset of every instance of specified char

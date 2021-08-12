@@ -196,6 +196,18 @@ var shiftArrayUnicode = function(ls, n) {
 	}
 }
 
+// shift text subset (mutating)
+var shiftTextSubset = function(ls, index, size, shift) {
+	var s = size;
+	for (var y = 0; y < ls.length; y += 1) {
+		if (s > 0 && y >= index) {
+			ls[y] = String.fromCharCode(ls[y].charCodeAt(0) + shift);
+			s -= 1;
+		}
+    }
+	return ls;
+}
+
 // insert or delete text at index (mutating)
 var updateAtIndex = function(list, listIndex, text, type) {
 	var index = listIndex;
