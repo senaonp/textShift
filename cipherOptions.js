@@ -364,6 +364,7 @@ var charShiftPartitionsEncode = function(elem) {
 	for (var x = 0; x < elem.value.length; x += 1) {
         cipherArray[x] = elem.value[x];
     }
+	if (cipherArray[0] === undefined) { return; }
     var partitionedList = partitionList(cipherArray, partitions);
 	for (sp = 0; sp < selectedPartitions.length; sp += 1) {
 		shiftArrayUnicode(partitionedList[selectedPartitions[sp]-1], shift);
@@ -377,6 +378,7 @@ var charShiftPartitionsDecode = function(elem) {
     for (var x = 0; x < elem.value.length; x += 1) {
         textArray[x] = elem.value[x];
     }
+	if (textArray[0] === undefined) { return; }
     var partitionedList = partitionList(textArray, partitions);
     for (sp = 0; sp < selectedPartitions.length; sp += 1) {
 		shiftArrayUnicode(partitionedList[selectedPartitions[sp]-1], -shift);
@@ -996,7 +998,7 @@ var shiftTextSubsetSequenceElem = `
 	<label class="optionsItem">shift character subsets by number </label>
     <input size="8" id="option25_3" type="number" value="0"></input>
     <span class="infoIcon" onclick="toggleInfo('shift', '#option25_3_info')">info</span><br />
-	<div id="option1_info"></div>`;
+	<div id="option25_3_info"></div>`;
 var shiftTextSubsetSequenceEncode = function(elem) {
 	var size = parseInt(elemSelector("#option25_1").value);
 	var sequence = textToArray(elemSelector("#option25_2").value);
@@ -1028,6 +1030,104 @@ var shiftTextSubsetSequenceDecode = function(elem) {
             shiftTextSubset(textArray, i, size, -shift);
         }
     }
+}
+
+// ----------------------------
+// shift text subset by multiple using step sequence
+
+var shiftTextSubsetSequenceByMultipleElem = `
+    <label class="optionsItem">while considering text subsets with a character length of </label>
+    <input size="8" id="option26_1" type="number" value="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('charSizeSet', '#option26_1_info')">info</span><br />
+	<div id="option26_1_info"></div>
+
+    <label class="optionsItem">starting with indices using the step sequence </label>
+    <input size="8" id="option26_2" type="text"></input>
+    <span class="infoIcon" onclick="toggleInfo('stepSequence', '#option26_2_info')">info</span><br />
+    <div id="option26_2_info"></div>
+	
+	<label class="optionsItem">shift character subsets by number </label>
+    <input size="8" id="option26_3" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('shift', '#option26_3_info')">info</span><br />
+	<div id="option26_3_info"></div>`;
+var shiftTextSubsetSequenceByMultipleEncode = function(elem) {
+	var size = parseInt(elemSelector("#option26_1").value);
+	var sequence = textToArray(elemSelector("#option26_2").value);
+	var shift = parseInt(elemSelector("#option26_3").value);
+    var i = -1;
+	for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+    while (i < cipherArray.length && sequence.length > 0  && cipherArray[0] != undefined) {
+        for (var x = 0; x < sequence.length; x += 1) {
+            i += sequence[x];
+            if (i > cipherArray.length-1 || sequence[x] <= 0) { return; }
+            shiftTextSubsetByMultiple(cipherArray, i, size, shift, "encode");
+        }
+    }
+}
+var shiftTextSubsetSequenceByMultipleDecode = function(elem) {
+	var size = parseInt(elemSelector("#option26_1").value);
+	var sequence = textToArray(elemSelector("#option26_2").value);
+	var shift = parseInt(elemSelector("#option26_3").value);
+    var i = -1;
+	for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+    while (i < textArray.length && sequence.length > 0  && textArray[0] != undefined) {
+        for (var x = 0; x < sequence.length; x += 1) {
+            i += sequence[x];
+            if (i > textArray.length-1 || sequence[x] <= 0) { return; }
+            shiftTextSubsetByMultiple(textArray, i, size, shift, "decode");
+        }
+    }
+}
+
+// ----------------------------
+// shift by partition using multiple
+
+var charShiftPartitionsByMultipleElem = `
+    <label class="optionsItem">with a text shift multiple of </label>
+    <input size="8" id="option27_1" type="number" value="0"></input>
+    <span class="infoIcon" onclick="toggleInfo('multiple', '#option27_1_info')">info</span><br />
+	<div id="option27_1_info"></div>
+	
+	<label class="optionsItem">and considering the number of partitions </label>
+    <input size="8" id="option27_2" type="number" value="1" min="1"></input>
+    <span class="infoIcon" onclick="toggleInfo('partition', '#option27_2_info')">info</span><br />
+    <div id="option27_2_info"></div>
+
+    <label class="optionsItem">shift the partitional indices of </label>
+	<input size="15" id="option27_3" type="text"></input>
+    <span class="infoIcon" onclick="toggleInfo('partitionList', '#option27_3_info')">info</span><br />
+    <div id="option27_3_info"></div>`;
+var charShiftPartitionsByMultipleEncode = function(elem) {
+    var shift = parseInt(elemSelector("#option27_1").value);
+	var partitions = parseInt(elemSelector("#option27_2").value);
+	var selectedPartitions = textToArray(elemSelector("#option27_3").value);
+	for (var x = 0; x < elem.value.length; x += 1) {
+        cipherArray[x] = elem.value[x];
+    }
+    var partitionedList = partitionList(cipherArray, partitions);
+	if (cipherArray[0] == undefined) { return; }
+	for (sp = 0; sp < selectedPartitions.length; sp += 1) {
+		shiftArrayUnicodeByMultiple(partitionedList[selectedPartitions[sp]-1], shift, "encode");
+	}
+    cipherArray = innerMergeList(partitionedList);
+}
+var charShiftPartitionsByMultipleDecode = function(elem) {
+    var shift = parseInt(elemSelector("#option27_1").value);
+	var partitions = parseInt(elemSelector("#option27_2").value);
+	var selectedPartitions = textToArray(elemSelector("#option27_3").value);
+    for (var x = 0; x < elem.value.length; x += 1) {
+        textArray[x] = elem.value[x];
+    }
+    var partitionedList = partitionList(textArray, partitions);
+	if (textArray[0] == undefined) { return; }
+    for (sp = 0; sp < selectedPartitions.length; sp += 1) {
+		shiftArrayUnicodeByMultiple(partitionedList[selectedPartitions[sp]-1], shift, "decode");
+	}
+    textArray = innerMergeList(partitionedList);
 }
 
 // -------------------------
@@ -1073,17 +1173,19 @@ var ciphers = {
     "(12) insert variable-sized, randomized text using step sequence": [insertVarRandomTextAtStepSequenceElem, insertVarRandomTextAtStepSequenceEncode, insertVarRandomTextAtStepSequenceDecode],
     "(13) shift text subset": [shiftSubsetTextElem, shiftSubsetTextEncode, shiftSubsetTextDecode],
     "(14) shift multiple text subsets": [shiftSubsetsTextElem, shiftSubsetsTextEncode, shiftSubsetsTextDecode],
-	"(15) shift text subsets using step sequence": [shiftTextSubsetSequenceElem, shiftTextSubsetSequenceEncode, shiftTextSubsetSequenceDecode],
-    "(16) shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
-    "(17) shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
-    "(18) shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],
-    "(19) shift step sequence characters": [shiftStepSequenceElem, shiftStepSequenceEncode, shiftStepSequenceDecode],
+	"(15) shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
+    "(16) shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
+    "(17) shift step sequence characters": [shiftStepSequenceElem, shiftStepSequenceEncode, shiftStepSequenceDecode],
+    "(18) shift text subsets using step sequence": [shiftTextSubsetSequenceElem, shiftTextSubsetSequenceEncode, shiftTextSubsetSequenceDecode],
+    "(19) shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],
     "(20) shift each character by multiple": [charShiftMultipleElem, charShiftMultipleEncode, charShiftMultipleDecode],
     "(21) shift subset of text by multiple": [multiplySubsetTextElem, multiplySubsetTextEncode, multiplySubsetTextDecode],
-    "(22) shift multiple subsets of text by multiple": [shiftSubsetsMultipleTextElem, shiftSubsetsMultipleTextEncode, shiftSubsetsMultipleTextDecode],
-    "(23) shift step sequence characters by multiple": [shiftMultiplyStepSequenceElem, shiftMultiplyStepSequenceEncode, shiftMultiplyStepSequenceDecode],
-    "(24) shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
-    "(25) shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
+	"(22) shift multiple subsets of text by multiple": [shiftSubsetsMultipleTextElem, shiftSubsetsMultipleTextEncode, shiftSubsetsMultipleTextDecode],
+	"(23) shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
+	"(24) shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
+	"(25) shift step sequence characters by multiple": [shiftMultiplyStepSequenceElem, shiftMultiplyStepSequenceEncode, shiftMultiplyStepSequenceDecode],
+	"(26) shift text subsets by multiple using step sequence": [shiftTextSubsetSequenceByMultipleElem, shiftTextSubsetSequenceByMultipleEncode, shiftTextSubsetSequenceByMultipleDecode],
+	"(27) shift characters by partition indices by multiple": [charShiftPartitionsByMultipleElem, charShiftPartitionsByMultipleEncode, charShiftPartitionsByMultipleDecode],
 };
 var setCipher = function(elem) { 
     elemSelector("#optionsCipher").innerHTML = ciphers[elem.value][0];

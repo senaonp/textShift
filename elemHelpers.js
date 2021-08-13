@@ -196,6 +196,19 @@ var shiftArrayUnicode = function(ls, n) {
 	}
 }
 
+// shift Unicode number in char array by multiple (mutating)
+var shiftArrayUnicodeByMultiple = function(ls, n, type) {
+	if (type === "encode") {
+		for (var i=0; i < ls.length; i+=1) {
+			ls[i] = String.fromCharCode(ls[i].charCodeAt(0) * n);
+		}
+	} else {
+		for (var i=0; i < ls.length; i+=1) {
+			ls[i] = String.fromCharCode(Math.floor(ls[i].charCodeAt(0) / n));
+		}
+	}
+}
+
 // shift text subset (mutating)
 var shiftTextSubset = function(ls, index, size, shift) {
 	var s = size;
@@ -218,7 +231,6 @@ var shiftTextSubsetByMultiple = function(ls, index, size, shift, type) {
 				s -= 1;
 			}
 		}
-		return ls;
 	} else {
 		for (var y = 0; y < ls.length; y += 1) {
 			if (s > 0 && y >= index) {
@@ -227,6 +239,7 @@ var shiftTextSubsetByMultiple = function(ls, index, size, shift, type) {
 			}
 		}
 	}
+	return ls;
 }
 
 // insert or delete text at index (mutating)
@@ -247,6 +260,14 @@ var getRandomChar = function(min, max) {
 	if (isNaN(min)) { min = 20; }
 	if (isNaN(max)) { max = 65000; }
 	return String.fromCharCode(Math.floor(Math.random()*(max-min+1)+min));
+}
+
+// get list that has an even number of items (mutating)
+var getList2 = function(ls) {
+	if (ls.length % 2 != 0) {
+		ls = ls.slice(ls, -1);
+	}
+	return ls;
 }
 
 // get list sum
