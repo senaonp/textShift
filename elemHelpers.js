@@ -208,6 +208,27 @@ var shiftTextSubset = function(ls, index, size, shift) {
 	return ls;
 }
 
+// shift text subset by multiple (mutating)
+var shiftTextSubsetByMultiple = function(ls, index, size, shift, type) {
+	var s = size;
+	if (type === "encode") {
+		for (var y = 0; y < ls.length; y += 1) {
+			if (s > 0 && y >= index) {
+				ls[y] = String.fromCharCode(ls[y].charCodeAt(0) * shift);
+				s -= 1;
+			}
+		}
+		return ls;
+	} else {
+		for (var y = 0; y < ls.length; y += 1) {
+			if (s > 0 && y >= index) {
+				ls[y] = String.fromCharCode(Math.floor(ls[y].charCodeAt(0) / shift));
+				s -= 1;
+			}
+		}
+	}
+}
+
 // insert or delete text at index (mutating)
 var updateAtIndex = function(list, listIndex, text, type) {
 	var index = listIndex;
