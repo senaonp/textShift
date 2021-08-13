@@ -262,12 +262,15 @@ var getRandomChar = function(min, max) {
 	return String.fromCharCode(Math.floor(Math.random()*(max-min+1)+min));
 }
 
-// get list that has an even number of items (mutating)
+// get list that has an even number of items
 var getList2 = function(ls) {
+	var r = [];
 	if (ls.length % 2 != 0) {
-		ls = ls.slice(ls, -1);
+		r = ls.slice(ls, -1);
+	} else {
+		r = ls;
 	}
-	return ls;
+	return r;
 }
 
 // get list sum
