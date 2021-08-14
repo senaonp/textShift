@@ -398,7 +398,14 @@ var insertTextAtIndexElem = `
     <label class="optionsItem">at the index of </label>
 	<input size="8" id="option12_2" type="number" value="0" min="0"></input>
     <span class="infoIcon" onclick="toggleInfo('index', '#option12_2_info')">info</span><br />
-    <div id="option12_2_info"></div>`;
+    <div id="option12_2_info"></div>
+    
+    <hr />
+
+    <label class="optionsItem">(optional) decode with a known text length of </label>
+	<input size="8" id="option12_3" type="number"></input>
+    <span class="infoIcon" onclick="toggleInfo('textLengthOptional', '#option12_3_info')">info</span><br />
+    <div id="option12_3_info"></div>`;
 var insertTextAtIndexEncode = function(elem) {
 	var text = elemSelector("#option12_1").value;
 	var index = parseInt(elemSelector("#option12_2").value);
@@ -410,10 +417,15 @@ var insertTextAtIndexEncode = function(elem) {
 var insertTextAtIndexDecode = function(elem) {
     var text = elemSelector("#option12_1").value;
 	var index = parseInt(elemSelector("#option12_2").value);
+    var textLengthDecode = parseInt(elemSelector("#option12_3").value);
 	for (var x = 0; x < elem.value.length; x += 1) {
         textArray[x] = elem.value[x];
     }
-    updateAtIndex(textArray, index, text, "decode");
+    if (isNaN(textLengthDecode)) {
+        updateAtIndex(textArray, index, text, "decode");
+    } else {
+        textArray.splice(index, textLengthDecode);
+    }
 }
 
 // ----------------------------
@@ -1202,6 +1214,7 @@ var infoMapping = {
 	"unicodeRange": "<small class='note'>two numbers that represent the range of Unicode character values to generate from; default values are a minimum of 20 and a maximum of 65000.<br />if the minimum or maximum field values are blank or not a number, their default values are assumed<br /><br />",
     "varTextLengths": "<small class='note'>a comma separated list of integers greater than 0 which describes the length of each character subset to generate; <br />example: with a value of 3,4,6 the cipher will generate text lengths of 3, then 4, then 6, and the process will repeat until outside the text range</small><br /><br />",
     "charPairSequence": "<small class='note'>a comma separated list of integers greater than 0 which describes the step sequence of each character pair to swap (the list must have an even number of items in order to form pairs, otherwise the last item will be ignored); <br />example: in a step sequnce of 1,1,2,4,1,5 the first character and following character will be swapped (1,1), then the second following and fourth following characters will be swapped (2,4), and then the first and fifth following characters (1,5) will be swapped; the process repeats until outside of the text range",
+    "textLengthOptional": "<small class='note'>(optional field - only used in decoding) if the inserted text length is known (the difference between text length and cipher text length fields), <br />you can enter the number here for decoding rather than having to input the original inserted text (for convenience)</small><br /><br />"
 };
 var ciphers = {
     "(1) shift each character by number": [charShiftElem, charShiftEncode, charShiftDecode],
