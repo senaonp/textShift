@@ -1,5 +1,7 @@
 # [textshift.net](https://textshift.net/) | a basic online cipher tool
 
+<img src="./assets/textshift-preview.png" width="100%" height="auto">
+
 -------------
 
 ## usage
@@ -15,37 +17,42 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 - error handling for specific unicode characters
 
 ## cipher options
-(1) shift each character by number
-(2) reverse the text
-(3) reverse text within each partition
-(4) swap nth character with offset
-(5) swap offset nth character with offset
-(6) swap character pairs using step sequence
-(7) move text subset to index
-(8) sequence by partition
-(9) sequence by every set of x characters
-(10) insert text at index
-(11) insert randomized text at index
-(12) insert randomized text using step sequence
-(13) insert variable-sized, randomized text using step sequence
-(14) shift text subset
-(15) shift multiple text subsets
-(16) shift nth character by number
-(17) shift offset nth character by number
-(18) shift step sequence characters
-(19) shift text subsets using step sequence
-(20) shift characters by partition indices
-(21) shift each character by multiple
-(22) shift subset of text by multiple
-(23) shift multiple subsets of text by multiple
-(24) shift nth character by multiple
-(25) shift offset nth character by multiple
-(26) shift step sequence characters by multiple
-(27) shift text subsets by multiple using step sequence
+(1) shift each character by number | 
+(2) reverse the text | 
+(3) reverse text within each partition | 
+(4) swap nth character with offset | 
+(5) swap offset nth character with offset | 
+(6) swap character pairs using step sequence | 
+(7) move text subset to index | 
+(8) sequence by partition | 
+(9) sequence by every set of x characters | 
+(10) insert text at index | 
+(11) insert randomized text at index | 
+(12) insert randomized text using step sequence | 
+(13) insert variable-sized, randomized text using step sequence | 
+(14) shift text subset | 
+(15) shift multiple text subsets | 
+(16) shift nth character by number | 
+(17) shift offset nth character by number | 
+(18) shift step sequence characters | 
+(19) shift text subsets using step sequence | 
+(20) shift characters by partition indices | 
+(21) shift each character by multiple | 
+(22) shift subset of text by multiple | 
+(23) shift multiple subsets of text by multiple | 
+(24) shift nth character by multiple | 
+(25) shift offset nth character by multiple | 
+(26) shift step sequence characters by multiple | 
+(27) shift text subsets by multiple using step sequence | 
 (28) shift characters by partition indices by multiple
 
 ## feature wishlist
 - cipher types:
+  - insert distributed text at indices
+  - insert randomized text at indices
+  - insert randomized, variable-sized text at indices
+  - sequence by every set of x characters with step sequence skip
+  - sequence by selected partition sets
   - move character subset to step sequence indices
   - for every set of characters of size x, shift the specified character indices in each set
   - for every set of characters of size x, multiply the specified character indices in each set
@@ -73,6 +80,3 @@ and take the decoded text and decoding it using the second cipher (shift every 3
 and take the decoded text and decoding it using the first cipher (shift all the text characters by 5).
 
 ```
-
-## textShift preview:
-<img src="./assets/textshift-preview.png" width="100%" height="auto">

@@ -41,7 +41,7 @@ elemSelector("#textShiftDescription").innerHTML = `
     <span id="version">textShift ver.1.2.0</span><br /><br />textShift is an online ciphertext tool with various options for encoding and decoding. encoding and decoding is applied during input in the "text" and "cipher text" fields respectively.<br /><br />the main cipher types are shift (modify Unicode value), position (modify ordering), and append (add text) ciphers.
 	<br /><br />
 	<div id="features">
-	<br />
+	<span>a demo of using sequence ciphers for encoding and decoding <a target='_blank' href='https://fbacarisas.xyz/video/#textshift_sequencing_demo'>is available here</a><br /><hr /><br />
 	<span class="feature_title">the current features of textShift are:</span><br />
 	<span class="feature">cipher options for encoding and decoding</span>
 	<span class="feature_detail">cipher text functions such as shift, swap, insert, move, reverse, multiply, sequence</span>
@@ -55,7 +55,6 @@ elemSelector("#textShiftDescription").innerHTML = `
 	<span class="feature">complex ciphers can be made by combining different ciphers together</span>
 	<span class="feature_detail">to apply a combination of ciphers take the ciphertext output from one cipher and apply it as text input to another cipher.<br /><br />repeat the process for as many ciphers as needed</span>
 	<span class="feature_detail">to decode text encoded by a combination of ciphers, apply decoding to the cipher text in the reverse order in which the ciphers were applied</span>
-	<span class="feature">a demo of using sequence ciphers for encoding and decoding<br /><a target='_blank' href='https://fbacarisas.xyz/video/#textshift_sequencing_demo'>is available here</a></span>
     </div>
 	<br>
 	my other programming projects <a target="_blank" href="https://fbacarisas.xyz/video/#programming_playlist">can be viewed here</a>

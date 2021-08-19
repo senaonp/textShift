@@ -1163,7 +1163,7 @@ var swapCharPairsBySequenceEncode = function(elem) {
     }
     while (i < cipherArray.length && sequence.length > 0  && cipherArray[0] != undefined) {
         for (var x = 0; x < charPairs.length; x += 1) {
-			if (i+charPairs[x][0]+charPairs[x][1] > cipherArray.length-1) { return; }
+			if (i+charPairs[x][0]+charPairs[x][1] > cipherArray.length) { return; }
             swapItems(cipherArray, i+charPairs[x][0], i+charPairs[x][0]+charPairs[x][1]);
             i = i + charPairs[x][0] + charPairs[x][1];
         }
@@ -1178,7 +1178,7 @@ var swapCharPairsBySequenceDecode = function(elem) {
     }
     while (i < textArray.length && sequence.length > 0  && textArray[0] != undefined) {
         for (var x = 0; x < charPairs.length; x += 1) {
-			if (i+charPairs[x][0]+charPairs[x][1] > textArray.length-1) { return; }
+			if (i+charPairs[x][0]+charPairs[x][1] > textArray.length) { return; }
             swapItems(textArray, i+charPairs[x][0], i+charPairs[x][0]+charPairs[x][1]);
             i = i + charPairs[x][0] + charPairs[x][1];
         }
