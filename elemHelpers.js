@@ -101,6 +101,20 @@ var reorderPartitions = function(charList, partitions, sequence, type) {
 	}
 }
 
+// get number of items in a partition size
+var getNumberItemsInPartitions = function(size, s) {
+	var r = [];
+	var n = Math.floor(size / s);
+	var z = size % s;
+	for (var x = 0; x < s; x += 1) {
+		r.push(n);
+	}
+	for (var y = 0; y < z; y += 1) {
+		r[y] += 1;
+	}
+	return r;
+}
+
 // set of s characters - partitioned form
 var setOfChars = function(ls, s) {
 	var r = [];

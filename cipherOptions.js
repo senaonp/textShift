@@ -1198,7 +1198,13 @@ var insertDistTextIndicesElem = `
     <input size="8" id="option29_2" type="text"></input>
     <span class="infoIcon" onclick="toggleInfo('indices', '#option29_2_info')">info</span><br />
     <div id="option29_2_info"></div>
-	`;
+	
+	<hr />
+
+    <label class="optionsItem">(optional) decode with a known text length of </label>
+	<input size="8" id="option29_3" type="number"></input>
+    <span class="infoIcon" onclick="toggleInfo('textLengthOptional', '#option29_3_info')">info</span><br />
+    <div id="option29_3_info"></div>`;
 var insertDistTextIndicesEncode = function(elem) {
 	var text = elemSelector("#option29_1").value;
 	var indices = textToArray(elemSelector("#option29_2").value);
@@ -1214,12 +1220,19 @@ var insertDistTextIndicesDecode = function(elem) {
     var text = elemSelector("#option29_1").value;
 	var indices = textToArray(elemSelector("#option29_2").value);
 	var partitionedText = partitionList(text.split(""), indices.length);
-	for (var x = 0; x < elem.value.length; x+=1) {
+	var textLengthDecode = parseInt(elemSelector("#option29_3").value);
+    for (var x = 0; x < elem.value.length; x+=1) {
         textArray[x] = elem.value[x];
     }
-	for (var y = 0; y < indices.length; y+=1) {
-		updateAtIndex(textArray, indices[y], partitionedText[y], "decode");
-	}
+	if (isNaN(textLengthDecode)) {
+        for (var y = 0; y < indices.length; y+=1) {
+			updateAtIndex(textArray, indices[y], partitionedText[y], "decode");
+		}
+    } else {
+		for (var y = 0; y < indices.length; y+=1) {
+			textArray.splice(indices[y], getNumberItemsInPartitions(textLengthDecode, indices.length)[y]);
+		}
+    }
 }
 
 // ----------------------------
@@ -1288,7 +1301,7 @@ var infoMapping = {
     "partitionSequence": "<small class='note'>a comma separated list of partition indices; specifies the sequence to order the partitions (indices start at 1); <br />for accurate encoding / decoding, the numbers should be greater than zero and less than or equal to the number of partitions; additionally all possible, unique indices should be included<br />example: in an input with 5 partitions, one possible sequence can be an input value of: 2,1,4,5,3</small><br /><br />",
     "text": "<small class='note'>text, a sequence of characters</small><br /><br />",
     "index": "<small class='note'>a non-negative integer that is less than or equal to the text length</small><br /><br />",
-	"indices": "<small class='note'>a comma separated list of indices; an index should be a non-negative integer (e.g. a value of 0,5,10,25 will specify the indices of 0, 5, 10, and 25)</small><br /><br />",
+	"indices": "<small class='note'>a comma separated list of indices; an index should be a non-negative integer that is within the range of text input (e.g. a value of 0,5,10,25 will specify the indices of 0, 5, 10, and 25)</small><br /><br />",
     "indexLimit": "<small class='note'>a non-negative integer that is less than or equal to (the text length minus the number of characters to get)</small><br /><br />",
     "indexSequence": "<small class='note'>a comma separated list of indices; an index should be a non-negative integer that is less than or equal to (the text length minus the number of characters to get)<br />intersecting text subsets are valid; the shift behavior will be applied based on the number of occurances a character is included across all subsets</small><br /><br />",
 	"indexSequenceSet": "<small class='note'>a comma separated list of indices to describe the sequence of each element in a set; each index should be used once<br />example: in sets with 4 characters, one possible sequence can be an input value of: 4,3,1,2</small><br /><br />",
