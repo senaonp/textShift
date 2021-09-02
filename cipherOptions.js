@@ -1185,6 +1185,45 @@ var swapCharPairsBySequenceDecode = function(elem) {
     }
 }
 
+// ----------------------------
+// insert distributed text at indices
+
+var insertDistTextIndicesElem = `
+	<label class="optionsItem">insert a distribution of the text </label>
+    <textarea id="option29_1" value=""></textarea>
+    <span class="infoIcon" onclick="toggleInfo('text', '#option29_1_info')">info</span><br />
+	<div id="option29_1_info"></div>
+
+    <label class="optionsItem">at the indices </label>
+    <input size="8" id="option29_2" type="text"></input>
+    <span class="infoIcon" onclick="toggleInfo('indices', '#option29_2_info')">info</span><br />
+    <div id="option29_2_info"></div>
+	`;
+var insertDistTextIndicesEncode = function(elem) {
+	var text = elemSelector("#option29_1").value;
+	var indices = textToArray(elemSelector("#option29_2").value);
+	var partitionedText = partitionList(text.split(""), indices.length);
+	console.log(partitionedText);
+	for (var x = 0; x < elem.value.length; x+=1) {
+        cipherArray[x] = elem.value[x];
+    }
+	for (var y = indices.length-1; y > -1; y-=1) {
+		updateAtIndex(cipherArray, indices[y], partitionedText[y], "encode");
+	}
+}
+var insertDistTextIndicesDecode = function(elem) {
+    var text = elemSelector("#option29_1").value;
+	var indices = textToArray(elemSelector("#option29_2").value);
+	var partitionedText = partitionList(text.split(""), indices.length);
+	console.log(partitionedText);
+	for (var x = 0; x < elem.value.length; x+=1) {
+        textArray[x] = elem.value[x];
+    }
+	for (var y = 0; y < indices.length; y+=1) {
+		updateAtIndex(textArray, indices[y], partitionedText[y], "decode");
+	}
+}
+
 // -------------------------
 // ----- ciphers setup -----
 // -------------------------
@@ -1204,6 +1243,7 @@ var infoMapping = {
     "partitionSequence": "<small class='note'>a comma separated list of partition indices; specifies the sequence to order the partitions (indices start at 1); <br />for accurate encoding / decoding, the numbers should be greater than zero and less than or equal to the number of partitions; additionally all possible, unique indices should be included<br />example: in an input with 5 partitions, one possible sequence can be an input value of: 2,1,4,5,3</small><br /><br />",
     "text": "<small class='note'>text, a sequence of characters</small><br /><br />",
     "index": "<small class='note'>a non-negative integer that is less than or equal to the text length</small><br /><br />",
+	"indices": "<small class='note'>a comma separated list of indices; an index should be a non-negative integer (e.g. a value of 0,5,10,25 will specify the indices of 0, 5, 10, and 25)</small><br /><br />",
     "indexLimit": "<small class='note'>a non-negative integer that is less than or equal to (the text length minus the number of characters to get)</small><br /><br />",
     "indexSequence": "<small class='note'>a comma separated list of indices; an index should be a non-negative integer that is less than or equal to (the text length minus the number of characters to get)<br />intersecting text subsets are valid; the shift behavior will be applied based on the number of occurances a character is included across all subsets</small><br /><br />",
 	"indexSequenceSet": "<small class='note'>a comma separated list of indices to describe the sequence of each element in a set; each index should be used once<br />example: in sets with 4 characters, one possible sequence can be an input value of: 4,3,1,2</small><br /><br />",
@@ -1227,24 +1267,25 @@ var ciphers = {
     "(8) sequence by partition": [partitionalSequencerElem, partitionalSequencerEncode, partitionalSequencerDecode],
     "(9) sequence by every set of x characters": [sequenceCharSetsElem, sequenceCharSetsEncode, sequenceCharSetsDecode],
     "(10) insert text at index": [insertTextAtIndexElem, insertTextAtIndexEncode, insertTextAtIndexDecode],
-    "(11) insert randomized text at index": [insertRandomGenTextAtIndexElem, insertRandomGenTextAtIndexEncode, insertRandomGenTextAtIndexDecode],
-    "(12) insert randomized text using step sequence": [insertRandomGenTextAtStepSequenceElem, insertRandomGenTextAtStepSequenceEncode, insertRandomGenTextAtStepSequenceDecode],
-    "(13) insert variable-sized, randomized text using step sequence": [insertVarRandomTextAtStepSequenceElem, insertVarRandomTextAtStepSequenceEncode, insertVarRandomTextAtStepSequenceDecode],
-    "(14) shift text subset": [shiftSubsetTextElem, shiftSubsetTextEncode, shiftSubsetTextDecode],
-    "(15) shift multiple text subsets": [shiftSubsetsTextElem, shiftSubsetsTextEncode, shiftSubsetsTextDecode],
-	"(16) shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
-    "(17) shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
-    "(18) shift step sequence characters": [shiftStepSequenceElem, shiftStepSequenceEncode, shiftStepSequenceDecode],
-    "(19) shift text subsets using step sequence": [shiftTextSubsetSequenceElem, shiftTextSubsetSequenceEncode, shiftTextSubsetSequenceDecode],
-    "(20) shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],
-    "(21) shift each character by multiple": [charShiftMultipleElem, charShiftMultipleEncode, charShiftMultipleDecode],
-    "(22) shift subset of text by multiple": [multiplySubsetTextElem, multiplySubsetTextEncode, multiplySubsetTextDecode],
-	"(23) shift multiple subsets of text by multiple": [shiftSubsetsMultipleTextElem, shiftSubsetsMultipleTextEncode, shiftSubsetsMultipleTextDecode],
-	"(24) shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
-	"(25) shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
-	"(26) shift step sequence characters by multiple": [shiftMultiplyStepSequenceElem, shiftMultiplyStepSequenceEncode, shiftMultiplyStepSequenceDecode],
-	"(27) shift text subsets by multiple using step sequence": [shiftTextSubsetSequenceByMultipleElem, shiftTextSubsetSequenceByMultipleEncode, shiftTextSubsetSequenceByMultipleDecode],
-	"(28) shift characters by partition indices by multiple": [charShiftPartitionsByMultipleElem, charShiftPartitionsByMultipleEncode, charShiftPartitionsByMultipleDecode],
+	"(11) insert distributed text at indices": [insertDistTextIndicesElem, insertDistTextIndicesEncode, insertDistTextIndicesDecode],
+    "(12) insert randomized text at index": [insertRandomGenTextAtIndexElem, insertRandomGenTextAtIndexEncode, insertRandomGenTextAtIndexDecode],
+    "(13) insert randomized text using step sequence": [insertRandomGenTextAtStepSequenceElem, insertRandomGenTextAtStepSequenceEncode, insertRandomGenTextAtStepSequenceDecode],
+    "(14) insert variable-sized, randomized text using step sequence": [insertVarRandomTextAtStepSequenceElem, insertVarRandomTextAtStepSequenceEncode, insertVarRandomTextAtStepSequenceDecode],
+    "(15) shift text subset": [shiftSubsetTextElem, shiftSubsetTextEncode, shiftSubsetTextDecode],
+    "(16) shift multiple text subsets": [shiftSubsetsTextElem, shiftSubsetsTextEncode, shiftSubsetsTextDecode],
+	"(17) shift nth character by number": [charShiftNthElem, charShiftNthEncode, charShiftNthDecode],
+    "(18) shift offset nth character by number": [charShiftOffsetNthElem,charShiftOffsetNthEncode, charShiftOffsetNthDecode],
+    "(19) shift step sequence characters": [shiftStepSequenceElem, shiftStepSequenceEncode, shiftStepSequenceDecode],
+    "(20) shift text subsets using step sequence": [shiftTextSubsetSequenceElem, shiftTextSubsetSequenceEncode, shiftTextSubsetSequenceDecode],
+    "(21) shift characters by partition indices": [charShiftPartitionsElem, charShiftPartitionsEncode, charShiftPartitionsDecode],
+    "(22) shift each character by multiple": [charShiftMultipleElem, charShiftMultipleEncode, charShiftMultipleDecode],
+    "(23) shift subset of text by multiple": [multiplySubsetTextElem, multiplySubsetTextEncode, multiplySubsetTextDecode],
+	"(24) shift multiple subsets of text by multiple": [shiftSubsetsMultipleTextElem, shiftSubsetsMultipleTextEncode, shiftSubsetsMultipleTextDecode],
+	"(25) shift nth character by multiple": [charShiftNthMultipleElem, charShiftNthMultipleEncode, charShiftNthMultipleDecode],
+	"(26) shift offset nth character by multiple": [charShiftOffsetNthMultipleElem,charShiftOffsetNthMultipleEncode, charShiftOffsetNthMultipleDecode],
+	"(27) shift step sequence characters by multiple": [shiftMultiplyStepSequenceElem, shiftMultiplyStepSequenceEncode, shiftMultiplyStepSequenceDecode],
+	"(28) shift text subsets by multiple using step sequence": [shiftTextSubsetSequenceByMultipleElem, shiftTextSubsetSequenceByMultipleEncode, shiftTextSubsetSequenceByMultipleDecode],
+	"(29) shift characters by partition indices by multiple": [charShiftPartitionsByMultipleElem, charShiftPartitionsByMultipleEncode, charShiftPartitionsByMultipleDecode],
 };
 var setCipher = function(elem) { 
     elemSelector("#optionsCipher").innerHTML = ciphers[elem.value][0];

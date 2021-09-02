@@ -48,16 +48,11 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 
 ## feature wishlist
 - cipher types:
-  - insert distributed text at indices
   - insert randomized text at indices
   - insert randomized, variable-sized text at indices
   - sequence by every set of x characters with step sequence skip
   - sequence by selected partition sets
   - move character subset to step sequence indices
-  - for every set of characters of size x, shift the specified character indices in each set
-  - for every set of characters of size x, multiply the specified character indices in each set
-  - copy text subset to index
-  - substitution swap 2 characters within text
 - buttons to generate randomized inputs (e.g. index lists)
 - documentation page to visualize encoding using example text
 
