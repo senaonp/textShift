@@ -1207,7 +1207,7 @@ var insertDistTextIndicesElem = `
     <div id="option29_3_info"></div>`;
 var insertDistTextIndicesEncode = function(elem) {
 	var text = elemSelector("#option29_1").value;
-	var indices = textToArray(elemSelector("#option29_2").value);
+	var indices = sortList(textToArray(elemSelector("#option29_2").value));
 	var partitionedText = partitionList(text.split(""), indices.length);
 	for (var x = 0; x < elem.value.length; x+=1) {
         cipherArray[x] = elem.value[x];
@@ -1218,7 +1218,7 @@ var insertDistTextIndicesEncode = function(elem) {
 }
 var insertDistTextIndicesDecode = function(elem) {
     var text = elemSelector("#option29_1").value;
-	var indices = textToArray(elemSelector("#option29_2").value);
+	var indices = sortList(textToArray(elemSelector("#option29_2").value));
 	var partitionedText = partitionList(text.split(""), indices.length);
 	var textLengthDecode = parseInt(elemSelector("#option29_3").value);
     for (var x = 0; x < elem.value.length; x+=1) {
@@ -1259,7 +1259,7 @@ var insertRandomDistTextIndicesEncode = function(elem) {
     var minUnicode = parseInt(elemSelector("#option30_1_1").value);
 	var maxUnicode = parseInt(elemSelector("#option30_1_2").value);
 	var size = parseInt(elemSelector("#option30_2").value);
-	var indices = textToArray(elemSelector("#option30_3").value);
+	var indices = sortList(textToArray(elemSelector("#option30_3").value));
 	var partitionedText = partitionList(generateRandomText(size, minUnicode, maxUnicode).split(""), indices.length);
 	for (var x = 0; x < elem.value.length; x+=1) {
         cipherArray[x] = elem.value[x];
@@ -1272,7 +1272,7 @@ var insertRandomDistTextIndicesDecode = function(elem) {
     var minUnicode = parseInt(elemSelector("#option30_1_1").value);
 	var maxUnicode = parseInt(elemSelector("#option30_1_2").value);
 	var size = parseInt(elemSelector("#option30_2").value);
-	var indices = textToArray(elemSelector("#option30_3").value);
+	var indices = sortList(textToArray(elemSelector("#option30_3").value));
 	var partitionedText = partitionList(generateRandomText(size, minUnicode, maxUnicode).split(""), indices.length);
 	for (var x = 0; x < elem.value.length; x+=1) {
         textArray[x] = elem.value[x];
