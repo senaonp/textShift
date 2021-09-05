@@ -339,6 +339,21 @@ var moveTextToIndex = function(ls, index, targetIndex, size, type) {
 	}
 }
 
+// get a list of indices selected by step sequence
+var getIndicesFromSequence = function(indexArray, size) {
+	var r = [];
+	var c = -1;
+	var x = 0;
+	while (c < size) {
+		c += indexArray[x];
+		if (c >= size) { return r; }
+		r.push(c);
+		x += 1;
+		if (x == indexArray.length) { x = 0; }
+	}
+	return r;
+}
+
 // ----------------- debug helpers -----------------
 var getUnicode = function() {
 	var textUnicodeList = [];
