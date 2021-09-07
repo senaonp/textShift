@@ -23,37 +23,37 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 (4) swap nth character with offset | 
 (5) swap offset nth character with offset | 
 (6) swap character pairs using step sequence | 
-(7) move text subset to index | 
-(8) sequence by partition | 
-(9) sequence by every set of x characters | 
-(10) insert text at index | 
-(11) insert distributed text at indices | 
-(12) insert randomized text at index | 
-(13) insert randomized distributed text at indices | 
-(14) insert randomized text using step sequence | 
-(15) insert variable-sized, randomized text using step sequence | 
-(16) shift text subset | 
-(17) shift multiple text subsets | 
-(18) shift nth character by number | 
-(19) shift offset nth character by number | 
-(20) shift step sequence characters | 
-(21) shift text subsets using step sequence | 
-(22) shift characters by partition indices | 
-(23) shift each character by multiple | 
-(24) shift subset of text by multiple | 
-(25) shift multiple subsets of text by multiple | 
-(26) shift nth character by multiple | 
-(27) shift offset nth character by multiple | 
-(28) shift step sequence characters by multiple | 
-(29) shift text subsets by multiple using step sequence | 
-(30) shift characters by partition indices by multiple
+(7) sequence by partition | 
+(8) sequence by every set of x characters | 
+(9) move text subset to index | 
+(10) move multiple text subsets to indices
+(11) insert text at index | 
+(12) insert distributed text at indices | 
+(13) insert distributed text using step sequence
+(14) insert randomized text at index | 
+(15) insert randomized distributed text at indices | 
+(16) insert randomized text using step sequence | 
+(17) insert variable-sized, randomized text using step sequence | 
+(18) shift text subset | 
+(19) shift multiple text subsets | 
+(20) shift nth character by number | 
+(21) shift offset nth character by number | 
+(22) shift step sequence characters | 
+(23) shift text subsets using step sequence | 
+(24) shift characters by partition indices | 
+(25) shift each character by multiple | 
+(26) shift subset of text by multiple | 
+(27) shift multiple subsets of text by multiple | 
+(28) shift nth character by multiple | 
+(29) shift offset nth character by multiple | 
+(30) shift step sequence characters by multiple | 
+(31) shift text subsets by multiple using step sequence | 
+(32) shift characters by partition indices by multiple
 
 ## feature wishlist
 - cipher types:
   - sequence by every set of x characters with step sequence skip
   - sequence by selected partition sets
-  - move character subset to step sequence indices
-- buttons to generate randomized inputs (e.g. index lists)
 - documentation page to visualize encoding using example text
 
 ## tips
