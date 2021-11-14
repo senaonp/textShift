@@ -1,8 +1,8 @@
 elemSelector("#navbar").innerHTML = `
-    <img id="logo" src="assets/logo.png" onclick="navi('./')" />
+    <img id="logo" src="../assets/logo.png" onclick="navi('../')" />
     <ul>
         <li onclick="navi('https://github.com/senaonp/textShift')"><a href="https://github.com/senaonp/textShift">Github Repo</a></li>
-        <li onclick="navi('./examples/')"><a href="./examples">Examples</a></li>
+        <li onclick="navi('../')"><a href="../">Homepage</a></li>
 		<li onclick="toggleElem('#banner')">About</li>
     </ul>
     <div id="banner" style="display:none">
@@ -10,33 +10,7 @@ elemSelector("#navbar").innerHTML = `
         <button onclick="hideElem(elemSelector('#banner'))">close</button>
     </div>`;
 
-elemSelector("#content").innerHTML = `
-    <div id="optionsElem">
-        <div id="optionsSelect"></div>
-        <div id="options"></div>
-    </div>
-    <div id="text">
-		<div id="textMeta">
-			<p class="textareaName" id="textT">text</p>
-			<small id="textL">text length: 0</small>
-		</div>
-        <small id="encodingWarning"></small>
-        <textarea id="textInput" oninput="evalText(this)"></textarea>
-    </div>
-    <div id="cipherText">
-        <div id="cipherTextMeta">
-			<p class="textareaName" id="cipherT">cipher text</p>
-			<small id="cipherL">cipher text length: 0</small>
-		</div>
-        <textarea id="cipherTextInput" oninput="evalCipher(this)"></textarea>
-    </div>`;
-
-elemSelector("#notes").innerHTML = `
-	<div id="notesElem">
-		<p class="textareaName">notes</p>
-		<small>you can add any notes here; this field uses the browser's localStorage, so information is saved between browser sessions</small>
-		<textarea id="notesText" oninput="updateNotes(this)"></textarea>
-	</div>`;
+// elemSelector("#content").innerHTML = ``;
 
 elemSelector("#textShiftDescription").innerHTML = `
     <span id="version">textShift ver.1.2.0</span><br /><br />textShift is an online ciphertext tool with various options for encoding and decoding. encoding and decoding is applied during input in the "text" and "cipher text" fields respectively.<br /><br />the main cipher types are shift (modify Unicode value), position (modify ordering), and append (add text) ciphers.

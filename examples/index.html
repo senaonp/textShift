@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>textShift - a basic online ciphertext tool</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content=">textshift.net" />
+        <meta property="og:description" content="textShift - basic online ciphertext tool | encode and decode using various options" />
+		<meta property="og:image" content = "https://textshift.net/assets/textshift-preview.png" />
+        <link rel="stylesheet" href="../textShift.css" />
+		<link rel="stylesheet" href="examples.css" />
+    </head>
+
+    <body>
+        <div id="navbar"></div>
+        <div id="content">
+			<div class="example">
+				<span class="example_title">Example #1</span>
+				<p id="example_d1" class="example_encode">encoded text 1</p>
+				<p id="example_r1" class="example_decode">decoded text 2<br><br>decoding ciphers</p>
+				<button id="display_button_1" class="display_button" onclick="toggleElem('#example_r1'); toggleButton(this, 'show decoded text and ciphers', 'hide decoded text and ciphers')">show decoded text and ciphers</button>
+			</div>
+		</div>
+
+		<div id="footer"></div>
+		
+        <script src="../elemHelpers.js"></script>
+		<script src="pageRender.js"></script>
+    </body>
+</html>

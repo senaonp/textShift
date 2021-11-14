@@ -1,0 +1,29 @@
+#content {
+	margin: 100px 10% 50px 10%;
+}
+
+.display_button {
+	padding: 5px 0px;
+	width: 100%;
+	border-radius: 0px 0px 3px 3px;
+	border: 1px solid rgb(100,100,100);
+}
+
+.example_decode {
+	border-top: 1px solid rgb(100,100,100);
+	display: none;
+}
+
+.example_encode, .example_decode {
+	width: 90%;
+	padding: 10px 5%;
+}
+
+.example_title {
+	margin-left: 2%;
+	padding: 10px;
+	background-color: rgb(150,150,150);
+	color: rgb(250,250,250);
+	border-radius: 5px;
+	border: 1px solid rgb(50,50,50);
+}

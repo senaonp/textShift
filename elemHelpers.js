@@ -18,12 +18,22 @@ var hideElem = function(elem) {
 	elem.style.display = 'none';
 };
 
-// close banner if open
-var toggleBanner = function() {
-	if (elemSelector('#banner').style.display == 'inline-block') {
-		elemSelector('#banner').style.display='none';
+// toggle display of element
+var toggleElem = function(elemStr) {
+	var x = elemSelector(elemStr);
+	if (x.style.display == 'inline-block') {
+		x.style.display='none';
 	} else {
-		elemSelector('#banner').style.display='inline-block'
+		x.style.display='inline-block'
+	}
+};
+
+// toggle button text
+var toggleButton = function(elem, showText, hideText) {
+	if (elem.innerText === showText) {
+		elem.innerText = hideText;
+	} else {
+		elem.innerText = showText;
 	}
 };
 

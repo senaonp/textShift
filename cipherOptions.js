@@ -305,12 +305,12 @@ var charSwapNthOffsetOffsetElem = `
 // reverse each partition
 
 var reversePartitionItemsElem = `
-    <label class="optionsItem">partitions </label>
+    <label class="optionsItem">while considering the number of partitions </label>
     <input size="8" id="option10_1" type="number" value="1" min="1"></input>
     <span class="infoIcon" onclick="toggleInfo('partition', '#option10_1_info')">info</span><br />
     <div id="option10_1_info"></div>
 
-    <label class="optionsItem">reverse text </label>
+    <label class="optionsItem">reverse the text in each partition </label>
     <span class="infoIcon" onclick="toggleInfo('reverse', '#option10_2_info')">info</span><br />
     <div id="option10_2_info"></div>
     `;
