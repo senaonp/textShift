@@ -41,3 +41,15 @@ elemSelector("#footer").innerHTML = `
     <span>textShift code is available on <a target="_blank" href="https://github.com/senaonp/textShift">GitHub</a><br />(･‿･✿)</span>
     <br><br>
     <span>email: <a href="mailto:dev@greentea.moe">(dev@greentea.moe)</a></span>`;
+
+// render ciphertext examples
+var content = "<p id='examples_description'>this section contains examples of ciphertext produced using textShift.<br>the decoded ciphertext and ciphers used can be displayed using the button in each example.</p>";
+for (var i=0; i<examples.length; i+=1) {
+	content += `<div class="example">
+		<span class="example_title">Example #` + (parseInt(i)+1) + `</span>
+		<div id="example_d`+ i + `" class="example_encode"><p>` + examples[i]["encoded_text"] + `</p>
+		<p id="example_r`+ i +`" class="example_decode">` + examples[i]["decoded_text"] + `<br><br><small class="decoded_text">` + examples[i]["decoded_ciphers"] + `</small></p></div>
+		<button class="display_button" onclick="toggleElem('#example_r` + i + `'); toggleButton(this, 'show decoded text and ciphers', 'hide decoded text and ciphers')">show decoded text and ciphers</button>
+	</div>`;
+}
+elemSelector("#content").innerHTML = content;
