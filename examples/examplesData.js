@@ -1,6 +1,6 @@
 var examples = [
 	{
-		"encoded_text": "encoded_ciphertext_1",
+		"encoded_text": "o?fw8rsxftqulj%]tt%qtkpwjffs~hul%nnjmsNtp(U#JPQ%&lt;U.*!TABDf-3%oy%|mmjaotynn%^wkk%jH@n$PR;)7$HYIqij[u`%kxfh%wp-o)R`?*;*(:8Y($x$~Iyjrtofr~%{tbnyjnnhfis|fj%o%pjwakmtlonwj|nfgy%s%fc%jgu]%tjzp#j;N%8$K??=O6(;/&,$$xt%|aaaw%wyo%ejjl%sjnpm%d|x%j]]`mhync{psnnh%og]nzky%xnrpslnjjfmfyqrefcnx%fj}jjnyj&itoy%rxtpjq{se%xh|nhen%mmjNhIELT)2MA;U0R8&7.UL:,+T#+W*7)4|6x%!sfhfejgl%x%ks^ftgmtispq%xnwk]yxjjkZyC5XRA&gt;[TJ20ZUBF4.%&gt;[5*PXHZ-:ssjy%t%ypdattm%eyjxpjssan`*1*2I GFB+(&gt;&lt;.PD$:;)/M@J8PU?)Jis7fnofm3n{p~wa%}n%a`pyxjMe7:&gt;NS9U@E2&quot;:'[9PWM:F$WGE#AF*&gt;BP?uhg1a%%f%eojwyi3qxayq%y]yajtd%sk%`dp%w%up%ejlnj%kiwx(wuynj]1xrjr`f%jkrnyxk%kyukdf%jf`%as",
 		"decoded_text": `
 			went to the zoo this weekend<br>
 			i saw the exhibits for reptiles, birds, primates, and more<br>
@@ -12,9 +12,9 @@ var examples = [
 			my favorite animals were the frogs and turtles.<br>
 			at the end of the trip i got some souvenirs which included postcards and a shirt.<br>
 			<br>
-			very excited about visiting the animals again next time!
+			very excited about visiting the animals again next time!<br>
 		`,
-		"decoded_ciphers": "decoding ciphers:<br>"
+		"decoded_ciphers": "[ decoding ciphers ]<br>(1) 5<br>(6) (2,3,1,1,3,2,1,5,2,1)<br>(15) 34 91 200 (30,57,134,220,375,390)<br>(7) 15 (9,2,13,10,5,7,15,12,6,8,1,14,3,11,4)<br>(8) 5 (2,5,1,4,3)<br>(22) (1,1,5,2,6,2,3,5) -9"
 	},
 	{
 		"encoded_text": "encoded_ciphertext_2",
@@ -25,9 +25,9 @@ var examples = [
 			Eventually, other cipher options were added in addition to shifting which include sequencing/inserting characters.<br>
 			The intent was that any operation that can modify a text and is reversible can be included as a ciphertext option.<br>
 			Since each cipher option is reversible, they can be chained together to form more complex ciphertext and<br>
-			decoded by applying the decoding ciphers in reverse order.
+			decoded by applying the decoding ciphers in reverse order.<br>
 		`,
-		"decoded_ciphers": "decoding ciphers:<br>"
+		"decoded_ciphers": "[ decoding ciphers ]<br>"
 	},
 	{
 		"encoded_text": "encoded_ciphertext_3",
@@ -52,16 +52,16 @@ var examples = [
 			<br>
 			we can observe asymptotic behavior for f(x) for the limit of zero in f(x) = 1/x;<br>
 			this function approaches positive/negative infinity for positive/negative values of x approaching<br>
-			zero respectively.
+			zero respectively.<br>
 		`,
-		"decoded_ciphers": "decoding ciphers:"
+		"decoded_ciphers": "[ decoding ciphers ]<br>"
 	},
 	{
 		"encoded_text": "encoded_ciphertext_4",
 		"decoded_text": `
-			prime numbers up to sixty: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59
+			prime numbers up to sixty: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59<br>
 		`,
-		"decoded_ciphers": "decoding ciphers:"
+		"decoded_ciphers": "[ decoding ciphers ]<br>"
 	},
 	{
 		"encoded_text": "encoded_ciphertext_5",
@@ -76,8 +76,8 @@ var examples = [
 			&nbsp &nbsp if i[j] < i[0]:<br>
 			&nbsp &nbsp &nbsp i[0], i[j] = i[j], i[0]<br>
 			&nbsp r += [i[0]] + recursive_sort_list(i[1:])<br>
-			&nbsp return r
+			&nbsp return r<br>
 		`,
-		"decoded_ciphers": "decoding ciphers:"
+		"decoded_ciphers": "[ decoding ciphers ]<br>"
 	},
 ]
