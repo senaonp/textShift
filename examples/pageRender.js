@@ -42,6 +42,16 @@ elemSelector("#footer").innerHTML = `
     <br><br>
     <span>email: <a href="mailto:dev@greentea.moe">(dev@greentea.moe)</a></span>`;
 
+var validateExamples = function() {
+	var exampleElem = null;
+	for (var i=1; i<6; i+=1) {
+		exampleElem = document.getElementById("example"+i);
+		if (exampleElem.innerText === "") {
+			exampleElem.innerHTML = "<p>it looks like this ciphertext cannot be rendered for this browser; the text can be viewed through these links:</p><ul><li>textShift hosted file: <a target='_blank' href='./txt/example" + i + ".txt'>https://textshift.net/examples/txt/example" + i + ".txt</a></li><li>Github hosted file: <a target='_blank' href='https://raw.githubusercontent.com/senaonp/textShift/main/examples/txt/example" + i + ".txt'>https://raw.githubusercontent.com/senaonp/textShift/main/examples/txt/example" + i + ".txt</li></ul>"
+		}
+	}
+}
+
 // render ciphertext examples
 var content = "<p id='examples_description'>this section contains examples of ciphertext produced using textShift.<br>the decoded ciphertext and ciphers used can be displayed using the button in each example.</p>";
 for (var i=0; i<examples.length; i+=1) {
@@ -53,3 +63,4 @@ for (var i=0; i<examples.length; i+=1) {
 	</div>`;
 }
 elemSelector("#content").innerHTML = content;
+validateExamples();

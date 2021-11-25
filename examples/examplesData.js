@@ -1,6 +1,6 @@
 var examples = [
 	{
-		"encoded_text": `<iframe src="./txt/example1.txt"></iframe>`,
+		"encoded_text": `<embed src="./txt/example1.txt" id="example1"></embed>`,
 		"decoded_text": `
 			went to the zoo this weekend<br>
 			i saw the exhibits for reptiles, birds, primates, and more<br>
@@ -17,7 +17,7 @@ var examples = [
 		"decoded_ciphers": "[ decoding ciphers ]<br>(1) 5<br>(6) (2,3,1,1,3,2,1,5,2,1)<br>(15) 34 91 200 (30,57,134,220,375,390)<br>(7) 15 (9,2,13,10,5,7,15,12,6,8,1,14,3,11,4)<br>(8) 5 (2,5,1,4,3)<br>(22) (1,1,5,2,6,2,3,5) -9"
 	},
 	{
-		"encoded_text": `<iframe src="./txt/example2.txt"></iframe>`,
+		"encoded_text": `<embed src="./txt/example2.txt" id="example2"></embed>`,
 		"decoded_text": `
 			textshift.net was originally a project that was built from a code exercise in shifting text by a number.<br>
 			By shifting through a character's unicode value, multiple characters can be used from a charCode of zero up to 65535.<br>
@@ -30,7 +30,7 @@ var examples = [
 		"decoded_ciphers": "[ decoding ciphers ]<br>(6) (2,4,1,2,3,2,5,1)<br>(15) 80 120 200 (20,150,180,220,306,402,520,600)<br>(19) (0,100,180,230,350,400,460,550,600,620,700) 100 2<br>(6) (1,1,2,1,2,4,2,1,3,5,2,2)<br>(17) 80 120 (1,2,2,1,4,5) (2,5,2,2,3,4)"
 	},
 	{
-		"encoded_text": `<iframe src="./txt/example3.txt"></iframe>`,
+		"encoded_text": `<embed src="./txt/example3.txt" id="example3"></embed>`,
 		"decoded_text": `
 			finding the limit of x as x approaches zero for the function f(x) = 1/x<br>
 			<br>
@@ -57,14 +57,14 @@ var examples = [
 		"decoded_ciphers": "[ decoding ciphers ]<br>(23) 5 (2,3,5,2,6,3) 2<br>(23) 15 (1,4,3,2,5,2,3,4,2,5,3) 1"
 	},
 	{
-		"encoded_text": `<iframe src="./txt/example4.txt"></iframe>`,
+		"encoded_text": `<embed src="./txt/example4.txt" id="example4"></embed>`,
 		"decoded_text": `
 			2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59<br>
 		`,
 		"decoded_ciphers": "[ decoding ciphers ]<br>(9) 5 20 15<br>(2)<br>(7) 6 (2,4,1,5,3,6)<br>(8) 9 (6,1,4,5,8,2,7,3,9)<br>(16) 48 57 2 (1,2,1,2,3,2,1,2)<br><br>"
 	},
 	{
-		"encoded_text": `<iframe src="./txt/example5.txt"></iframe>`,
+		"encoded_text": `<embed src="./txt/example5.txt" id="example5"></embed>`,
 		"decoded_text": `
 			def recursive_sort_list(i):<br>
 			&nbsp r = []<br>

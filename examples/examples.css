@@ -49,6 +49,9 @@
 #examples_description {
 	margin: 0 2%;
 }
-.example iframe {
+.example embed {
 	width: 100%;
+}
+.example embed li {
+	line-height: 200%;
 }

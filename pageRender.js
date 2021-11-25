@@ -2,7 +2,7 @@ elemSelector("#navbar").innerHTML = `
     <img id="logo" src="assets/logo.png" onclick="navi('./')" />
     <ul>
         <li onclick="navi('https://github.com/senaonp/textShift')"><a href="https://github.com/senaonp/textShift">Github Repo</a></li>
-        <li onclick="navi('./examples/')"><a href="./examples">Examples</a></li>
+        <li onclick="navi('./examples/')"><a href="./examples/">Examples</a></li>
 		<li onclick="toggleElem('#banner')">About</li>
     </ul>
     <div id="banner" style="display:none">
