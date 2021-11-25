@@ -49,9 +49,10 @@
 #examples_description {
 	margin: 0 2%;
 }
-.example embed {
+.example iframe {
 	width: 100%;
 }
-.example embed li {
-	line-height: 200%;
+.example_noload li, .example_noload p {
+	margin-top: 5px;
+	font-size: 0.8em;
 }
