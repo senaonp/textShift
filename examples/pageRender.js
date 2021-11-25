@@ -10,8 +10,6 @@ elemSelector("#navbar").innerHTML = `
         <button onclick="hideElem(elemSelector('#banner'))">close</button>
     </div>`;
 
-// elemSelector("#content").innerHTML = ``;
-
 elemSelector("#textShiftDescription").innerHTML = `
     <span id="version">textShift ver.1.2.0</span><br /><br />textShift is an online ciphertext tool with various options for encoding and decoding. encoding and decoding is applied during input in the "text" and "cipher text" fields respectively.<br /><br />the main cipher types are shift (modify Unicode value), position (modify ordering), and append (add text) ciphers.
 	<br /><br />
@@ -51,6 +49,7 @@ var validateExamples = function() {
 
 // render ciphertext examples
 var content = "<p id='examples_description'>this section contains examples of ciphertext produced using textShift. the decoded ciphertext and ciphers used can be displayed using the button in each example.<br>to decode the ciphertext, apply the decoding ciphers in reverse order from the example; the examples have the ciphers in the order in which they were applied for encoding<br><br>some ciphertext may not be rendered in the browser due to unicode characters; links are included in each example to the original textfile</p>";
+content += `<small>textShift video on decoding examples #1-#5</small><div id="preview1" onclick="navi('https://fbacarisas.xyz/video/#textshift_examples_5')"><img src="../assets/textshift_examples_5.jpg" /><p>[ senaonp Channel ] decoding textShift examples (#1-#5)<br><span class='link_preview'>decoding the ciphertext examples in textShift.net</span></p></div>`;
 for (var i=0; i<examples.length; i+=1) {
 	content += `<div class="example">
 		<span class="example_title">Example #` + (parseInt(i)+1) + `</span>

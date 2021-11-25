@@ -2,7 +2,7 @@ var examples = [
 	{
 		// this example is unable to render due to Unicode characters after testing in browsers
 		"encoded_text": `<div class="example_noload" id="example1_noload"></div>`,
-		// "encoded_text": `<iframe type="text/plain" src="./txt/example1.txt" id="example1"></iframe>`,
+		// "encoded_text": `<iframe type="text/plain" src="./txt/example1.txt" id="example1"></iframe><div class="example_noload" id="example1_noload"></div>`,
 		"decoded_text": `
 			went to the zoo this weekend<br>
 			i saw the exhibits for reptiles, birds, primates, and more<br>
@@ -21,7 +21,7 @@ var examples = [
 	{
 		// this example is unable to render due to Unicode characters after testing in browsers
 		"encoded_text": `<div class="example_noload" id="example2_noload"></div>`,
-		// "encoded_text": `<iframe src="./txt/example2.txt" type="text/plain" id="example2"></iframe>`,
+		// "encoded_text": `<iframe src="./txt/example2.txt" type="text/plain" id="example2"></iframe><div class="example_noload" id="example2_noload"></div>`,
 		"decoded_text": `
 			textshift.net was originally a project that was built from a code exercise in shifting text by a number.<br>
 			By shifting through a character's unicode value, multiple characters can be used from a charCode of zero up to 65535.<br>
@@ -36,7 +36,7 @@ var examples = [
 	{
 		// this example is unable to render due to Unicode characters after testing in browsers
 		"encoded_text": `<div class="example_noload" id="example3_noload"></div>`,
-		// "encoded_text": `<iframe src="./txt/example3.txt" type="text/plain" id="example3"></iframe>`,
+		// "encoded_text": `<iframe src="./txt/example3.txt" type="text/plain" id="example3"></iframe><div class="example_noload" id="example3_noload"></div>`,
 		"decoded_text": `
 			finding the limit of x as x approaches zero for the function f(x) = 1/x<br>
 			<br>
