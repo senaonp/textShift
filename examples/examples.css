@@ -55,5 +55,7 @@
 .example_noload li, .example_noload p {
 	margin-top: 5px;
 	font-size: 0.8em;
+}
+.example_noload a {
 	word-break: break-all;
 }
