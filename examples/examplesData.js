@@ -1,6 +1,6 @@
 var examples = [
 	{
-		"encoded_text": "o?fw8rsxftqulj%]tt%qtkpwjffs~hul%nnjmsNtp(U#JPQ%&lt;U.*!TABDf-3%oy%|mmjaotynn%^wkk%jH@n$PR;)7$HYIqij[u`%kxfh%wp-o)R`?*;*(:8Y($x$~Iyjrtofr~%{tbnyjnnhfis|fj%o%pjwakmtlonwj|nfgy%s%fc%jgu]%tjzp#j;N%8$K??=O6(;/&,$$xt%|aaaw%wyo%ejjl%sjnpm%d|x%j]]`mhync{psnnh%og]nzky%xnrpslnjjfmfyqrefcnx%fj}jjnyj&itoy%rxtpjq{se%xh|nhen%mmjNhIELT)2MA;U0R8&7.UL:,+T#+W*7)4|6x%!sfhfejgl%x%ks^ftgmtispq%xnwk]yxjjkZyC5XRA&gt;[TJ20ZUBF4.%&gt;[5*PXHZ-:ssjy%t%ypdattm%eyjxpjssan`*1*2I GFB+(&gt;&lt;.PD$:;)/M@J8PU?)Jis7fnofm3n{p~wa%}n%a`pyxjMe7:&gt;NS9U@E2&quot;:'[9PWM:F$WGE#AF*&gt;BP?uhg1a%%f%eojwyi3qxayq%y]yajtd%sk%`dp%w%up%ejlnj%kiwx(wuynj]1xrjr`f%jkrnyxk%kyukdf%jf`%as",
+		"encoded_text": `<iframe src="./txt/example1.txt"></iframe>`,
 		"decoded_text": `
 			went to the zoo this weekend<br>
 			i saw the exhibits for reptiles, birds, primates, and more<br>
@@ -17,7 +17,7 @@ var examples = [
 		"decoded_ciphers": "[ decoding ciphers ]<br>(1) 5<br>(6) (2,3,1,1,3,2,1,5,2,1)<br>(15) 34 91 200 (30,57,134,220,375,390)<br>(7) 15 (9,2,13,10,5,7,15,12,6,8,1,14,3,11,4)<br>(8) 5 (2,5,1,4,3)<br>(22) (1,1,5,2,6,2,3,5) -9"
 	},
 	{
-		"encoded_text": "encoded_ciphertext_2",
+		"encoded_text": `<iframe src="./txt/example2.txt"></iframe>`,
 		"decoded_text": `
 			textshift.net was originally a project that was built from a code exercise in shifting text by a number.<br>
 			By shifting through a character's unicode value, multiple characters can be used from a charCode of zero up to 65535.<br>
@@ -27,10 +27,10 @@ var examples = [
 			Since each cipher option is reversible, they can be chained together to form more complex ciphertext and<br>
 			decoded by applying the decoding ciphers in reverse order.<br>
 		`,
-		"decoded_ciphers": "[ decoding ciphers ]<br>"
+		"decoded_ciphers": "[ decoding ciphers ]<br>(6) (2,4,1,2,3,2,5,1)<br>(15) 80 120 200 (20,150,180,220,306,402,520,600)<br>(19) (0,100,180,230,350,400,460,550,600,620,700) 100 2<br>(6) (1,1,2,1,2,4,2,1,3,5,2,2)<br>(17) 80 120 (1,2,2,1,4,5) (2,5,2,2,3,4)"
 	},
 	{
-		"encoded_text": "encoded_ciphertext_3",
+		"encoded_text": `<iframe src="./txt/example3.txt"></iframe>`,
 		"decoded_text": `
 			finding the limit of x as x approaches zero for the function f(x) = 1/x<br>
 			<br>
@@ -54,20 +54,18 @@ var examples = [
 			this function approaches positive/negative infinity for positive/negative values of x approaching<br>
 			zero respectively.<br>
 		`,
-		"decoded_ciphers": "[ decoding ciphers ]<br>"
+		"decoded_ciphers": "[ decoding ciphers ]<br>(23) 5 (2,3,5,2,6,3) 2<br>(23) 15 (1,4,3,2,5,2,3,4,2,5,3) 1"
 	},
 	{
-		"encoded_text": "encoded_ciphertext_4",
+		"encoded_text": `<iframe src="./txt/example4.txt"></iframe>`,
 		"decoded_text": `
-			prime numbers up to sixty: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59<br>
+			2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59<br>
 		`,
-		"decoded_ciphers": "[ decoding ciphers ]<br>"
+		"decoded_ciphers": "[ decoding ciphers ]<br>(9) 5 20 15<br>(2)<br>(7) 6 (2,4,1,5,3,6)<br>(8) 9 (6,1,4,5,8,2,7,3,9)<br>(16) 48 57 2 (1,2,1,2,3,2,1,2)<br><br>"
 	},
 	{
-		"encoded_text": "encoded_ciphertext_5",
+		"encoded_text": `<iframe src="./txt/example5.txt"></iframe>`,
 		"decoded_text": `
-			# this function describes sorting a list of items using recursion<br>
-			# params: (i) list of numbers<br>
 			def recursive_sort_list(i):<br>
 			&nbsp r = []<br>
 			&nbsp if len(i) <= 1:<br>
@@ -78,6 +76,6 @@ var examples = [
 			&nbsp r += [i[0]] + recursive_sort_list(i[1:])<br>
 			&nbsp return r<br>
 		`,
-		"decoded_ciphers": "[ decoding ciphers ]<br>"
+		"decoded_ciphers": "[ decoding ciphers, sequence-only type ]<br>(6) (2,5,3,4,2,1,6,4,5,4)<br>(3) 85<br>(7) 5 (5,4,1,3,2)<br>(8) 9 (2,6,7,4,3,9,8,1,5)"
 	},
 ]

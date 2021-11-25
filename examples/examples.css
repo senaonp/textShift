@@ -49,3 +49,6 @@
 #examples_description {
 	margin: 0 2%;
 }
+.example iframe {
+	width: 100%;
+}
