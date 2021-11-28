@@ -53,6 +53,10 @@ applet can be run in a web browser by checking out the repo and opening `index.h
 ## feature wishlist
 - cipher types:
   - sequence by every set of x characters with step sequence skip
+  - sequence by every set of x characters at step sequence (allow intersecting sets)
+  - sequence by every set of x characters at indices (allow intersecting sets, requires sort before sequence)
+  - switch instances of character pair
+  - switch instances of multiple character pairs
   - sequence by selected partition sets
 - documentation page to visualize encoding using example text
 
