@@ -16,7 +16,7 @@ var examples = [
 			<br>
 			very excited about visiting the animals again next time!<br>
 		`,
-		"decoded_ciphers": "[ ciphers ]<br>(1) 5<br>(6) (2,3,1,1,3,2,1,5,2,1)<br>(15) 34 91 200 (30,57,134,220,375,390)<br>(7) 15 (9,2,13,10,5,7,15,12,6,8,1,14,3,11,4)<br>(8) 5 (2,5,1,4,3)<br>(22) (1,1,5,2,6,2,3,5) -9"
+		"decoded_ciphers": "[ ciphers ]<br>(1) 5<br>(6) [2,3,1,1,3,2,1,5,2,1]<br>(15) 34 91 200 [30,57,134,220,375,390]<br>(7) 15 [9,2,13,10,5,7,15,12,6,8,1,14,3,11,4]<br>(8) 5 [2,5,1,4,3]<br>(22) [1,1,5,2,6,2,3,5] -9"
 	},
 	{
 		// this example is unable to render due to Unicode characters after testing in browsers
@@ -31,7 +31,7 @@ var examples = [
 			Since each cipher option is reversible, they can be chained together to form more complex ciphertext and<br>
 			decoded by applying the decoding ciphers in reverse order.<br>
 		`,
-		"decoded_ciphers": "[ ciphers ]<br>(6) (2,4,1,2,3,2,5,1)<br>(15) 80 120 200 (20,150,180,220,306,402,520,600)<br>(19) (0,100,180,230,350,400,460,550,600,620,700) 100 2<br>(6) (1,1,2,1,2,4,2,1,3,5,2,2)<br>(17) 80 120 (1,2,2,1,4,5) (2,5,2,2,3,4)"
+		"decoded_ciphers": "[ ciphers ]<br>(6) [2,4,1,2,3,2,5,1]<br>(15) 80 120 200 [20,150,180,220,306,402,520,600]<br>(19) [0,100,180,230,350,400,460,550,600,620,700] 100 2<br>(6) [1,1,2,1,2,4,2,1,3,5,2,2]<br>(17) 80 120 [1,2,2,1,4,5] [2,5,2,2,3,4]"
 	},
 	{
 		// this example is unable to render due to Unicode characters after testing in browsers
@@ -60,14 +60,14 @@ var examples = [
 			this function approaches positive/negative infinity for positive/negative values of x approaching<br>
 			zero respectively.<br>
 		`,
-		"decoded_ciphers": "[ ciphers ]<br>(23) 5 (2,3,5,2,6,3) 2<br>(23) 15 (1,4,3,2,5,2,3,4,2,5,3) 1"
+		"decoded_ciphers": "[ ciphers ]<br>(23) 5 [2,3,5,2,6,3] 2<br>(23) 15 [1,4,3,2,5,2,3,4,2,5,3] 1"
 	},
 	{
 		"encoded_text": `<iframe src="./txt/example4.txt" type="text/plain" id="example4"></iframe><div class="example_noload" id="example4_noload"></div>`,
 		"decoded_text": `
 			2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59<br>
 		`,
-		"decoded_ciphers": "[ ciphers ]<br>(9) 5 20 15<br>(2)<br>(7) 6 (2,4,1,5,3,6)<br>(8) 9 (6,1,4,5,8,2,7,3,9)<br>(16) 48 57 2 (1,2,1,2,3,2,1,2)<br><br>"
+		"decoded_ciphers": "[ ciphers ]<br>(9) 5 20 15<br>(2)<br>(7) 6 [2,4,1,5,3,6]<br>(8) 9 [6,1,4,5,8,2,7,3,9]<br>(16) 48 57 2 [1,2,1,2,3,2,1,2]<br><br>"
 	},
 	{
 		"encoded_text": `<iframe src="./txt/example5.txt" type="text/plain" id="example5"></iframe><div class="example_noload" id="example5_noload"></div>`,
@@ -82,6 +82,6 @@ var examples = [
 			&nbsp r += [i[0]] + recursive_sort_list(i[1:])<br>
 			&nbsp return r<br>
 		`,
-		"decoded_ciphers": "[ ciphers, sequence-only type ]<br>(6) (2,5,3,4,2,1,6,4,5,4)<br>(3) 85<br>(7) 5 (5,4,1,3,2)<br>(8) 9 (2,6,7,4,3,9,8,1,5)"
+		"decoded_ciphers": "[ ciphers, sequence-only type ]<br>(6) [2,5,3,4,2,1,6,4,5,4]<br>(3) 85<br>(7) 5 [5,4,1,3,2]<br>(8) 9 [2,6,7,4,3,9,8,1,5]"
 	},
 ]
