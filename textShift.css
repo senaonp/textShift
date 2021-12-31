@@ -2,7 +2,7 @@ body {
     margin: 0;
 	width: 100%;
 	font-family: arial;
-	background-color: rgb(255,255,255);
+	background-color: rgb(240,240,240);
 	top: 0;
 	left: 0;
 }
@@ -81,11 +81,13 @@ body {
 /* ------------ content ------------ */
 
 #content {
-    background-color: rgb(252,252,252);
-	margin: 80px 20% 0 10%;
+    background-color: rgb(255,255,255);
+	margin: 90px 10% 20px 10%;
+	padding: 0px 0px 20px 0px;
 	width: 80%;
     border: 1px solid rgb(200,200,200);
-    border-radius: 5px;
+    border-radius: 15px;
+	box-shadow: 0px 0px 5px rgb(100,100,100);
 }
 #version {
 	padding: 5px 10px;
@@ -116,7 +118,7 @@ body {
 }
 #optionsElem {
     border-bottom: 1px solid rgb(100,100,100);
-    padding: 30px 40px;
+    padding: 30px 20px 0px 20px;
 }
 .optionsItem {
 	border-left: 5px solid rgb(200,200,200);
@@ -208,11 +210,13 @@ textarea {
 /* ------------ notes -------------- */
 
 #notes {
-	background-color: rgb(232,232,232);
-	margin: 30px 20% 0 10%;
+	background-color: rgb(255,255,255);
+	margin: 30px 10% 0px 10%;
+	padding: 10px 0px;
 	width: 80%;
     border: 1px solid rgb(200,200,200);
-    border-radius: 5px;
+    border-radius: 15px;
+	box-shadow: 0px 0px 4px rgb(100,100,100);
 }
 #notesElem {
 	padding: 15px 5%;
