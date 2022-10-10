@@ -7,6 +7,15 @@
 ## usage
 applet can be run in a web browser by checking out the repo and opening `index.html` in a web browser
 
+## running textshift on NGINX web server with Docker
+```
+docker build --tag textshift:dev .
+docker run -p 8003:80 -d --name textshift textshift:dev
+# with this config, textshift runs on localhost:8003
+```
+
+-------------
+
 ## features
 - various cipher options for encoding / decoding
   - cipher text functions such as shift, swap, insert, move, reverse, multiply, sequence
